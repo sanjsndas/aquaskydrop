@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaSkyDrop - Cookie Policy</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Tailwind Configuration (Optional, but good for consistency) */
+        :root {
+            --skydrop-blue: #4FC3F7;
+            --ecoleaf-green: #66BB6A;
+            --cool-slate-gray: #455A64;
+            --pure-white: #FAFAFA;
+            --silver-mist: #CFD8DC;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--pure-white);
+            color: var(--cool-slate-gray);
+        }
+
+        /* Custom utility classes for colors */
+        .bg-skydrop-blue { background-color: var(--skydrop-blue); }
+        .text-skydrop-blue { color: var(--skydrop-blue); }
+        .bg-ecoleaf-green { background-color: var(--ecoleaf-green); }
+        .text-ecoleaf-green { color: var(--ecoleaf-green); }
+        .bg-cool-slate-gray { background-color: var(--cool-slate-gray); }
+        .text-cool-slate-gray { color: var(--cool-slate-gray); }
+        .bg-pure-white { background-color: var(--pure-white); }
+        .text-pure-white { color: var(--pure-white); }
+        .bg-silver-mist { background-color: var(--silver-mist); }
+        .text-silver-mist { color: var(--silver-mist); }
+
+        /* General button styling */
+        .btn-primary {
+            @apply bg-skydrop-blue text-pure-white px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition duration-300 shadow-lg;
+        }
+        .btn-secondary {
+            @apply bg-ecoleaf-green text-pure-white px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition duration-300 shadow-lg;
+        }
+        .btn-outline {
+            @apply border border-skydrop-blue text-skydrop-blue px-6 py-3 rounded-full font-semibold hover:bg-skydrop-blue hover:text-pure-white transition duration-300;
+        }
+
+        /* Cookie Consent Banner Styling */
+        #cookie-consent-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--cool-slate-gray);
+            color: var(--pure-white);
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none; /* Hidden by default, shown by JS */
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+        }
+
+        #cookie-consent-banner p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        #cookie-consent-banner button {
+            @apply px-5 py-2 rounded-full font-semibold transition duration-300;
+        }
+
+        #cookie-consent-banner #accept-cookies {
+            @apply bg-ecoleaf-green text-pure-white hover:bg-opacity-90 mr-4;
+        }
+
+        #cookie-consent-banner #decline-cookies {
+            @apply bg-silver-mist text-cool-slate-gray hover:bg-opacity-80;
+        }
+
+        /* FAQ details styling */
+        details summary {
+            padding: 1rem;
+            border-bottom: 1px solid var(--silver-mist);
+            cursor: pointer;
+            outline: none;
+            transition: background-color 0.2s ease;
+        }
+
+        details summary:hover {
+            background-color: #f0f0f0;
+        }
+
+        details[open] summary {
+            background-color: var(--skydrop-blue);
+            color: var(--pure-white);
+            border-bottom: none;
+            border-radius: 0.5rem 0.5rem 0 0;
+        }
+
+        details[open] summary + div {
+            padding: 1rem;
+            background-color: var(--pure-white);
+            border: 1px solid var(--silver-mist);
+            border-top: none;
+            border-radius: 0 0 0.5rem 0.5rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header Section (Simplified for Cookie Policy Page) -->
+    <header class="bg-pure-white shadow-md py-4 px-6 md:px-12 fixed w-full z-50 rounded-b-xl">
+        <div class="container mx-auto flex justify-between items-center flex-wrap">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center space-x-2 text-cool-slate-gray text-2xl font-bold rounded-lg p-2">
+                <svg class="w-8 h-8 text-skydrop-blue" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                    <path d="M12 2c-4.41 0-8 3.59-8 8s3.59 8 8 8 8-3.59 8-8-3.59-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/>
+                    <path d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8 8-3.59 8-8-3.59-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/>
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                </svg>
+                <span>AquaSkyDrop</span>
+            </a>
+            <nav class="hidden md:flex space-x-8">
+               <a href="index.html" tabindex="0">Home</a>
+        <a href="privacy.html" tabindex="0">Privacy</a>
+        <a href="terms.html" tabindex="0"aria-current="page">Terms & conditons</a>
+        <a href="cookies.html"tabindex="0">Cookies</a>
+        <a href="contact.html" tabindex="0">Contact us</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="pt-20 py-16 md:py-24 px-6 md:px-12">
+        <div class="container mx-auto max-w-5xl bg-pure-white p-8 rounded-2xl shadow-lg">
+            <h1 class="text-3xl md:text-5xl font-bold text-center mb-12 text-cool-slate-gray">AquaSkyDrop Cookie Policy</h1>
+            <p class="text-lg text-cool-slate-gray leading-relaxed text-justify mb-8">
+                This Cookie Policy explains how AquaSkyDrop ("we," "us," "our") uses cookies and similar technologies on our website <a href="https://www.aquaskydrop.com" class="text-skydrop-blue hover:underline">www.aquaskydrop.com</a> (the "Website"). By continuing to browse or use our Website, you are agreeing to our use of cookies in accordance with this policy. We are committed to transparency and providing you with clear information about the technologies we use and your choices regarding them. This policy is designed to help you understand what cookies are, why we use them, and how you can manage your preferences.
+            </p>
+            <p class="text-lg text-cool-slate-gray leading-relaxed text-justify mb-8">
+                We regularly review and update this Cookie Policy to reflect changes in technology, legal requirements, and our business practices. We encourage you to check this page periodically to stay informed about how we are using cookies. Your continued use of the Website after any changes indicates your acceptance of the updated policy. Our goal is to ensure your online experience with AquaSkyDrop is secure, efficient, and tailored to your preferences, while fully respecting your privacy.
+            </p>
+
+            <h2 class="text-2xl md:text-3xl font-semibold text-cool-slate-gray mb-8 mt-8 text-center">Understanding Cookies and Tracking Technologies</h2>
+
+            <div class="space-y-6">
+                <!-- Point 1: What exactly is a cookie? -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">1. What exactly is a cookie?</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        A cookie is a small text file that a website saves on your computer or mobile device when you visit the site. It contains information that allows the website to remember your actions and preferences over a period of time, so you don't have to keep re-entering them whenever you come back to the site or browse from one page to another. Think of it as a website's memory, enabling it to recognize you and your past activities.
+                        <br><br>
+                        Cookies are widely used to make websites work more efficiently, as well as to provide reporting information. They can be used for various purposes, such as keeping you logged in, remembering items in your shopping cart, or analyzing website traffic. While often discussed in terms of privacy, cookies are fundamental to the modern web experience, enabling many of the convenient features we take for granted.
+                        <br><br>
+                        The data stored in a cookie is typically a string of text that is unique to your browser. This unique identifier allows the website to distinguish your browser from other browsers, even if it doesn't directly identify you as an individual. When you return to the website, your browser sends the cookie back to the server, allowing the website to retrieve your previous settings or activity.
+                        <br><br>
+                        It's important to note that cookies themselves are not programs and cannot carry viruses or install malware on your computer. They are simply data files. However, if a website is compromised, the information stored in cookies could potentially be intercepted, which is why secure website practices are crucial.
+                        <br><br>
+                        The concept of cookies was introduced in the mid-1990s to address the stateless nature of HTTP, allowing websites to maintain session information and user preferences across multiple page views. Without cookies, every page load would be treated as a new, independent request, making interactive web applications like online shopping carts or personalized dashboards impossible to implement effectively.
+                        <br><br>
+                        Different types of cookies serve distinct functions, from ensuring basic website operations to enabling highly personalized content and targeted advertising. Understanding these distinctions is key to managing your online privacy. This policy will delve into these various types and their implications for your data.
+                    </div>
+                </details>
+
+                <!-- Point 2: How do cookies work? -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">2. How do cookies work?</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        When you visit a website, the website's server sends a small piece of data (the cookie) to your web browser. Your browser then stores this cookie on your device (computer, tablet, smartphone). The next time you visit the same website, your browser sends the cookie back to the server. This allows the server to recognize your device and retrieve information about your previous activity or preferences.
+                        <br><br>
+                        This client-server interaction is fundamental to how cookies function. The cookie itself is essentially a key-value pair, often with additional attributes like an expiration date, domain, and path. The domain specifies which website can access the cookie, ensuring that a cookie set by one website cannot be read by another.
+                        <br><br>
+                        For instance, when you log into a website, a session cookie might be set. This cookie contains a unique session ID. As you navigate through the site, your browser sends this session ID back with each request, allowing the server to know that you are still logged in and associated with your account. Without this, you would have to re-enter your login credentials on every page.
+                        <br><br>
+                        Similarly, if you add items to a shopping cart, a cookie might store the IDs of those items. When you proceed to checkout, the website retrieves these IDs from the cookie to display your selected products. This seamless experience is entirely dependent on the browser's ability to store and transmit cookies.
+                        <br><br>
+                        The process is largely invisible to the user, operating in the background of your web browsing. However, understanding this mechanism is crucial for comprehending how your online activity is tracked and how you can manage your privacy settings. The efficiency of this simple data exchange underpins much of the modern web's interactivity and personalization.
+                        <br><br>
+                        The security of this process relies on the browser's implementation of cookie policies, such as the same-origin policy, which prevents malicious websites from accessing cookies set by legitimate sites. However, vulnerabilities can exist, which is why keeping your browser updated and being mindful of the websites you visit is important.
+                    </div>
+                </details>
+
+                <!-- Point 3: Session vs. Persistent Cookies -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">3. Session vs. Persistent Cookies</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        Cookies can be categorized based on their lifespan: session cookies and persistent cookies.
+                        <br><br>
+                        **Session Cookies** are temporary and are only stored in your browser's memory for the duration of your browsing session. They are deleted automatically when you close your browser. These cookies are primarily used to remember your activity within a single visit, such as keeping you logged into a website or remembering items in your shopping cart as you navigate between pages. They are essential for the basic functionality of many interactive websites. Because they expire quickly, they are generally considered less intrusive from a privacy perspective as they don't track your long-term browsing habits. They are crucial for maintaining state in stateless protocols like HTTP, ensuring a continuous and logical user experience during a single visit.
+                        <br><br>
+                        **Persistent Cookies**, also known as "tracking cookies" or "permanent cookies," remain on your device for a longer period, even after you close your browser. They have an expiration date set by the website that creates them, which can range from a few minutes to several years. These cookies are used to remember your preferences, settings, or login information for future visits, eliminating the need to re-enter details every time you return. They are also widely used for analytical purposes, allowing websites to track user behavior over time, understand returning visitors, and personalize content or advertisements based on past interactions. While convenient, persistent cookies raise more privacy concerns due to their ability to track long-term browsing patterns across multiple sessions.
+                        <br><br>
+                        The choice between using a session or persistent cookie depends on the specific functionality the website aims to achieve. For example, a banking website would typically use session cookies for security reasons, ensuring that your session ends as soon as you close the browser. Conversely, a news website might use persistent cookies to remember your preferred language or content categories, enhancing your experience on subsequent visits.
+                        <br><br>
+                        From a user's perspective, understanding this distinction helps in managing privacy. Clearing browser history often removes session cookies, but persistent cookies require more deliberate action to delete, usually through browser settings or specific cookie management tools.
+                    </div>
+                </details>
+
+                <!-- Point 4: First-Party vs. Third-Party Cookies -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">4. First-Party vs. Third-Party Cookies</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        Cookies can also be classified based on who sets them: first-party or third-party. This distinction is crucial for understanding tracking across different websites.
+                        <br><br>
+                        **First-Party Cookies** are set by the website you are directly visiting (i.e., the domain shown in your browser's address bar). These cookies are generally used for essential website functionalities, such as remembering your login credentials, items in your shopping cart, language preferences, or for basic analytics to understand how you interact with that specific site. They are typically considered less intrusive because they are used solely by the website you are actively engaging with, enhancing your experience on that particular domain. For AquaSkyDrop, any cookies we set directly to manage your session or preferences on aquaskydrop.com would be first-party cookies.
+                        <br><br>
+                        **Third-Party Cookies** are set by a domain other than the one you are currently visiting. This often happens when a website integrates content or services from third-party providers, such as embedded videos (e.g., YouTube), social media widgets (e.g., Facebook Like button), or advertising networks (e.g., Google Ads). When you visit a website that has these third-party elements, the third-party provider can set a cookie on your device. The primary concern with third-party cookies is their ability to track your browsing activity across multiple websites that use the same third-party service, enabling cross-site tracking for advertising and profiling purposes. This is why many browsers are now restricting or phasing out third-party cookies due to privacy concerns.
+                        <br><br>
+                        For example, if a website uses Google Analytics, Google (the third party) might set a cookie to track your behavior on that site. If you then visit another website that also uses Google Analytics, Google can potentially link your activity across both sites using the same third-party cookie. This cross-site tracking capability is what differentiates third-party cookies and makes them a central point of discussion in privacy regulations.
+                        <br><br>
+                        While first-party cookies are generally accepted as necessary for a functional web experience, third-party cookies are often the focus of user privacy controls and regulatory efforts like GDPR and CCPA, which aim to give users more control over how their data is tracked across the internet.
+                    </div>
+                </details>
+
+                <!-- Point 5: Cookie Identifiers and Their Role -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">5. Cookie Identifiers and Their Role</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        At the core of how cookies function for tracking and personalization is the concept of a unique identifier. When a cookie is set on your browser, it typically contains a randomly generated string of characters – this is the cookie identifier. This identifier doesn't usually contain your personal name or email address directly, but it acts as a unique tag for your specific browser instance on a particular device.
+                        <br><br>
+                        The role of this identifier is to allow the website's server to recognize your browser on subsequent visits. When your browser sends the cookie back to the server, the server reads this identifier and can then retrieve any associated data it has stored about that specific identifier. This data might include your preferences (e.g., language, currency), items in your shopping cart, or your browsing history on that site.
+                        <br><br>
+                        In the context of analytics and advertising, these identifiers are crucial for building user profiles. For example, an analytics cookie might assign a unique ID to your browser. As you navigate through a website, every page view, click, and interaction is logged and associated with that unique ID. Over time, this allows the website owner (or a third-party analytics provider) to understand patterns of behavior, such as which pages are most popular, how users navigate the site, or where they encounter difficulties.
+                        <br><br>
+                        While the identifier itself is often pseudonymous (not directly linked to your real-world identity), it can become linked to personally identifiable information if you log into an account or provide personal details on the website. Once linked, the browsing history associated with that cookie identifier can be attributed to you as an individual.
+                        <br><br>
+                        The persistence of these identifiers is also a key factor. Persistent cookies retain their identifiers over long periods, enabling long-term tracking and profiling. This ability to track users across sessions and, in the case of third-party cookies, across different websites, is what makes cookie identifiers central to modern digital advertising and raises significant privacy concerns.
+                        <br><br>
+                        Understanding that it's the unique identifier within the cookie that enables tracking, rather than direct personal data, is important for grasping how online tracking operates and how your choices regarding cookie consent impact this mechanism.
+                    </div>
+                </details>
+
+                <!-- Point 6: Strictly Necessary/Essential Cookies -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">6. Strictly Necessary/Essential Cookies</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        Strictly necessary cookies, often referred to as essential cookies, are fundamental to the operation of a website. As their name suggests, these cookies are absolutely required for the website to function correctly and to provide the services you have requested. Without them, core functionalities like navigating between pages, accessing secure areas, or making online purchases would not be possible.
+                        <br><br>
+                        Examples of strictly necessary cookies include:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>Session cookies:</strong> These remember your actions during a single browsing session, such as items added to a shopping cart or information entered into forms.</li>
+                            <li><strong>Authentication cookies:</strong> These keep you logged into a website as you move from page to page, preventing you from having to re-enter your credentials repeatedly.</li>
+                            <li><strong>Security cookies:</strong> Used for security features, such as detecting fraudulent activity or protecting against cyberattacks.</li>
+                            <li><strong>Load balancing cookies:</strong> Distribute website traffic across multiple servers to ensure the site remains available and performs efficiently.</li>
+                            <li><strong>Cookie consent cookies:</strong> Remember your cookie preferences (e.g., whether you have accepted or declined non-essential cookies) so you don't have to make the choice on every visit.</li>
+                        </ul>
+                        <br>
+                        Under privacy regulations like GDPR and the ePrivacy Directive (Cookie Law), websites are generally permitted to use strictly necessary cookies without requiring explicit consent from the user. This is because their purpose is to facilitate a service explicitly requested by the user (e.g., loading a page, logging in). However, websites are still required to inform users about the use of these cookies in their privacy or cookie policies.
+                        <br><br>
+                        While you can technically block these cookies through your browser settings, doing so would severely impair the functionality of most websites, potentially making them unusable. Therefore, they are often exempt from the consent requirements that apply to other categories of cookies. AquaSkyDrop uses strictly necessary cookies to ensure the basic and secure operation of our Website, providing you with a functional and reliable browsing experience.
+                    </div>
+                </details>
+
+                <!-- Point 7: Performance/Analytics Cookies -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">7. Performance/Analytics Cookies</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        Performance cookies, often synonymous with analytics cookies, are used to collect information about how visitors use a website. Their primary purpose is to help website owners understand and improve the performance and usability of their sites. These cookies typically gather aggregated and anonymous data, such as which pages are most popular, how long visitors spend on certain pages, the navigation paths users take, and if they encounter any error messages.
+                        <br><br>
+                        The insights gained from performance cookies enable website developers to:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li>Identify areas of the website that need improvement (e.g., slow loading pages, confusing navigation).</li>
+                            <li>Optimize content and features based on user engagement.</li>
+                            <li>Monitor website traffic and trends.</li>
+                            <li>Measure the effectiveness of marketing campaigns by tracking visitor sources.</li>
+                        </ul>
+                        <br>
+                        Common tools that rely on performance cookies include Google Analytics, Adobe Analytics, and similar web analytics services. These services often use third-party cookies to track users across different websites that employ their analytics platform, which can raise privacy concerns.
+                        <br><br>
+                        Unlike strictly necessary cookies, performance cookies are generally not essential for the website's basic functionality. Therefore, under privacy regulations like GDPR, explicit consent is typically required before these cookies can be placed on a user's device. Users should be given the option to accept or decline these cookies without impacting their ability to use the core services of the website.
+                        <br><br>
+                        While performance cookies do not directly identify you, the data they collect can be combined with other information to create a profile of your browsing habits. AquaSkyDrop uses performance/analytics cookies to understand how our visitors interact with our Website, allowing us to continuously enhance your experience and optimize our content to better serve your needs. We are committed to using this data responsibly and transparently.
+                    </div>
+                </details>
+
+                <!-- Point 8: Functionality/Preference Cookies -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">8. Functionality/Preference Cookies</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        Functionality cookies, also known as preference cookies, enhance your user experience by remembering choices you make on a website. These cookies allow the website to provide more personalized and convenient features based on your previous interactions and settings. They store information such as your preferred language, region, username, or customized settings like font size and color schemes.
+                        <br><br>
+                        Examples of how functionality cookies are used include:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li>Remembering your login details so you don't have to re-enter them on every visit.</li>
+                            <li>Storing your preferred language or currency settings.</li>
+                            <li>Recalling items you've viewed or added to a wishlist.</li>
+                            <li>Enabling video playback or interactive features.</li>
+                            <li>Remembering your acceptance of terms and conditions or specific notifications.</li>
+                        </ul>
+                        <br>
+                        These cookies aim to improve the usability and personalization of the website for individual users. While they are not strictly necessary for a website to function, they significantly contribute to a smoother and more enjoyable browsing experience. Without them, you would have to reset your preferences or re-enter information every time you visit the site.
+                        <br><br>
+                        Similar to performance cookies, functionality cookies generally require user consent under privacy regulations like GDPR, as they go beyond the strictly necessary functions of the website. Users should have the option to opt-in or opt-out of these cookies. If a user declines functionality cookies, the website may still be usable, but certain personalized features or conveniences might not be available.
+                        <br><br>
+                        AquaSkyDrop uses functionality cookies to remember your preferences and provide a more customized and efficient browsing experience. This helps us ensure that your interactions with our Website are as seamless and tailored to your needs as possible, allowing you to focus on exploring our sustainable water solutions without unnecessary repetition of settings.
+                    </div>
+                </details>
+
+                <!-- Point 9: Targeting/Advertising Cookies -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">9. Targeting/Advertising Cookies</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        Targeting cookies, also known as advertising or marketing cookies, are used to deliver advertisements that are more relevant to you and your interests. These cookies track your browsing habits across different websites to build a profile of your interests. This profile is then used by advertising networks to display targeted ads on other websites you visit.
+                        <br><br>
+                        Key characteristics and uses of targeting cookies include:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>Cross-site tracking:</strong> They follow your activity across multiple websites to understand your interests and preferences.</li>
+                            <li><strong>Behavioral advertising:</strong> Enable advertisers to show you ads based on your past online behavior (e.g., if you've visited a product page, you might see ads for that product later).</li>
+                            <li><strong>Ad frequency capping:</strong> Limit the number of times you see a particular advertisement.</li>
+                            <li><strong>Measuring ad campaign effectiveness:</strong> Help advertisers understand which ads are most effective in driving clicks or conversions.</li>
+                            <li><strong>Retargeting/Remarketing:</strong> Show ads to users who have previously visited a specific website or shown interest in certain products.</li>
+                        </ul>
+                        <br>
+                        Most targeting cookies are third-party cookies, set by advertising partners or social media platforms whose content is embedded on a website. Due to their intrusive nature and their role in profiling users for advertising purposes, targeting cookies are subject to the strictest consent requirements under privacy regulations like GDPR and CCPA. Websites must obtain explicit, informed consent from users before these cookies can be placed on their devices. Users typically have the right to opt-out of these cookies without affecting the core functionality of the website.
+                        <br><br>
+                        AquaSkyDrop may use targeting/advertising cookies to deliver relevant information about our products and services to you on other platforms, based on your interactions with our Website. We are committed to using these cookies responsibly and providing you with clear options to manage your preferences, ensuring your privacy is respected while still allowing us to reach potential customers effectively.
+                    </div>
+                </details>
+
+                <!-- Point 10: Flash Cookies (LSOs - Local Shared Objects) -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">10. Flash Cookies (LSOs - Local Shared Objects)</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        Flash cookies, formally known as Local Shared Objects (LSOs), are data files that can be stored on a user's computer by websites that use Adobe Flash Player. While Flash technology has largely been phased out due to security concerns and the rise of HTML5, LSOs were once a common method for websites to store data, similar to traditional HTTP cookies, but with some key differences that made them more persistent and harder for users to control.
+                        <br><br>
+                        Unlike regular HTTP cookies, Flash cookies are not managed through standard web browser settings. This meant that even if a user cleared their browser's cookies, Flash cookies would often remain on their system, making them a concern for privacy advocates. They could be used to "re-spawn" deleted HTTP cookies, a practice known as "evercookies," making it difficult for users to truly erase their tracking footprint.
+                        <br><br>
+                        LSOs could store a larger amount of data than traditional cookies and were often used for:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li>Storing user preferences for Flash applications (e.g., game scores, video player settings).</li>
+                            <li>Tracking user behavior across websites, similar to third-party cookies.</li>
+                            <li>Storing backup copies of HTTP cookies to enable supercookies.</li>
+                        </ul>
+                        <br>
+                        The privacy implications of Flash cookies led to increased scrutiny and calls for better user control. Adobe eventually provided a mechanism for users to manage Flash cookies through a separate Flash Player Settings Manager. However, with the deprecation of Adobe Flash Player by major browsers and its end-of-life in 2020, the use of Flash cookies has significantly declined.
+                        <br><br>
+                        While AquaSkyDrop does not utilize Flash technology on its modern Website, understanding Flash cookies is important for a comprehensive overview of past and present web tracking methods. Their history highlights the ongoing challenge of balancing website functionality with user privacy and the evolution of regulatory responses to persistent tracking technologies.
+                    </div>
+                </details>
+
+                <!-- Point 11: HTML5 Local Storage -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">11. HTML5 Local Storage</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        HTML5 Local Storage is a web storage API that allows websites to store data directly within the user's web browser. It serves as an alternative or complement to traditional HTTP cookies, offering several advantages, particularly in terms of storage capacity and persistence. While traditional cookies are limited to a few kilobytes, Local Storage can typically store up to 5-10 MB of data per domain, making it suitable for storing larger amounts of client-side data.
+                        <br><br>
+                        Key characteristics of HTML5 Local Storage:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>Persistence:</strong> Data stored in Local Storage persists even after the browser window is closed or the computer is restarted, unless explicitly cleared by the user or the website's code. This makes it a "persistent" form of web storage.</li>
+                            <li><strong>Client-side only:</strong> Unlike cookies, data in Local Storage is not automatically sent with every HTTP request to the server. It must be explicitly retrieved by JavaScript code on the client-side. This reduces network traffic.</li>
+                            <li><strong>Domain-specific:</strong> Data stored in Local Storage is tied to the domain that created it, meaning one website cannot access data stored by another website. This adheres to the same-origin policy, enhancing security.</li>
+                            <li><strong>Key-value pairs:</strong> Data is stored as simple key-value pairs, making it easy to use for developers.</li>
+                        </ul>
+                        <br>
+                        Common uses for HTML5 Local Storage include:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li>Storing user preferences (e.g., theme, layout, last visited page).</li>
+                            <li>Caching application data for offline use or faster loading times.</li>
+                            <li>Saving user input in forms to prevent data loss.</li>
+                            <li>Maintaining shopping cart contents.</li>
+                        </ul>
+                        <br>
+                        While Local Storage offers benefits for developers and users, it also raises privacy considerations similar to persistent cookies, as it can be used for tracking user behavior over time. Although it's not directly transmitted with every request, JavaScript can read and send this data to the server. Therefore, modern privacy regulations often consider data stored via Local Storage under the same consent requirements as cookies. Users can typically clear Local Storage data through their browser's privacy or site settings. AquaSkyDrop may utilize HTML5 Local Storage to enhance your browsing experience by remembering certain preferences or cached data, ensuring faster and more personalized interactions.
+                    </div>
+                </details>
+
+                <!-- Point 12: Web Beacons/Tracking Pixels -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">12. Web Beacons/Tracking Pixels</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        Web beacons, also known as tracking pixels, pixel tags, or clear GIFs, are tiny, often transparent graphic images (typically 1x1 pixel) that are embedded in web pages or emails. Unlike cookies, web beacons are not stored on your device; instead, they are loaded when you open a page or an email that contains them. Their primary purpose is to track user behavior and gather data without being overtly visible to the user.
+                        <br><br>
+                        When your browser or email client requests the web beacon image from a server, it sends along information such as your IP address, the time the beacon was viewed, the type of browser used, and any existing cookies on your device. This allows the sender to:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>Track page views:</strong> Count how many times a specific page has been loaded.</li>
+                            <li><strong>Monitor email opens:</strong> Determine if and when an email has been opened, and sometimes even if links within the email were clicked.</li>
+                            <li><strong>Measure advertising effectiveness:</strong> Track conversions (e.g., if a user made a purchase after seeing an ad).</li>
+                            <li><strong>Combine with cookies:</strong> Often used in conjunction with cookies to build a more comprehensive profile of user activity.</li>
+                        </ul>
+                        <br>
+                        Web beacons are commonly used by advertisers, analytics providers, and email marketing services. Because they are so small and often transparent, users may not be aware of their presence. While they don't store data on your device like cookies, the information they transmit can be linked to other data points (including cookie IDs) to track your online behavior across different websites and services.
+                        <br><br>
+                        The privacy implications of web beacons are similar to those of third-party cookies, as they facilitate cross-site tracking and profiling. Consequently, under privacy regulations, the use of web beacons for non-essential purposes typically requires explicit user consent. Users can often limit their effectiveness by blocking third-party cookies in their browser settings or by disabling image loading in their email clients, though this might impact the display of legitimate content. AquaSkyDrop may use web beacons as part of our analytics and marketing efforts to understand the effectiveness of our content and campaigns, always striving to respect your privacy choices.
+                    </div>
+                </details>
+
+                <!-- Point 13: ETags (Entity Tags) -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">13. ETags (Entity Tags)</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        ETags, or Entity Tags, are a mechanism used in the HTTP protocol for web cache validation. They are primarily designed to improve web performance by allowing browsers to cache web content more efficiently. When a web server sends a resource (like an image, stylesheet, or JavaScript file) to a browser, it can include an ETag header, which is a unique identifier (a "tag") for that specific version of the resource.
+                        <br><br>
+                        The next time the browser requests the same resource, it sends the ETag back to the server. The server then checks if the resource has changed. If it hasn't, the server sends a "304 Not Modified" response, telling the browser to use its cached version, thus saving bandwidth and speeding up page load times. If the resource has changed, the server sends the new version with a new ETag.
+                        <br><br>
+                        While their primary purpose is caching, ETags can also be used for tracking users, similar to persistent cookies, which is why they are sometimes referred to as "supercookies" or "evercookies" when used maliciously. Because ETags are managed by the web server and not directly by the browser's cookie settings, they can persist even after a user clears their browser's cookies or local storage. This makes them a more resilient form of tracking.
+                        <br><br>
+                        How ETags can be used for tracking:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li>A website can assign a unique ETag to a user's browser for a specific resource.</li>
+                            <li>Even if the user clears their cookies, the ETag might remain in the browser's cache.</li>
+                            <li>When the user revisits the site, the browser sends the ETag, allowing the website to recognize the user.</li>
+                        </ul>
+                        <br>
+                        The use of ETags for tracking is less common than traditional cookies due to its complexity and the fact that it's not their intended purpose. However, their persistence makes them a privacy concern. Modern browsers and privacy regulations are increasingly addressing these more advanced tracking methods. While AquaSkyDrop primarily relies on standard cookie mechanisms, understanding ETags provides insight into the broader landscape of web tracking technologies. We are committed to ethical data practices and do not intentionally use ETags for persistent user tracking beyond their caching function.
+                    </div>
+                </details>
+
+                <!-- Point 14: Device Fingerprinting -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">14. Device Fingerprinting</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        Device fingerprinting is an advanced and increasingly sophisticated method of tracking online users without relying on traditional cookies. Instead, it involves collecting and combining various pieces of information about a user's device and browser configuration to create a unique "fingerprint" that can identify the user across different websites and over time.
+                        <br><br>
+                        The data points collected for device fingerprinting can include:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li>Browser type and version (e.g., Chrome 120, Firefox 123)</li>
+                            <li>Operating system and version (e.g., Windows 11, macOS Sonoma)</li>
+                            <li>Installed fonts</li>
+                            <li>Screen resolution and color depth</li>
+                            <li>Time zone and language settings</li>
+                            <li>Browser plugins and extensions (e.g., Flash, Java, PDF viewers)</li>
+                            <li>Graphics card and rendering capabilities</li>
+                            <li>Audio capabilities (e.g., audio context fingerprinting)</li>
+                            <li>Hardware concurrency (number of CPU cores)</li>
+                            <li>User agent string</li>
+                            <li>HTTP header information</li>
+                        </ul>
+                        <br>
+                        By combining a sufficient number of these attributes, it becomes statistically probable to create a unique fingerprint for an individual device, even if cookies are blocked or cleared. This makes device fingerprinting a highly persistent and difficult-to-evade tracking method.
+                        <br><br>
+                        Device fingerprinting is used for various purposes, including:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>Fraud detection:</strong> Identifying suspicious or fraudulent activity.</li>
+                            <li><strong>Security:</strong> Enhancing account security by recognizing familiar devices.</li>
+                            <li><strong>Analytics:</strong> Tracking unique users and their behavior for website optimization.</li>
+                            <li><strong>Targeted advertising:</strong> Building user profiles for personalized ads, especially in environments where cookies are restricted.</li>
+                        </ul>
+                        <br>
+                        From a privacy perspective, device fingerprinting is highly controversial because it operates without the user's explicit consent and is very difficult for users to control or opt-out of. It represents a significant challenge to user privacy in an era of increasing cookie restrictions. While AquaSkyDrop primarily uses cookies for analytics and personalization, we acknowledge the existence of such advanced tracking methods. Our commitment to user privacy means we strive to be transparent about data collection and provide choices where possible, aligning with evolving privacy standards.
+                    </div>
+                </details>
+
+                <!-- Point 15: Cookie Walls (Controversial Consent Mechanisms) -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">15. Cookie Walls (Controversial Consent Mechanisms)</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        A "cookie wall" is a controversial consent mechanism where a website completely blocks access to its content unless the user agrees to accept all cookies, including non-essential ones like analytics and advertising cookies. In essence, it presents users with an "all or nothing" choice: accept all cookies or leave the site.
+                        <br><br>
+                        The legality and ethical implications of cookie walls have been widely debated, particularly under stringent privacy regulations like the GDPR (General Data Protection Regulation). The GDPR requires consent to be "freely given," "specific," "informed," and "unambiguous." Critics argue that cookie walls do not meet the "freely given" criterion because they remove the user's genuine choice; access to the service is conditional on accepting tracking.
+                        <br><br>
+                        Key concerns regarding cookie walls:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>Lack of genuine choice:</strong> Users are forced to accept cookies to access content, undermining the concept of free consent.</li>
+                            <li><strong>Disproportionate impact:</strong> It can disproportionately affect users who prioritize privacy, effectively excluding them from content.</li>
+                            <li><strong>Regulatory scrutiny:</strong> Several data protection authorities in Europe have issued guidance or rulings stating that cookie walls generally do not comply with GDPR requirements for valid consent.</li>
+                        </ul>
+                        <br>
+                        While some organizations have attempted to justify cookie walls by arguing that access to content is a "service" that requires data collection, the prevailing view among regulators is that essential services should not be contingent on accepting non-essential tracking. Alternatives to cookie walls include providing clear, granular consent options where users can select which categories of cookies they wish to accept, or offering a paid, ad-free version of the website as an alternative to data-driven advertising.
+                        <br><br>
+                        AquaSkyDrop is committed to respecting user privacy and providing clear, compliant consent mechanisms. We do not employ cookie walls on our Website. Instead, we aim to offer transparent choices regarding cookie usage, allowing you to manage your preferences without restricting access to our core content and services. Our approach aligns with best practices for ethical data collection and user empowerment.
+                    </div>
+                </details>
+
+                <!-- Point 16: Types of Data Collected via Cookies -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">16. Types of Data Collected via Cookies</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        Cookies, particularly performance, functionality, and targeting cookies, collect various types of data about your online activity and device. While cookies themselves are small text files, the data they enable websites to collect can be extensive and provide a detailed picture of your browsing habits.
+                        <br><br>
+                        Common types of data collected via cookies include:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>IP Address:</strong> Your Internet Protocol address, which can indicate your general geographic location.</li>
+                            <li><strong>Browser Type and Version:</strong> Information about the web browser you are using (e.g., Chrome, Firefox, Safari) and its specific version.</li>
+                            <li><strong>Operating System:</strong> Details about your device's operating system (e.g., Windows, macOS, Android, iOS).</li>
+                            <li><strong>Device Information:</strong> Such as device type (desktop, mobile, tablet), screen resolution, and unique device identifiers.</li>
+                            <li><strong>Pages Visited:</strong> Which specific pages you navigate to on a website.</li>
+                            <li><strong>Time Spent on Pages:</strong> How long you remain on each page.</li>
+                            <li><strong>Navigation Paths:</strong> The sequence of pages you visit and how you move through the site.</li>
+                            <li><strong>Referral Source:</strong> The website or link that brought you to the current site.</li>
+                            <li><strong>Clicks and Interactions:</strong> Which elements you click on, forms you fill, or videos you watch.</li>
+                            <li><strong>Language Preferences:</strong> Your chosen language settings on the website.</li>
+                            <li><strong>Login Status:</strong> Whether you are logged in or out of an account.</li>
+                            <li><strong>Shopping Cart Contents:</strong> Items you've added to an e-commerce cart.</li>
+                            <li><strong>Demographic Data (inferred):</strong> Based on browsing patterns, cookies can help infer age range, gender, or interests, often for advertising purposes.</li>
+                        </ul>
+                        <br>
+                        It's important to differentiate between anonymous data and personally identifiable data. While many cookies collect data that is initially anonymous (e.g., a unique cookie ID), this data can become personally identifiable if it is linked to information you provide directly (like your name or email address when you create an account or make a purchase). AquaSkyDrop collects data via cookies to enhance your website experience, analyze performance, and, with your consent, provide relevant marketing. We are committed to handling all collected data responsibly and in accordance with applicable privacy regulations.
+                    </div>
+                </details>
+
+                <!-- Point 17: Anonymized vs. Personally Identifiable Data -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">17. Anonymized vs. Personally Identifiable Data</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        In the context of data privacy, understanding the distinction between anonymized data and personally identifiable data (PID) is crucial. This distinction often dictates how data can be used and the level of consent required.
+                        <br><br>
+                        **Personally Identifiable Data (PID)**, also known as Personal Data (under GDPR) or Personal Information (under CCPA), refers to any information that can be used to directly or indirectly identify an individual. Examples include your name, email address, phone number, physical address, IP address (in many contexts), unique device identifiers, and even browsing history when it can be linked back to you. When cookies collect data that, either alone or in combination with other information, can identify you, that data is considered PID. For instance, if a cookie stores a unique ID that is later linked to your logged-in account, the browsing data associated with that ID becomes personally identifiable.
+                        <br><br>
+                        **Anonymized Data** is information that has been processed in such a way that it can no longer be used to identify a specific individual. This is achieved through various techniques, such as:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>Aggregation:</strong> Combining data from many individuals so that individual patterns are obscured.</li>
+                            <li><strong>Masking/Redaction:</strong> Removing or obscuring direct identifiers.</li>
+                            <li><strong>Generalization:</strong> Broadening categories of data (e.g., age range instead of exact age).</li>
+                            <li><strong>Noise Addition:</strong> Introducing random data to obscure individual data points.</li>
+                        </ul>
+                        <br>
+                        Once data is truly anonymized, it typically falls outside the scope of strict privacy regulations because it no longer poses a risk to individual privacy. Websites often use anonymized data for statistical analysis, research, and improving services without tracking individuals.
+                        <br><br>
+                        The challenge lies in ensuring that data is *truly* anonymized and cannot be re-identified through sophisticated techniques or by combining it with other datasets. Pseudonymization, where direct identifiers are replaced with artificial identifiers, is a step towards anonymization but still allows for re-identification with the right key.
+                        <br><br>
+                        AquaSkyDrop strives to anonymize or pseudonymize data collected via cookies where possible, especially for analytical purposes, to protect your privacy while still gaining valuable insights to improve our Website. When data is personally identifiable, we ensure we have the appropriate legal basis for processing, including your explicit consent where required.
+                    </div>
+                </details>
+
+                <!-- Point 18: Aggregated Data Use -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">18. Aggregated Data Use</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        Aggregated data refers to information that has been collected from multiple individuals and combined into a summary form, so that it no longer relates to an identifiable person. This process involves compiling data from various sources and presenting it in a collective format, such as statistics, trends, or averages. The key characteristic of aggregated data is that individual identities are obscured, making it impossible to trace specific actions back to a single user.
+                        <br><br>
+                        Cookies, particularly performance and analytics cookies, are instrumental in collecting the raw data that can then be aggregated. For example, an analytics cookie might track that 5,000 users visited a certain product page, 2,000 clicked on a "Learn More" button, and 500 completed a purchase. When this data is aggregated, the website owner sees the overall trends and conversion rates, rather than the individual journey of each of those 5,000 users.
+                        <br><br>
+                        The primary uses of aggregated data include:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>Website Optimization:</strong> Understanding which parts of the website are performing well or poorly, allowing for design and content improvements.</li>
+                            <li><strong>Business Intelligence:</strong> Gaining insights into customer behavior, product popularity, and marketing campaign effectiveness at a macro level.</li>
+                            <li><strong>Research and Development:</strong> Identifying broader trends that can inform new product development or service enhancements.</li>
+                            <li><strong>Reporting:</strong> Generating reports on website traffic, user engagement, and other metrics for internal review or external stakeholders, without compromising individual privacy.</li>
+                        </ul>
+                        <br>
+                        Because aggregated data does not identify individuals, it generally falls outside the scope of strict privacy regulations like GDPR and CCPA. This allows businesses to leverage valuable insights from their website traffic without needing explicit consent for every individual data point, provided the aggregation process is robust enough to prevent re-identification.
+                        <br><br>
+                        AquaSkyDrop extensively uses aggregated data collected via cookies to understand overall website performance, identify popular content, and improve the user experience for all visitors. This allows us to make data-driven decisions about our Website's development and content strategy, ensuring we provide the most relevant and efficient information about our sustainable water solutions, all while upholding our commitment to user privacy.
+                    </div>
+                </details>
+
+                <!-- Point 19: Data Sharing with Third Parties -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">19. Data Sharing with Third Parties</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        A significant aspect of cookie usage, particularly with third-party cookies, involves the sharing of data with external entities. When you visit a website that integrates services from third-party providers (like analytics platforms, advertising networks, or social media plugins), these third parties can set cookies on your device and collect data about your interactions. This data is then shared with, or directly collected by, these third-party companies.
+                        <br><br>
+                        Common types of third parties with whom data collected via cookies might be shared include:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>Analytics Providers:</strong> Companies like Google Analytics that process website usage data on behalf of the website owner to provide insights into traffic and user behavior.</li>
+                            <li><strong>Advertising Networks:</strong> Platforms that manage and serve advertisements across various websites. They use cookie data to target ads based on user interests and track ad performance.</li>
+                            <li><strong>Social Media Platforms:</strong> When a website includes social media "Like" or "Share" buttons, the respective social media company can set cookies and collect data about your visit, even if you don't click the button.</li>
+                            <li><strong>Affiliate Marketing Partners:</strong> Companies that track referrals from one website to another to attribute sales or leads.</li>
+                            <li><strong>Cloud Service Providers:</strong> Hosting providers or data storage services that process and store website data.</li>
+                        </ul>
+                        <br>
+                        The sharing of data with third parties raises significant privacy concerns, as it can lead to cross-site tracking and the creation of detailed user profiles that extend beyond a single website. This is why privacy regulations like GDPR and CCPA place strict requirements on data sharing with third parties, particularly for non-essential cookies.
+                        <br><br>
+                        Websites are generally required to:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li>Clearly disclose which third parties receive data.</li>
+                            <li>Explain the purposes for which data is shared.</li>
+                            <li>Obtain explicit consent from users for data sharing, especially for marketing and analytics purposes.</li>
+                            <li>Ensure that third-party service providers also comply with data protection laws.</li>
+                        </ul>
+                        <br>
+                        AquaSkyDrop may engage with third-party service providers for analytics, marketing, and website functionality. We carefully select our partners and ensure they adhere to high standards of data protection and privacy. We are transparent about our data sharing practices in this Cookie Policy and our Privacy Policy, and we provide mechanisms for you to manage your consent for such sharing.
+                    </div>
+                </details>
+
+                <!-- Point 20: Data Security and Cookies -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">20. Data Security and Cookies</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        While cookies themselves are not executable programs and cannot directly carry viruses or malware, their role in storing and transmitting data means they are a component within the broader landscape of website security. The security of the data contained within cookies, and the data they help collect, is paramount.
+                        <br><br>
+                        Security vulnerabilities related to cookies can arise from:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>Insecure Transmission:</strong> If cookies are transmitted over unencrypted HTTP connections, they can be intercepted by malicious actors (e.g., through a "man-in-the-middle" attack). This is why websites should always use HTTPS (secure HTTP) to encrypt data in transit, including cookies.</li>
+                            <li><strong>Cross-Site Scripting (XSS):</strong> If a website is vulnerable to XSS attacks, an attacker can inject malicious scripts into the website. These scripts can then steal cookies (especially session cookies containing authentication tokens), allowing the attacker to impersonate the user.</li>
+                            <li><strong>Cross-Site Request Forgery (CSRF):</strong> CSRF attacks trick a user's browser into sending an authenticated request to a website without the user's knowledge. Cookies, particularly session cookies, are often exploited in CSRF attacks because they are automatically sent with requests.</li>
+                            <li><strong>Cookie Hijacking:</strong> The theft of a cookie, especially a session cookie, to gain unauthorized access to a user's session on a website.</li>
+                            <li><strong>Insufficient Cookie Attributes:</strong> Cookies can be set with attributes like `HttpOnly` (prevents client-side scripts from accessing the cookie, mitigating XSS) and `Secure` (ensures the cookie is only sent over HTTPS). Failure to use these attributes can increase security risks.</li>
+                        </ul>
+                        <br>
+                        Best practices for enhancing cookie security include:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li>Always using HTTPS for all website traffic.</li>
+                            <li>Implementing robust web application security measures to prevent XSS and CSRF.</li>
+                            <li>Setting `HttpOnly` and `Secure` flags for sensitive cookies.</li>
+                            <li>Using short expiration times for session cookies.</li>
+                            <li>Employing strong, random session IDs.</li>
+                        </ul>
+                        <br>
+                        AquaSkyDrop is committed to maintaining a secure online environment. We implement industry-standard security protocols, including HTTPS, and follow best practices in managing cookies to protect your data from unauthorized access, use, or disclosure. While no system can guarantee absolute security, we continuously work to safeguard your information and ensure a secure browsing experience on our Website.
+                    </div>
+                </details>
+
+                <!-- Point 21: GDPR and Cookie Consent -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">21. GDPR and Cookie Consent</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        The General Data Protection Regulation (GDPR) is a comprehensive data privacy law enacted by the European Union (EU) that significantly impacts how websites collect and process personal data, including data collected via cookies. For any website that targets or processes data of individuals in the EU (regardless of where the website is based), GDPR requires strict adherence to its principles, particularly concerning cookie consent.
+                        <br><br>
+                        Under GDPR, consent for non-essential cookies must be:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>Freely Given:</strong> Users must have a genuine choice, meaning access to services should not be conditional on accepting non-essential cookies (no "cookie walls").</li>
+                            <li><strong>Specific:</strong> Consent must be given for specific purposes. Users should be able to consent to different categories of cookies (e.g., analytics, marketing) separately.</li>
+                            <li><strong>Informed:</strong> Users must be provided with clear, comprehensive, and easily understandable information about the types of cookies used, their purposes, and who will access the data. This is typically done through a cookie policy.</li>
+                            <li><strong>Unambiguous:</strong> Consent must be indicated by a clear affirmative action (e.g., clicking an "Accept" button or ticking a checkbox). Pre-ticked boxes are not valid.</li>
+                            <li><strong>Revocable:</strong> Users must be able to withdraw their consent as easily as they gave it, at any time.</li>
+                        </ul>
+                        <br>
+                        Furthermore, the GDPR emphasizes the principle of "privacy by design," meaning privacy considerations should be built into the system from the outset. Websites must also maintain records of consent, demonstrating that valid consent was obtained.
+                        <br><br>
+                        The ePrivacy Directive (often called the "Cookie Law"), which predates GDPR, specifically mandates consent for storing or accessing information on a user's device, with narrow exceptions for strictly necessary cookies. GDPR reinforces and strengthens these requirements, treating cookie identifiers as personal data when they can be used to identify an individual.
+                        <br><br>
+                        Non-compliance with GDPR's cookie consent requirements can lead to significant fines, up to €20 million or 4% of annual global turnover, whichever is higher. AquaSkyDrop is committed to GDPR compliance, ensuring that our cookie consent mechanisms meet all legal requirements and provide you with full control over your data.
+                    </div>
+                </details>
+
+                <!-- Point 22: CCPA and Cookie Opt-Out -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">22. CCPA and Cookie Opt-Out</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        The California Consumer Privacy Act (CCPA) is a state-level privacy law in the United States that grants California consumers significant rights regarding their personal information, including data collected via cookies. While the CCPA's approach to cookies differs from GDPR's explicit opt-in consent model, it imposes specific requirements, particularly concerning the "sale" of personal information.
+                        <br><br>
+                        Under CCPA, "personal information" is broadly defined and includes identifiers like IP addresses and unique cookie IDs when they can be linked to a household or device. The most significant right granted by the CCPA concerning cookies is the "Right to Opt-Out of the Sale of Personal Information."
+                        <br><br>
+                        Key aspects of CCPA and cookies:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>Opt-Out, Not Opt-In:</strong> Unlike GDPR, CCPA generally operates on an opt-out model for the "sale" of personal information. This means businesses can collect and use data (including via cookies) by default, but consumers must be given a clear and conspicuous way to opt-out of the sale of their data.</li>
+                            <li><strong>"Do Not Sell My Personal Information" Link:</strong> Websites covered by CCPA are required to provide a clear link on their homepage, typically titled "Do Not Sell My Personal Information," which allows consumers to exercise their opt-out right.</li>
+                            <li><strong>Definition of "Sale":</strong> The CCPA's definition of "sale" is broad and includes sharing, disclosing, or making available personal information for monetary or other valuable consideration. This often applies to the sharing of data with advertising networks via third-party cookies.</li>
+                            <li><strong>Notice at Collection:</strong> Businesses must inform consumers, at or before the point of collection, about the categories of personal information collected and the purposes for which it will be used.</li>
+                        </ul>
+                        <br>
+                        The California Privacy Rights Act (CPRA), which amended the CCPA, further strengthened these rights, introducing the concept of "sharing" personal information for cross-context behavioral advertising and giving consumers the right to opt-out of such sharing.
+                        <br><br>
+                        AquaSkyDrop is committed to complying with CCPA and CPRA requirements. We provide clear information about our data practices and offer mechanisms for California residents to exercise their rights, including the right to opt-out of the sale or sharing of their personal information collected via cookies, ensuring we respect your privacy choices in accordance with California law.
+                    </div>
+                </details>
+
+                <!-- Point 23: ePrivacy Directive (Cookie Law) -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">23. ePrivacy Directive (Cookie Law)</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        The ePrivacy Directive (Directive 2002/58/EC), often referred to as the "Cookie Law," is a European Union directive that specifically addresses privacy in electronic communications. While the GDPR covers personal data more broadly, the ePrivacy Directive specifically governs the use of cookies and similar tracking technologies. It aims to protect the confidentiality of communications and the privacy of users' devices.
+                        <br><br>
+                        The most significant provision of the ePrivacy Directive concerning cookies is Article 5(3), which states that storing information or accessing information already stored on a user's terminal equipment (like a computer or smartphone) is only allowed if the user has given their consent. This is the origin of the "cookie consent" requirement seen across many websites.
+                        <br><br>
+                        Key aspects of the ePrivacy Directive:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>Consent Requirement:</strong> Requires user consent for the use of most cookies, with a few narrow exceptions.</li>
+                            <li><strong>Exceptions for Consent:</strong> Consent is generally not required for cookies that are "strictly necessary" for the provision of a service explicitly requested by the user (e.g., shopping cart functionality, security cookies). This is why essential cookies are often exempt from consent banners.</li>
+                            <li><strong>Information Provision:</strong> Websites must provide clear and comprehensive information about the purpose of cookies and how they are used.</li>
+                            <li><strong>Member State Implementation:</strong> As a directive, it requires individual EU member states to transpose its provisions into their national laws, which has led to some variations in how the "Cookie Law" is enforced across Europe.</li>
+                        </ul>
+                        <br>
+                        The ePrivacy Directive works in conjunction with the GDPR. While the ePrivacy Directive focuses on the storage and access of information on a device, the GDPR governs the processing of any personal data collected through those cookies. Therefore, for websites operating in the EU, both regulations must be considered for full compliance.
+                        <br><br>
+                        There is an ongoing process to replace the ePrivacy Directive with a new ePrivacy Regulation, which aims to harmonize the rules across the EU and align more closely with GDPR. This new regulation is expected to further strengthen user privacy rights regarding electronic communications and tracking technologies. AquaSkyDrop adheres to the principles of the ePrivacy Directive, ensuring that we obtain valid consent for non-essential cookies and provide clear information about our cookie practices to all our users.
+                    </div>
+                </details>
+
+                <!-- Point 24: Cookie Consent Banners/Pop-ups -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">24. Cookie Consent Banners/Pop-ups</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        Cookie consent banners, pop-ups, or notices are the most common visual implementation of cookie consent requirements on websites. They are designed to inform users about the website's use of cookies and to obtain their consent before non-essential cookies are placed on their device. These banners typically appear when a user first visits a website, especially if they are from a region governed by strict privacy laws like GDPR.
+                        <br><br>
+                        Effective and compliant cookie consent banners should:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>Be Prominent:</strong> Clearly visible and not easily ignorable.</li>
+                            <li><strong>Provide Clear Information:</strong> Briefly explain what cookies are used for, with a link to a more detailed cookie policy.</li>
+                            <li><strong>Offer Granular Choices:</strong> Allow users to accept all cookies, reject all non-essential cookies, or customize their preferences by category (e.g., analytics, marketing). A simple "OK" button without options is generally not sufficient for GDPR compliance.</li>
+                            <li><strong>Require Affirmative Action:</strong> Consent should be given through a clear action (e.g., clicking "Accept All," ticking checkboxes). Scrolling or continued browsing should not be interpreted as consent.</li>
+                            <li><strong>Block Non-Essential Cookies:</strong> Unless the user gives consent, non-essential cookies should not be loaded.</li>
+                            <li><strong>Allow Easy Withdrawal:</strong> Provide a clear and accessible way for users to change their cookie preferences at any time after giving consent.</li>
+                        </ul>
+                        <br>
+                        Poorly designed or non-compliant cookie banners can lead to "consent fatigue" for users and legal risks for website owners. Common pitfalls include pre-ticked boxes, vague language, or making it difficult to reject cookies. The goal is to balance user experience with regulatory compliance, ensuring that users are genuinely informed and empowered to make choices about their data.
+                        <br><br>
+                        AquaSkyDrop utilizes a cookie consent dialogue box (as implemented at the bottom of this page) to provide you with a clear and compliant way to manage your cookie preferences. Our banner is designed to be user-friendly, informative, and to respect your choices, ensuring that your experience on our Website aligns with your privacy expectations.
+                    </div>
+                </details>
+
+                <!-- Point 25: Granular Consent -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">25. Granular Consent</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        Granular consent refers to the requirement that users should be able to give their consent for specific categories or purposes of data processing, rather than an all-or-nothing choice. In the context of cookies, this means that a website should allow users to accept or reject different types of cookies (e.g., analytics, marketing, functional) independently. It goes beyond simply accepting or declining all cookies.
+                        <br><br>
+                        The principle of granular consent is a key component of "specific" consent under GDPR. It ensures that consent is truly informed and freely given, as users can tailor their preferences to match their privacy comfort levels. For example, a user might be happy to accept analytics cookies to help a website improve, but wish to decline marketing cookies to avoid targeted advertising.
+                        <br><br>
+                        Implementing granular consent typically involves:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li>A cookie consent banner that provides options to "Accept All," "Reject All" (non-essential), and "Manage Preferences" or "Customize."</li>
+                            <li>A detailed preference center where each cookie category is clearly explained, and users can toggle their consent on or off for each category.</li>
+                            <li>Ensuring that non-essential cookies are blocked by default until explicit consent is given for their respective categories.</li>
+                        </ul>
+                        <br>
+                        The benefits of granular consent include:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>Enhanced User Trust:</strong> Demonstrates a commitment to user privacy and control.</li>
+                            <li><strong>Improved Compliance:</strong> Helps meet the strict requirements of privacy regulations like GDPR.</li>
+                            <li><strong>Better User Experience:</strong> Empowers users to make informed choices that align with their preferences.</li>
+                        </ul>
+                        <br>
+                        While implementing granular consent can be more complex for website owners, it is considered best practice for privacy and is increasingly expected by regulators. AquaSkyDrop strives to provide granular control over your cookie preferences, allowing you to make informed decisions about which types of cookies you wish to enable on our Website. This commitment reflects our dedication to transparency and user empowerment.
+                    </div>
+                </details>
+
+                <!-- Point 26: Withdrawal of Consent -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">26. Withdrawal of Consent</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        A fundamental principle of privacy regulations like GDPR is that consent, once given, must be as easy to withdraw as it was to give. This "right to withdraw consent" is crucial for ensuring that individuals retain control over their personal data and can change their minds at any time.
+                        <br><br>
+                        In the context of cookies, this means that if you initially accept certain categories of cookies (e.g., analytics or marketing cookies), the website must provide a clear, accessible, and simple mechanism for you to revoke that consent later. This mechanism should not be hidden or require complex steps.
+                        <br><br>
+                        Common ways websites facilitate the withdrawal of cookie consent include:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>A prominent link in the footer:</strong> Often labeled "Cookie Settings," "Manage Cookies," or "Privacy Preferences."</li>
+                            <li><strong>A dedicated section in the Cookie Policy:</strong> Explaining how to change preferences or opt-out.</li>
+                            <li><strong>A re-triggerable cookie banner:</strong> Allowing the user to bring up the consent dialogue again to adjust settings.</li>
+                            <li><strong>Browser settings:</strong> While not controlled by the website, users can always clear cookies or adjust settings directly in their web browser.</li>
+                        </ul>
+                        <br>
+                        When consent is withdrawn, the website should immediately cease collecting data via the cookies for which consent has been revoked. Any data collected prior to the withdrawal of consent remains lawfully processed, but no new data should be collected using those specific cookies from that point forward.
+                        <br><br>
+                        The ease of withdrawal is a key indicator of a website's commitment to respecting user privacy. If it's difficult to withdraw consent, it undermines the "freely given" aspect of the initial consent. Regulators pay close attention to this aspect when assessing compliance.
+                        <br><br>
+                        AquaSkyDrop is committed to making it easy for you to manage your cookie preferences. You can adjust your choices at any time by clicking on the "Cookie Settings" link (or similar) that we provide, or by managing your browser settings directly. We believe in empowering you with control over your data and ensuring that your privacy choices are always respected on our Website.
+                    </div>
+                </details>
+
+                <!-- Point 27: Cookie Audits and Compliance -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">27. Cookie Audits and Compliance</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        For any website operating under modern privacy regulations, regular cookie audits are an essential part of maintaining compliance. A cookie audit is a systematic process of identifying all cookies and similar tracking technologies used on a website, understanding their purpose, determining who sets them (first-party or third-party), and assessing whether they comply with applicable privacy laws like GDPR, CCPA, and the ePrivacy Directive.
+                        <br><br>
+                        Key steps in a cookie audit typically include:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>Scanning the Website:</strong> Using specialized tools to automatically detect all cookies and tracking technologies loaded on various pages.</li>
+                            <li><strong>Categorization:</strong> Classifying each detected cookie into its appropriate category (e.g., strictly necessary, performance, functionality, targeting).</li>
+                            <li><strong>Purpose Identification:</strong> Documenting the specific purpose of each cookie.</li>
+                            <li><strong>Third-Party Identification:</strong> Identifying all third-party domains that set cookies through the website.</li>
+                            <li><strong>Consent Assessment:</strong> Verifying that appropriate consent mechanisms are in place for each cookie category, and that non-essential cookies are blocked until consent is given.</li>
+                            <li><strong>Policy Review:</strong> Ensuring that the cookie policy accurately and transparently describes all cookies used and data practices.</li>
+                            <li><strong>Documentation:</strong> Maintaining detailed records of the audit findings and any actions taken to ensure compliance.</li>
+                        </ul>
+                        <br>
+                        Regular audits are crucial because websites are dynamic; new features, third-party integrations, or marketing campaigns can introduce new cookies without explicit awareness. An ongoing audit process helps identify these changes and ensures that the website's cookie consent solution and policy remain up-to-date and compliant.
+                        <br><br>
+                        Non-compliance can lead to significant legal and financial penalties, as well as reputational damage. Therefore, proactive cookie management and regular audits are not just a legal obligation but also a best practice for building and maintaining user trust.
+                        <br><br>
+                        AquaSkyDrop is committed to robust data governance. We conduct regular cookie audits to ensure that our Website's use of cookies is fully transparent, compliant with all relevant privacy regulations, and aligned with our commitment to respecting your privacy choices. This ongoing process helps us maintain the integrity of our data practices and provide you with a trustworthy online experience.
+                    </div>
+                </details>
+
+                <!-- Point 28: Penalties for Non-Compliance -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">28. Penalties for Non-Compliance</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        Non-compliance with data privacy regulations, particularly those concerning cookie consent like GDPR and the ePrivacy Directive, can result in severe penalties for organizations. These penalties are designed to be dissuasive and to encourage strict adherence to data protection principles.
+                        <br><br>
+                        Under the General Data Protection Regulation (GDPR), the fines for privacy violations are substantial and are categorized into two tiers:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>Lower Tier:</strong> Up to €10 million or 2% of the company's annual global turnover from the preceding financial year, whichever is higher. This applies to violations related to technical and organizational measures, data protection by design, and maintaining records.</li>
+                            <li><strong>Higher Tier:</strong> Up to €20 million or 4% of the company's annual global turnover from the preceding financial year, whichever is higher. This applies to more serious infringements, such as violations of core principles of data processing, rights of data subjects, and conditions for consent. Many cookie consent violations fall into this higher tier, especially if consent is not freely given, specific, informed, or unambiguous.</li>
+                        </ul>
+                        <br>
+                        Beyond financial penalties, non-compliance can also lead to:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>Reputational Damage:</strong> Public exposure of privacy violations can severely harm a company's brand image and erode customer trust.</li>
+                            <li><strong>Legal Actions:</strong> Individuals or consumer protection groups may initiate private lawsuits.</li>
+                            <li><strong>Operational Disruptions:</strong> Data protection authorities can order a halt to data processing activities.</li>
+                            <li><strong>Loss of Business:</strong> Customers may choose to disengage with companies that do not respect their privacy.</li>
+                        </ul>
+                        <br>
+                        In the United States, the California Consumer Privacy Act (CCPA) also imposes penalties, with fines for intentional violations up to $7,500 per violation and $2,500 for unintentional violations. The California Privacy Rights Act (CPRA) further empowers the California Privacy Protection Agency (CPPA) to enforce these rules.
+                        <br><br>
+                        The increasing stringency of global privacy laws underscores the importance of robust cookie management and transparent data practices. AquaSkyDrop takes its legal obligations seriously and is committed to full compliance with all applicable data protection regulations to protect your privacy and maintain your trust.
+                    </div>
+                </details>
+
+                <!-- Point 29: Future of Cookie Regulations (Privacy Sandbox, Evolving Landscape) -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">29. Future of Cookie Regulations (Privacy Sandbox, Evolving Landscape)</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        The landscape of cookie regulations and web tracking is constantly evolving, driven by increasing privacy concerns from consumers and stricter enforcement by regulatory bodies. The most significant development currently shaping the future of cookies is Google's "Privacy Sandbox" initiative.
+                        <br><br>
+                        **Google's Privacy Sandbox:** This initiative aims to create new web standards and technologies that will enable privacy-preserving advertising and tracking, effectively phasing out third-party cookies in Chrome browsers. Instead of individual tracking, the Privacy Sandbox proposes mechanisms like:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>Topics API:</strong> To infer broad user interests from browsing history on the device, without sharing specific sites visited.</li>
+                            <li><strong>FLEDGE (now Protected Audience API):</strong> For remarketing, allowing advertisers to show relevant ads to groups of users based on their past interactions, without revealing individual browsing history.</li>
+                            <li><strong>Attribution Reporting API:</strong> To measure ad conversions without cross-site user identification.</li>
+                        </ul>
+                        <br>
+                        The goal is to provide advertisers with sufficient data for relevant advertising while significantly enhancing user privacy by limiting individual tracking. While this initiative faces ongoing development and industry feedback, it signals a major shift away from the traditional third-party cookie model.
+                        <br><br>
+                        **Other Evolving Regulations:**
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>ePrivacy Regulation:</strong> The proposed successor to the ePrivacy Directive in the EU aims to harmonize and strengthen rules around electronic communications, including cookies, aligning more closely with GDPR.</li>
+                            <li><strong>Global Privacy Laws:</strong> More countries and regions are enacting their own comprehensive privacy laws, creating a complex web of compliance requirements for global websites.</li>
+                            <li><strong>Browser-Level Protections:</strong> Browsers like Safari (Intelligent Tracking Prevention - ITP) and Firefox (Enhanced Tracking Protection - ETP) have already implemented significant restrictions on third-party cookies and other tracking methods, often blocking them by default.</li>
+                        </ul>
+                        <br>
+                        These developments indicate a clear trend towards greater user control over data and a move away from pervasive, individual-level tracking. Businesses, including AquaSkyDrop, must adapt their data collection and advertising strategies to these new standards and regulations. Our commitment is to stay at the forefront of these changes, ensuring our practices remain compliant and continue to prioritize your privacy in an ever-evolving digital landscape.
+                    </div>
+                </details>
+
+                <!-- Point 30: Impact on User Experience vs. Privacy -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">30. Impact on User Experience vs. Privacy</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        The use of cookies and tracking technologies often presents a delicate balance between enhancing user experience and protecting user privacy. While many cookies are designed to improve website functionality and personalization, their extensive use for tracking can raise legitimate privacy concerns.
+                        <br><br>
+                        **How cookies enhance user experience:**
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>Convenience:</strong> Remembering login details, preferences (language, currency), and shopping cart items saves time and effort.</li>
+                            <li><strong>Personalization:</strong> Tailoring content, product recommendations, and website layout based on past interactions.</li>
+                            <li><strong>Efficiency:</strong> Caching data to speed up page loading times.</li>
+                            <li><strong>Relevance:</strong> Delivering advertisements and offers that are more likely to be of interest to the user.</li>
+                        </ul>
+                        <br>
+                        **How extensive tracking can impact privacy:**
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>Loss of Control:</strong> Users may feel they have little control over how their data is collected and used across the internet.</li>
+                            <li><strong>Profiling:</strong> Detailed profiles of user behavior, interests, and demographics can be built without explicit knowledge or consent.</li>
+                            <li><strong>Data Security Risks:</strong> More data collected means a larger potential attack surface for data breaches.</li>
+                            <li><strong>Intrusive Advertising:</strong> While some find relevant ads helpful, others find them intrusive and a sign of constant surveillance.</li>
+                            <li><strong>Digital Divide:</strong> Users who are less tech-savvy may struggle to understand and manage their privacy settings.</li>
+                        </ul>
+                        <br>
+                        The challenge for website operators and regulators is to find a middle ground where websites can offer a rich, personalized experience without unduly compromising user privacy. This often involves:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li>Implementing privacy-by-design principles.</li>
+                            <li>Offering clear, granular consent options.</li>
+                            <li>Minimizing data collection to only what is necessary for stated purposes.</li>
+                            <li>Prioritizing first-party data over extensive third-party tracking.</li>
+                        </ul>
+                        <br>
+                        AquaSkyDrop strives to strike this balance. We use cookies to enhance your experience on our Website, making it more efficient and personalized. Simultaneously, we are deeply committed to respecting your privacy, providing clear information about our cookie practices, and offering you robust controls to manage your preferences, ensuring that convenience does not come at the expense of your privacy.
+                    </div>
+                </details>
+
+                <!-- Point 31: Browser Settings for Cookies -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">31. Browser Settings for Cookies</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        Your web browser provides a powerful set of tools for managing and controlling cookies. While websites offer consent banners, your browser settings offer a fundamental layer of control, allowing you to accept, reject, or delete cookies globally or on a site-by-site basis. Understanding how to navigate these settings is crucial for taking charge of your online privacy.
+                        <br><br>
+                        Here’s a general guide to managing cookies in popular browsers (exact steps may vary slightly by version):
+                        <br><br>
+                        **Google Chrome:**
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li>Go to `Settings` > `Privacy and security` > `Site Settings` > `Cookies and site data`.</li>
+                            <li>Options include: "Allow all cookies," "Block third-party cookies in Incognito," "Block third-party cookies," or "Block all cookies (not recommended)."</li>
+                            <li>You can also "See all site data and permissions" to manage cookies for specific websites or clear all site data.</li>
+                        </ul>
+                        <br>
+                        **Mozilla Firefox:**
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li>Go to `Settings` > `Privacy & Security`.</li>
+                            <li>Under "Enhanced Tracking Protection," you can choose "Standard," "Strict," or "Custom" to control trackers and cookies. "Custom" allows you to block specific types of cookies (e.g., third-party trackers, all third-party cookies).</li>
+                            <li>You can also manage "Cookies and Site Data" to clear data or manage exceptions for specific sites.</li>
+                        </ul>
+                        <br>
+                        **Apple Safari:**
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li>Go to `Safari` > `Preferences` > `Privacy`.</li>
+                            <li>Options include: "Prevent cross-site tracking" (blocks third-party cookies) and "Block all cookies."</li>
+                            <li>You can also click "Manage Website Data..." to see and remove data stored by specific websites.</li>
+                        </ul>
+                        <br>
+                        **Microsoft Edge:**
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li>Go to `Settings` > `Privacy, search, and services`.</li>
+                            <li>Under "Tracking prevention," you can choose "Basic," "Balanced," or "Strict."</li>
+                            <li>Under "Cookies and site data," you can choose to "Allow sites to save and read cookie data (recommended)," "Block third-party cookies," or "Block all cookies." You can also manage data for individual sites.</li>
+                        </ul>
+                        <br>
+                        While blocking all cookies can significantly impact your browsing experience, blocking third-party cookies is often a good step for enhancing privacy without breaking essential website functionality. AquaSkyDrop encourages you to explore your browser's privacy settings to align your online experience with your personal privacy preferences.
+                    </div>
+                </details>
+
+                <!-- Point 32: Opt-Out Mechanisms and Tools -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">32. Opt-Out Mechanisms and Tools</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        Beyond browser settings, several industry-wide and third-party tools exist to help users opt-out of targeted advertising and control cookie usage. These mechanisms are particularly useful for managing preferences across a wide range of websites and advertising networks.
+                        <br><br>
+                        Key opt-out mechanisms and tools include:
+                        <br><br>
+                        **1. Industry Opt-Out Pages:**
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>Digital Advertising Alliance (DAA):</strong> The DAA provides a consumer opt-out page (<a href="https://optout.aboutads.info/" class="text-skydrop-blue hover:underline" target="_blank">optout.aboutads.info</a>) that allows you to opt-out of interest-based advertising from participating companies.</li>
+                            <li><strong>Network Advertising Initiative (NAI):</strong> Similar to the DAA, the NAI offers an opt-out tool (<a href="https://optout.networkadvertising.org/" class="text-skydrop-blue hover:underline" target="_blank">optout.networkadvertising.org</a>) for its member companies.</li>
+                            <li><strong>European Interactive Digital Advertising Alliance (EDAA):</strong> For users in Europe, the EDAA offers a choice page (<a href="https://www.youronlinechoices.eu/" class="text-skydrop-blue hover:underline" target="_blank">youronlinechoices.eu</a>) to manage preferences for online behavioral advertising.</li>
+                        </ul>
+                        <br>
+                        These tools work by placing an "opt-out cookie" on your browser, which signals to participating advertisers that you do not wish to receive targeted ads. It's important to note that if you clear your cookies, you may need to opt-out again.
+                        <br><br>
+                        **2. Browser Extensions:**
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li>Many browser extensions (e.g., Privacy Badger, Ghostery, uBlock Origin) are designed to block or limit tracking cookies and other online trackers. These can provide a more proactive approach to privacy protection.</li>
+                        </ul>
+                        <br>
+                        **3. Website-Specific Consent Management Platforms (CMPs):**
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li>As seen on AquaSkyDrop and many other websites, CMPs provide a dedicated interface (often accessed via a "Cookie Settings" link) where you can manage your preferences for that specific site, including opting out of certain cookie categories.</li>
+                        </ul>
+                        <br>
+                        **4. "Do Not Sell My Personal Information" Links:**
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li>For websites subject to CCPA, these links provide a direct mechanism to opt-out of the "sale" or "sharing" of personal information, which often includes data collected via targeting cookies.</li>
+                        </ul>
+                        <br>
+                        AquaSkyDrop supports these broader industry efforts to empower users. While we provide our own consent management tools, we encourage you to utilize these external resources to manage your online privacy preferences comprehensively across the web.
+                    </div>
+                </details>
+
+                <!-- Point 33: Incognito/Private Browsing Modes -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">33. Incognito/Private Browsing Modes</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        Most modern web browsers offer a "private browsing" mode (e.g., Incognito in Chrome, Private Window in Firefox, InPrivate in Edge). These modes are designed to provide a more private browsing experience by preventing the browser from storing certain types of data locally on your device after the session ends.
+                        <br><br>
+                        When you use incognito or private browsing mode:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>Cookies:</strong> New cookies set during the private browsing session are typically deleted as soon as you close all private windows. This means that websites won't remember your activity from that session on subsequent visits outside of private mode. Existing cookies from your regular browsing profile are generally not accessible in private mode.</li>
+                            <li><strong>Browsing History:</strong> The websites you visit are not saved in your browser's history.</li>
+                            <li><strong>Search History:</strong> Your searches are not saved in your browser's search history.</li>
+                            <li><strong>Form Data:</strong> Information you enter into forms is not saved.</li>
+                            <li><strong>Cached Files:</strong> Temporary files and images downloaded during the session are usually deleted.</li>
+                        </ul>
+                        <br>
+                        **Limitations for privacy:**
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>Not Anonymous:</strong> Private browsing modes do *not* make you anonymous online. Your IP address is still visible to the websites you visit, your internet service provider (ISP), and potentially your employer or network administrator.</li>
+                            <li><strong>Still Trackable by Websites:</strong> Websites can still collect data about your activity during the private session (e.g., via their own analytics tools) and link it to your IP address or device fingerprint, even if they can't set persistent cookies on your device.</li>
+                            <li><strong>Malware Protection:</strong> It does not protect you from malware or viruses.</li>
+                        </ul>
+                        <br>
+                        Private browsing modes are useful for temporary sessions where you don't want your activity saved on your local device (e.g., using a shared computer, or quickly checking something without affecting your personalized browsing experience). However, they should not be considered a comprehensive privacy solution for preventing all forms of online tracking. For stronger privacy, combining private browsing with VPNs, privacy-focused browsers, and managing website-specific cookie consents is recommended. AquaSkyDrop acknowledges the use of such modes and respects browser-level privacy settings where applicable.
+                    </div>
+                </details>
+
+                <!-- Point 34: Clearing Cookies and Cache -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">34. Clearing Cookies and Cache</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        Regularly clearing your browser's cookies and cache is a fundamental step in managing your online privacy and troubleshooting website issues. This action removes the locally stored data that websites use to remember you and speed up your browsing.
+                        <br><br>
+                        **Clearing Cookies:**
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>What it does:</strong> Deletes all cookies stored by websites on your browser. This includes session cookies (though they'd be gone anyway), persistent cookies, and third-party cookies.</li>
+                            <li><strong>Impact on Privacy:</strong> Effectively "resets" your identity with websites that rely on cookies. You will be logged out of sites, your preferences will be reset, and targeted ads may temporarily become less specific until new tracking cookies are set. It removes the unique identifiers that enable long-term tracking.</li>
+                            <li><strong>Impact on User Experience:</strong> You'll need to log back into websites, and any saved preferences (like language or items in a cart) will be lost.</li>
+                        </ul>
+                        <br>
+                        **Clearing Cache (Cached Images and Files):**
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>What it does:</strong> Deletes temporary internet files (images, stylesheets, JavaScript files) that your browser stores to speed up page loading.</li>
+                            <li><strong>Impact on Performance:</strong> Websites might load slightly slower on your next visit as your browser has to re-download all content.</li>
+                            <li><strong>Troubleshooting:</strong> Often resolves issues where websites appear broken or outdated because your browser is using an old cached version of a file.</li>
+                        </ul>
+                        <br>
+                        **How to Clear (General Steps):**
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li>Most browsers have a "Clear Browsing Data" option in their settings or history menu.</li>
+                            <li>You can usually select a time range (e.g., last hour, last 24 hours, all time) and choose which data types to clear (browsing history, cookies, cached images and files, etc.).</li>
+                            <li>It's often recommended to clear both cookies and cache for a thorough reset.</li>
+                        </ul>
+                        <br>
+                        **Frequency:** The frequency depends on your privacy concerns and how often you encounter browsing issues. Some users clear them daily, others weekly or monthly.
+                        <br><br>
+                        While clearing cookies is an effective privacy measure, remember that advanced tracking methods like device fingerprinting may still identify you. AquaSkyDrop respects your choice to manage your browser data and encourages you to do so as part of your overall online privacy strategy.
+                    </div>
+                </details>
+
+                <!-- Point 35: Consent Management Platforms (CMPs - Tools for Websites) -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">35. Consent Management Platforms (CMPs - Tools for Websites)</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        A Consent Management Platform (CMP) is a software solution designed to help website owners collect, manage, and document user consent for cookies and other tracking technologies, thereby ensuring compliance with privacy regulations like GDPR, CCPA, and the ePrivacy Directive. CMPs act as an intermediary between the website, the user, and the various third-party services that use tracking technologies.
+                        <br><br>
+                        Key functionalities of a CMP include:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>Cookie Scanning:</strong> Automatically scanning the website to identify all cookies and trackers in use.</li>
+                            <li><strong>Categorization:</strong> Helping to classify cookies into defined categories (e.g., essential, analytics, marketing).</li>
+                            <li><strong>Consent Banner Display:</strong> Presenting a customizable cookie consent banner or pop-up to visitors upon their first visit.</li>
+                            <li><strong>Granular Consent:</strong> Allowing users to accept or reject cookies by category, providing detailed information about each.</li>
+                            <li><strong>Blocking Cookies:</strong> Ensuring that non-essential cookies are blocked until the user provides explicit consent.</li>
+                            <li><strong>Consent Record Keeping:</strong> Documenting and storing records of user consent, which is a legal requirement under GDPR.</li>
+                            <li><strong>Consent Withdrawal:</strong> Providing an easy way for users to change their consent preferences at any time.</li>
+                            <li><strong>Integration with Third-Party Services:</strong> Managing the loading and firing of scripts from analytics, advertising, and other third-party services based on user consent.</li>
+                            <li><strong>Geo-targeting:</strong> Adapting the consent banner and requirements based on the user's geographic location (e.g., showing a GDPR-compliant banner to EU users, and a CCPA-compliant banner to California users).</li>
+                        </ul>
+                        <br>
+                        Using a robust CMP is crucial for websites, especially those with international audiences, as it simplifies the complex task of managing cookie compliance across various jurisdictions. It helps ensure that consent is legally valid, transparent, and user-friendly, reducing the risk of regulatory fines and enhancing user trust.
+                        <br><br>
+                        AquaSkyDrop utilizes a CMP (or similar internal mechanisms that replicate CMP functionality) to manage your cookie preferences on our Website. This allows us to provide you with a clear, informed, and compliant way to control your data while ensuring our operations adhere to the highest privacy standards. Our aim is to make your privacy choices straightforward and effective.
+                    </div>
+                </details>
+
+                <!-- Point 36: Essential Cookies on AquaSkyDrop -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">36. Essential Cookies on AquaSkyDrop</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        On the AquaSkyDrop Website, essential cookies are those that are strictly necessary for the core functionality and security of the site. These cookies enable fundamental features without which the Website would not operate correctly or securely. They do not collect any personal information for marketing or analytical purposes, and their use is exempt from explicit consent requirements under most privacy regulations, as they are integral to providing a service you have requested.
+                        <br><br>
+                        The essential cookies we use on AquaSkyDrop may include:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>Session Management Cookies:</strong> These temporary cookies allow us to keep you logged into your account (if applicable) as you navigate through different pages of our Website. They ensure that your session remains active and secure, preventing you from having to repeatedly enter your credentials.</li>
+                            <li><strong>Security Cookies:</strong> Used to detect and prevent fraudulent activities, protect user data, and ensure the overall security of our Website. For example, they might help verify the authenticity of your requests and protect against cross-site request forgery attacks.</li>
+                            <li><strong>Cookie Consent Preference Cookies:</strong> A small cookie is set to remember your cookie consent choices. This ensures that once you have made your selection (e.g., accepted or declined certain cookie categories), you are not prompted with the cookie banner on every subsequent visit for a specified period.</li>
+                            <li><strong>Load Balancing Cookies:</strong> These cookies help distribute network traffic across multiple servers, ensuring the Website remains stable, responsive, and available, especially during periods of high demand.</li>
+                            <li><strong>Basic Functionality Cookies:</strong> Such as those that remember items in a shopping cart (if e-commerce features are present) or basic form data to ensure a seamless user experience.</li>
+                        </ul>
+                        <br>
+                        These cookies are crucial for providing you with a functional and secure browsing experience on AquaSkyDrop. While you cannot opt-out of these cookies without severely impacting the Website's usability, we are transparent about their purpose and their limited scope of data collection. Their sole aim is to ensure the reliable operation of our services.
+                    </div>
+                </details>
+
+                <!-- Point 37: Analytics Cookies on AquaSkyDrop -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">37. Analytics Cookies on AquaSkyDrop</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        AquaSkyDrop uses analytics cookies to understand how visitors interact with our Website. These cookies collect information about your browsing behavior in an aggregated and often pseudonymized form, allowing us to gain valuable insights into website performance and user engagement. The data collected helps us to continuously improve our Website's design, content, and functionality to better serve your needs.
+                        <br><br>
+                        The purposes for which we use analytics cookies include:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>Website Traffic Analysis:</strong> Understanding the number of visitors, their geographic locations (general area, not precise), and the times they visit our site.</li>
+                            <li><strong>Content Popularity:</strong> Identifying which pages, articles, or product descriptions are most frequently viewed and engaged with.</li>
+                            <li><strong>User Navigation Paths:</strong> Analyzing how users move through our Website, from entry points to exit points, to optimize user journeys.</li>
+                            <li><strong>Performance Monitoring:</strong> Detecting technical issues, such as broken links or slow-loading pages, to ensure a smooth browsing experience.</li>
+                            <li><strong>Campaign Effectiveness:</strong> Measuring the success of our marketing campaigns by tracking visitor sources and conversion rates (e.g., sign-ups, inquiries).</li>
+                            <li><strong>Audience Understanding:</strong> Gaining a general understanding of our audience demographics and interests, without identifying individuals.</li>
+                        </ul>
+                        <br>
+                        We primarily use reputable third-party analytics services, such as Google Analytics, for this purpose. These services set cookies that collect data on our behalf. While the data collected is typically aggregated and pseudonymized, it may be considered personal data under certain privacy regulations (e.g., GDPR) due to the potential for re-identification when combined with other data.
+                        <br><br>
+                        Therefore, we require your explicit consent before placing analytics cookies on your device. You have the option to accept or decline these cookies through our cookie consent banner. Opting out of analytics cookies will not affect the core functionality of our Website, but it may limit our ability to understand and improve your overall experience. We are committed to using this data responsibly and transparently to enhance the value we provide to our users.
+                    </div>
+                </details>
+
+                <!-- Point 38: Personalization Cookies on AquaSkyDrop -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">38. Personalization Cookies on AquaSkyDrop</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        AquaSkyDrop utilizes personalization cookies (also known as functionality or preference cookies) to enhance your experience on our Website by remembering your choices and providing tailored features. These cookies allow us to customize the content and functionality you see, making your visits more efficient and relevant to your individual needs.
+                        <br><br>
+                        The specific ways we use personalization cookies include:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>Language Preferences:</strong> Remembering your preferred language so that our Website is displayed in the language you select on subsequent visits.</li>
+                            <li><strong>Region-Specific Content:</strong> If we offer content or services tailored to specific geographic regions, these cookies help us remember your region and present relevant information.</li>
+                            <li><strong>Saved Settings:</strong> Recalling any custom settings you apply to the Website, such as display preferences or notification choices.</li>
+                            <li><strong>Login Persistence:</strong> For registered users, these cookies can remember your login status, allowing you to remain logged in across multiple sessions (if you choose this option), saving you the hassle of re-entering credentials.</li>
+                            <li><strong>Recently Viewed Items:</strong> Remembering products or pages you have recently viewed, to make it easier for you to find them again or to suggest related content.</li>
+                            <li><strong>Form Autofill:</strong> For convenience, some cookies might help pre-fill forms with information you've previously provided, with your consent.</li>
+                        </ul>
+                        <br>
+                        These cookies significantly improve the usability and convenience of your interactions with AquaSkyDrop. They enable us to deliver a more personalized and seamless browsing experience, ensuring that the Website adapts to your preferences rather than requiring you to reset them on every visit.
+                        <br><br>
+                        As these cookies are not strictly necessary for the basic operation of the Website but enhance your experience, we seek your explicit consent before placing them on your device. You have the freedom to accept or decline personalization cookies through our cookie consent banner. Opting out may mean that certain personalized features are not available, and you might need to reset your preferences more frequently. Our goal is to provide a user-friendly and privacy-respecting experience.
+                    </div>
+                </details>
+
+                <!-- Point 39: Marketing/Advertising Cookies on AquaSkyDrop -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">39. Marketing/Advertising Cookies on AquaSkyDrop</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        AquaSkyDrop may use marketing and advertising cookies to deliver advertisements that are more relevant to your interests and to measure the effectiveness of our advertising campaigns. These cookies, often set by our advertising partners, track your browsing activity across different websites to build a profile of your interests. This enables us to show you AquaSkyDrop ads on other websites you visit or on social media platforms.
+                        <br><br>
+                        The specific purposes for which we use marketing/advertising cookies include:
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><strong>Targeted Advertising:</strong> Displaying AquaSkyDrop advertisements that are tailored to your likely interests based on your past interactions with our Website or other online behavior.</li>
+                            <li><strong>Remarketing/Retargeting:</strong> Showing ads to users who have previously visited our Website or shown interest in our products (e.g., by visiting a specific product page).</li>
+                            <li><strong>Ad Frequency Capping:</strong> Limiting the number of times you see a particular AquaSkyDrop advertisement to prevent ad fatigue.</li>
+                            <li><strong>Campaign Performance Measurement:</strong> Helping us understand which advertising campaigns are most effective in driving traffic to our Website or generating inquiries.</li>
+                            <li><strong>Audience Segmentation:</strong> Grouping users into segments based on their interests to deliver more relevant advertising messages.</li>
+                        </ul>
+                        <br>
+                        Most of these cookies are third-party cookies, set by advertising networks (e.g., Google Ads, Facebook Ads) or social media platforms. Due to their nature of tracking users across multiple websites for advertising purposes, these cookies have significant privacy implications and are subject to strict consent requirements under privacy regulations like GDPR and CCPA.
+                        <br><br>
+                        We will only place marketing and advertising cookies on your device with your explicit consent. Our cookie consent banner provides you with clear options to accept or decline these cookies. Opting out of marketing/advertising cookies will not affect your ability to use our Website, but it may mean that the advertisements you see on other websites are less relevant to your interests. We are committed to ethical advertising practices and respecting your privacy choices.
+                    </div>
+                </details>
+
+                <!-- Point 40: Your Choices Regarding AquaSkyDrop Cookies -->
+                <details class="bg-silver-mist rounded-xl shadow-md">
+                    <summary class="font-semibold text-cool-slate-gray cursor-pointer hover:text-skydrop-blue transition duration-200">40. Your Choices Regarding AquaSkyDrop Cookies</summary>
+                    <div class="text-cool-slate-gray leading-relaxed text-justify">
+                        AquaSkyDrop is committed to providing you with full control over your cookie preferences on our Website. We believe that informed consent is fundamental to respecting your privacy. You have several options to manage the cookies placed by AquaSkyDrop and our third-party partners.
+                        <br><br>
+                        Here’s how you can manage your choices:
+                        <br><br>
+                        **1. Through Our Cookie Consent Banner:**
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li>When you first visit our Website, a cookie consent banner will appear at the bottom of the page. This banner provides options to:
+                                <ul>
+                                    <li><strong>"Accept All Cookies":</strong> This will allow all categories of cookies (essential, analytics, personalization, marketing) to be placed on your device.</li>
+                                    <li><strong>"Decline Non-Essential Cookies":</strong> This will only allow strictly necessary cookies to be placed, blocking analytics, personalization, and marketing cookies.</li>
+                                    <li><strong>"Manage Preferences" / "Customize":</strong> This option will take you to a detailed preference center where you can individually select which categories of cookies you wish to accept or decline.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <br>
+                        **2. Changing Your Preferences Later:**
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li>You can change your cookie preferences at any time by clicking on the "Cookie Settings" link (or similar) typically found in the footer of our Website. This will re-open the cookie consent banner or preference center, allowing you to adjust your choices.</li>
+                        </ul>
+                        <br>
+                        **3. Browser Settings:**
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li>As detailed in Point 31, you can also manage cookies directly through your web browser's settings. This allows you to block all cookies, block third-party cookies, or clear existing cookies. Be aware that blocking all cookies may affect the functionality of our Website and other websites you visit.</li>
+                        </ul>
+                        <br>
+                        **4. Industry Opt-Out Tools:**
+                        <ul class="list-disc list-inside ml-4 mt-2">
+                            <li>For opting out of interest-based advertising across multiple websites, you can use industry-wide opt-out tools provided by organizations like the Digital Advertising Alliance (DAA), Network Advertising Initiative (NAI), or European Interactive Digital Advertising Alliance (EDAA), as mentioned in Point 32.</li>
+                        </ul>
+                        <br>
+                        Your decision regarding cookies is important to us. We will respect your choices and ensure that our Website's functionality adapts accordingly. Our aim is to provide you with a transparent and empowering experience, allowing you to control your digital footprint while still benefiting from the relevant content and services AquaSkyDrop offers.
+                    </div>
+                </details>
+            </div>
+
+            <h2 class="text-2xl md:text-3xl font-semibold text-cool-slate-gray mb-8 mt-8 text-center">Changes to This Cookie Policy</h2>
+            <p class="text-cool-slate-gray leading-relaxed text-justify mb-8">
+                We may update this Cookie Policy from time to time to reflect changes in our practices, technology, legal requirements, or for other operational reasons. When we make changes, we will revise the "Last updated" date at the bottom of this page. We encourage you to review this Cookie Policy periodically to stay informed about how we are using cookies and protecting your privacy. Your continued use of the Website after any changes to this Cookie Policy will constitute your acceptance of such changes. If we make significant changes, we may provide more prominent notice, such as through a pop-up on the Website or by sending you an email notification. Our commitment to transparency means we want you to always be aware of how your data is being handled.
+            </p>
+
+            <h2 class="text-2xl md:text-3xl font-semibold text-cool-slate-gray mb-8 mt-8 text-center">Contact Us</h2>
+            <p class="text-cool-slate-gray leading-relaxed text-justify mb-4">
+                If you have any questions or concerns about this Cookie Policy or our use of cookies, please do not hesitate to contact us:
+            </p>
+            <p class="text-cool-slate-gray mb-2">
+                <strong>AquaSkyDrop Global Headquarters</strong><br>
+                123 Eco-Lane, Green City,<br>
+                Waterland, WL 98765<br>
+                Country
+            </p>
+            <p class="text-cool-slate-gray mb-2">
+                Email: <a href="mailto:info@aquaskydrop.com" class="text-skydrop-blue hover:underline">info@aquaskydrop.com</a>
+            </p>
+            <p class="text-cool-slate-gray mb-2">
+                Phone: <a href="tel:+15551234567" class="text-skydrop-blue hover:underline">+1 (555) 123-4567</a>
+            </p>
+            <p class="text-sm text-gray-600 mt-8">Last updated: July 5, 2025</p>
+        </div>
+    </main>
+
+    <!-- Footer Section (Consistent with main site) -->
+    <footer class="bg-cool-slate-gray text-pure-white py-12 px-6 md:px-12 rounded-t-3xl shadow-inner">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- About AquaSkyDrop -->
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-skydrop-blue">AquaSkyDrop</h3>
+                <p class="text-silver-mist leading-relaxed">
+                    Harvesting the sky for a sustainable tomorrow. We provide cutting-edge rainwater harvesting solutions for homes, businesses, and communities, making water independence a reality.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-skydrop-blue">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="index.html#why-rwh" class="text-silver-mist hover:text-pure-white transition duration-300">Why Rainwater Harvesting?</a></li>
+                    <li><a href="index.html#solutions" class="text-silver-mist hover:text-pure-white transition duration-300">Our Solutions</a></li>
+                    <li><a href="index.html#calculator" class="text-silver-mist hover:text-pure-white transition duration-300">Savings Calculator</a></li>
+                    <li><a href="index.html#technology" class="text-silver-mist hover:text-pure-white transition duration-300">Technology & Design</a></li>
+                    <li><a href="index.html#community" class="text-silver-mist hover:text-pure-white transition duration-300">Community & Projects</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Information -->
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-skydrop-blue">Contact Us</h3>
+                <p class="text-silver-mist mb-2">
+                    <strong>AquaSkyDrop Global Headquarters</strong><br>
+                    123 Eco-Lane, Green City,<br>
+                    Waterland, WL 98765<br>
+                    Country
+                </p>
+                <p class="text-silver-mist mb-2">
+                    Email: <a href="mailto:info@aquaskydrop.com" class="text-silver-mist hover:text-pure-white transition duration-300">info@aquaskydrop.com</a>
+                </p>
+                <p class="text-silver-mist mb-2">
+                    Phone: <a href="tel:+15551234567" class="text-silver-mist hover:text-pure-white transition duration-300">+1 (555) 123-4567</a>
+                </p>
+                <div class="flex space-x-4 mt-4">
+                    <a href="#" class="text-silver-mist hover:text-pure-white transition duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.779 1.624 4.931 4.85.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.85-.148 3.227-1.652 4.779-4.931 4.931-1.265.058-1.644.069-4.85.069-3.204 0-3.584-.012-4.85-.069-3.252-.148-4.779-1.624-4.931-4.85-.058-1.265-.069-1.645-.069-4.849 0-3.205.012-3.584.069-4.85.148-3.227 1.652-4.779 4.931-4.931 1.265-.058 1.644-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.073 4.948.073 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="#" class="text-silver-mist hover:text-pure-white transition duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 6c-.77.344-1.6.577-2.46.68.89-.536 1.57-1.387 1.89-2.396-.837.498-1.76.86-2.73.997-1.44-.96-3.48-1.12-4.9-.38-1.64.88-2.6 2.6-2.6 4.4v.5c-3.9-.2-7.3-2.1-9.6-5.1-.4 1.2-.2 2.5.6 3.6-.7-.02-1.4-.2-2.1-.6v.07c0 2.3 1.6 4.3 3.9 4.8-.6.16-1.2.2-1.8.07.6 1.9 2.3 3.3 4.4 3.4-1.6 1.3-3.6 2-5.7 2-.4 0-.8 0-1.2-.07 2.1 1.4 4.6 2.2 7.3 2.2 8.8 0 13.6-7.3 13.6-13.6v-.6c.9-.6 1.6-1.4 2.2-2.3z"/></svg>
+                    </a>
+                    <a href="#" class="text-silver-mist hover:text-pure-white transition duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14h-2V9h2v7zm-1-8c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm7 8h-2v-4c0-.55-.45-1-1-1s-1 .45-1 1v4h-2V9h2v1.5c.66-.9 1.8-1.5 3-1.5 2.2 0 4 1.8 4 4v4z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-silver-mist mt-8 pt-8 border-t border-gray-700">
+            &copy; 2025 AquaSkyDrop. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent-banner">
+        <p>This website uses cookies to enhance your experience. By continuing to use our site, you agree to our <a href="cookies.html" class="text-skydrop-blue hover:underline font-bold">Cookie Policy</a>.</p>
+        <button id="accept-cookies">Accept All Cookies</button>
+        <button id="decline-cookies">Decline Non-Essential</button>
+        <button id="manage-cookies" class="bg-silver-mist text-cool-slate-gray hover:bg-opacity-80 ml-4">Manage Preferences</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cookieBanner = document.getElementById('cookie-consent-banner');
+            const acceptButton = document.getElementById('accept-cookies');
+            const declineButton = document.getElementById('decline-cookies');
+            const manageButton = document.getElementById('manage-cookies'); // Added for completeness, though it would link to a more complex modal
+
+            // Check if user has already made a choice
+            const cookieChoice = localStorage.getItem('aquaskydrop_cookie_consent');
+
+            if (!cookieChoice) {
+                // If no choice, show the banner
+                cookieBanner.style.display = 'block';
+            } else {
+                // If choice exists, hide banner and apply preferences (simplified for this example)
+                console.log('User previously chose:', cookieChoice);
+                // In a real app, you'd load/block cookies based on this choice
+            }
+
+            acceptButton.addEventListener('click', function() {
+                localStorage.setItem('aquaskydrop_cookie_consent', 'accepted_all');
+                cookieBanner.style.display = 'none';
+                // In a real app, you'd load all cookies here
+                console.log('User accepted all cookies.');
+            });
+
+            declineButton.addEventListener('click', function() {
+                localStorage.setItem('aquaskydrop_cookie_consent', 'declined_non_essential');
+                cookieBanner.style.display = 'none';
+                // In a real app, you'd only load essential cookies here
+                console.log('User declined non-essential cookies.');
+            });
+
+            manageButton.addEventListener('click', function() {
+                // In a real application, this would open a more detailed modal
+                // where users can select specific cookie categories.
+                // For this example, we'll just log and hide the banner.
+                console.log('User wants to manage cookie preferences.');
+                // You might navigate to a specific section on this page or open a modal.
+                // For now, let's just hide the main banner.
+                cookieBanner.style.display = 'none';
+                // Optionally, you could set a temporary state or open a dedicated modal here.
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaSkyDrop — Harvest the Sky. Sustain the Future.</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Tailwind Configuration (Optional, but good for consistency) */
+        :root {
+            --skydrop-blue: #4FC3F7;
+            --ecoleaf-green: #66BB6A;
+            --cool-slate-gray: #455A64;
+            --pure-white: #FAFAFA;
+            --silver-mist: #CFD8DC;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--pure-white);
+            color: var(--cool-slate-gray);
+        }
+
+        /* Custom utility classes for colors */
+        .bg-skydrop-blue { background-color: var(--skydrop-blue); }
+        .text-skydrop-blue { color: var(--skydrop-blue); }
+        .bg-ecoleaf-green { background-color: var(--ecoleaf-green); }
+        .text-ecoleaf-green { color: var(--ecoleaf-green); }
+        .bg-cool-slate-gray { background-color: var(--cool-slate-gray); }
+        .text-cool-slate-gray { color: var(--cool-slate-gray); }
+        .bg-pure-white { background-color: var(--pure-white); }
+        .text-pure-white { color: var(--pure-white); }
+        .bg-silver-mist { background-color: var(--silver-mist); }
+        .text-silver-mist { color: var(--silver-mist); }
+
+        /* General button styling */
+        .btn-primary {
+            @apply bg-skydrop-blue text-pure-white px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition duration-300 shadow-lg;
+        }
+        .btn-secondary {
+            @apply bg-ecoleaf-green text-pure-white px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition duration-300 shadow-lg;
+        }
+        .btn-outline {
+            @apply border border-skydrop-blue text-skydrop-blue px-6 py-3 rounded-full font-semibold hover:bg-skydrop-blue hover:text-pure-white transition duration-300;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header Section -->
+    <header class="bg-pure-white shadow-md py-4 px-6 md:px-12 fixed w-full z-50 rounded-b-xl">
+        <div class="container mx-auto flex justify-between items-center flex-wrap">
+            <!-- Logo -->
+            <a href="#" class="flex items-center space-x-2 text-cool-slate-gray text-2xl font-bold rounded-lg p-2">
+                <svg class="w-8 h-8 text-skydrop-blue" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                    <path d="M12 2c-4.41 0-8 3.59-8 8s3.59 8 8 8 8-3.59 8-8-3.59-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm-1-9h2v4h-2zm0 6h2v2h-2z"/>
+                    <path d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8 8-3.59 8-8-3.59-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/>
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                </svg>
+                <span>AquaSkyDrop</span>
+            </a>
+
+            <!-- Navigation -->
+            <nav class="hidden md:flex space-x-8">
+               <a href="index.html" tabindex="0">Home</a>
+        <a href="privacy.html" tabindex="0">Privacy</a>
+        <a href="terms.html" tabindex="0"aria-current="page">Terms & conditons</a>
+        <a href="cookies.html"tabindex="0">Cookies</a>
+        <a href="contact.html" tabindex="0">Contact us</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-cool-slate-gray focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+    </header>
+
+    <main class="pt-20"> <!-- Adjust padding-top to account for fixed header -->
+
+        <!-- Hero Section -->
+        <section id="home" class="relative bg-gradient-to-br from-skydrop-blue to-blue-300 text-pure-white py-20 md:py-32 overflow-hidden rounded-b-3xl shadow-xl">
+            <div class="absolute inset-0 z-0 opacity-20">
+                <!-- Background pattern/image for hero -->
+                <img src="p1.avif" alt="Rain falling onto rooftops with sleek water tanks" class="w-full h-full object-cover">
+            </div>
+            <div class="container mx-auto px-6 md:px-12 relative z-10 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6 animate-fade-in-up">
+                    Harvest the Sky. Sustain the Future.
+                </h1>
+                <p class="text-lg md:text-xl mb-10 max-w-3xl mx-auto opacity-90 animate-fade-in-up delay-200">
+                    AquaSkyDrop provides next-generation rainwater harvesting systems, making eco-friendly water solutions accessible, efficient, and aesthetically pleasing for every space.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="#solutions" class="btn-primary animate-fade-in-up delay-400">Explore Our Systems</a>
+                    <a href="#calculator" class="btn-outline text-pure-white border-pure-white hover:bg-pure-white hover:text-skydrop-blue animate-fade-in-up delay-600">Calculate Your Water Savings</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Rainwater Harvesting? Section -->
+        <section id="why-rwh" class="py-16 md:py-24 bg-pure-white px-6 md:px-12">
+            <div class="container mx-auto">
+                <h2 class="text-3xl md:text-5xl font-bold text-center mb-12 text-cool-slate-gray">Why Rainwater Harvesting?</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Water Scarcity -->
+                    <div class="bg-silver-mist p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <div class="flex items-center mb-4">
+                            <svg class="w-10 h-10 text-skydrop-blue mr-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 7h2v6h-2zm0 8h2v2h-2z"/></svg>
+                            <h3 class="text-2xl font-semibold text-cool-slate-gray">Addressing Water Scarcity</h3>
+                        </div>
+                        <p class="text-cool-slate-gray leading-relaxed mb-4">
+                            The global water crisis is escalating, with billions facing water stress. Climate change, population growth, and urbanization are depleting freshwater sources at an alarming rate. Rainwater harvesting offers a decentralized, sustainable solution, reducing reliance on municipal supplies and vulnerable groundwater reserves. By capturing rain where it falls, we mitigate the strain on existing infrastructure and ensure a more resilient water future for communities worldwide.
+                        </p>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            Every drop collected contributes to a larger reservoir of available water, lessening the burden on over-extracted aquifers and energy-intensive water treatment plants. This proactive approach helps build water security, especially in regions prone to droughts or with limited access to reliable water infrastructure. AquaSkyDrop empowers individuals and organizations to become part of the solution, transforming a common resource into a vital asset.
+                        </p>
+                    </div>
+
+                    <!-- Environmental Benefits -->
+                    <div class="bg-silver-mist p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <div class="flex items-center mb-4">
+                            <svg class="w-10 h-10 text-ecoleaf-green mr-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z"/></svg>
+                            <h3 class="text-2xl font-semibold text-cool-slate-gray">Environmental Stewardship</h3>
+                        </div>
+                        <p class="text-cool-slate-gray leading-relaxed mb-4">
+                            Rainwater harvesting significantly reduces stormwater runoff, a major contributor to urban flooding and water pollution. By diverting rainwater from storm drains, it prevents pollutants like pesticides, fertilizers, and oil from entering rivers and oceans. This directly improves local water quality and protects aquatic ecosystems. Furthermore, reducing reliance on centralized water treatment means less energy consumption and a smaller carbon footprint.
+                        </p>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            The process of collecting and utilizing rainwater is inherently low-impact. It promotes a healthier hydrological cycle, recharges groundwater tables naturally, and fosters biodiversity by supporting local flora and fauna. AquaSkyDrop systems are designed to integrate seamlessly with the natural environment, promoting ecological balance and contributing to a greener, more sustainable planet. Embrace a solution that benefits both your property and the broader ecosystem.
+                        </p>
+                    </div>
+
+                    <!-- Financial Savings -->
+                    <div class="bg-silver-mist p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <div class="flex items-center mb-4">
+                            <svg class="w-10 h-10 text-skydrop-blue mr-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                            <h3 class="text-2xl font-semibold text-cool-slate-gray">Significant Financial Savings</h3>
+                        </div>
+                        <p class="text-cool-slate-gray leading-relaxed mb-4">
+                            Imagine cutting your water bill by up to 50% or more! Rainwater harvesting provides a free, readily available water source for non-potable uses such as irrigation, toilet flushing, laundry, and car washing. This drastically reduces your consumption of expensive municipal water, leading to substantial long-term savings for homeowners and businesses. The initial investment in an AquaSkyDrop system quickly pays for itself through reduced utility costs.
+                        </p>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            Beyond direct savings on water bills, many regions offer incentives, rebates, or tax credits for installing rainwater harvesting systems, further enhancing the financial benefits. Businesses can also see reduced operational costs and improved sustainability ratings, which can attract environmentally conscious customers and investors. AquaSkyDrop systems are designed for efficiency, ensuring maximum water capture and minimal waste, maximizing your return on investment.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-16 text-center">
+                    <h3 class="text-3xl font-bold text-cool-slate-gray mb-6">The Global Water Challenge: A Deeper Look</h3>
+                    <p class="text-lg text-cool-slate-gray leading-relaxed max-w-4xl mx-auto mb-8">
+                        The statistics are stark: nearly two-thirds of the world's population experiences severe water scarcity for at least one month each year. By 2050, this figure is projected to rise dramatically, impacting billions more as climate patterns become increasingly unpredictable. Traditional water sources are under immense pressure, leading to higher costs, environmental degradation, and social unrest. Rainwater harvesting emerges as a critical component of a diversified water management strategy, offering resilience against these growing challenges. It's not just about saving water; it's about securing a fundamental resource for future generations. AquaSkyDrop is at the forefront of this movement, providing innovative solutions that empower individuals and communities to take control of their water supply.
+                    </p>
+                    <p class="text-lg text-cool-slate-gray leading-relaxed max-w-4xl mx-auto">
+                        Moreover, the energy intensity of water treatment and distribution is often overlooked. Pumping, purifying, and delivering water to homes and businesses consumes vast amounts of electricity, contributing significantly to greenhouse gas emissions. By decentralizing water collection through rainwater harvesting, we reduce this energy demand, leading to a smaller carbon footprint and a more sustainable energy future. This interconnectedness of water and energy resources makes rainwater harvesting a powerful tool in the fight against climate change, offering benefits that extend far beyond simply conserving water. AquaSkyDrop's commitment to efficiency and smart technology ensures that our systems maximize both water and energy savings.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- AquaSkyDrop Solutions Section -->
+        <section id="solutions" class="py-16 md:py-24 bg-silver-mist px-6 md:px-12">
+            <div class="container mx-auto">
+                <h2 class="text-3xl md:text-5xl font-bold text-center mb-12 text-cool-slate-gray">AquaSkyDrop Solutions: Tailored for Every Need</h2>
+                <p class="text-lg text-center text-cool-slate-gray mb-16 max-w-4xl mx-auto">
+                    From compact urban dwellings to expansive industrial complexes, AquaSkyDrop offers a diverse range of cutting-edge rainwater harvesting systems designed to integrate seamlessly into any environment. Our solutions are built with precision engineering, sustainable materials, and smart technology to maximize efficiency, minimize maintenance, and deliver reliable water access. Explore our offerings and find the perfect fit for your water independence journey.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Home Rooftop Harvesting Kits -->
+                    <div class="bg-pure-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <img src="p2.avif" alt="Home Rooftop Harvesting Kit" class="w-full h-48 object-cover rounded-xl mb-6 shadow-md">
+                        <h3 class="text-2xl font-semibold text-cool-slate-gray mb-4">Home Rooftop Harvesting Kits</h3>
+                        <p class="text-cool-slate-gray leading-relaxed mb-4">
+                            Our residential kits are designed for easy installation and maximum efficiency, turning your home's roof into a personal water catchment area. These systems include high-quality gutters, first-flush diverters, leaf screens, and durable storage tanks that can be above-ground or partially buried. Ideal for garden irrigation, car washing, toilet flushing, and even laundry, significantly reducing your reliance on municipal water.
+                        </p>
+                        <ul class="list-disc list-inside text-cool-slate-gray mb-4">
+                            <li>Compact & Discreet Design</li>
+                            <li>Modular & Scalable for Any Home Size</li>
+                            <li>Easy DIY Installation or Professional Support</li>
+                            <li>High-Efficiency Filtration for Clean Water</li>
+                            <li>Integrated Smart Monitoring Options</li>
+                        </ul>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            Each component is carefully selected for longevity and performance, ensuring that your investment provides years of reliable water supply. Our kits come with comprehensive guides, making the process straightforward for homeowners. Experience the peace of mind that comes with water independence and contribute to a greener planet, one raindrop at a time.
+                        </p>
+                    </div>
+
+                    <!-- Underground Smart Water Storage Systems -->
+                    <div class="bg-pure-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <img src="p3.webp" alt="Underground Smart Water Storage System" class="w-full h-48 object-cover rounded-xl mb-6 shadow-md">
+                        <h3 class="text-2xl font-semibold text-cool-slate-gray mb-4">Underground Smart Water Storage Systems</h3>
+                        <p class="text-cool-slate-gray leading-relaxed mb-4">
+                            For those seeking an unobtrusive solution, our underground storage tanks offer substantial capacity without impacting your landscape aesthetics. These robust, food-grade polyethylene tanks are designed for subterranean installation, preserving yard space and maintaining consistent water temperatures. Integrated with smart sensors, they provide real-time data on water levels and quality.
+                        </p>
+                        <ul class="list-disc list-inside text-cool-slate-gray mb-4">
+                            <li>Space-Saving & Invisible Installation</li>
+                            <li>Durable, Long-Lasting Materials</li>
+                            <li>Advanced Filtration & Pumping Systems</li>
+                            <li>Smart Monitoring & Automated Refill Options</li>
+                            <li>Ideal for Larger Residential & Commercial Needs</li>
+                        </ul>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            Our underground systems are perfect for properties where visual impact is a concern or where large volumes of water need to be stored efficiently. They are engineered for minimal maintenance, providing a reliable and hidden water source for all non-potable applications, from extensive garden irrigation to commercial facility operations.
+                        </p>
+                    </div>
+
+                    <!-- Garden and Irrigation Setups -->
+                    <div class="bg-pure-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <img src="p4.webp" alt="Garden and Irrigation Setup" class="w-full h-48 object-cover rounded-xl mb-6 shadow-md">
+                        <h3 class="text-2xl font-semibold text-cool-slate-gray mb-4">Garden & Irrigation Setups</h3>
+                        <p class="text-cool-slate-gray leading-relaxed mb-4">
+                            Transform your garden into a lush, self-sustaining oasis with our specialized irrigation setups. These systems are optimized for horticultural use, delivering nutrient-rich rainwater directly to your plants. Options range from simple rain barrels connected to drip irrigation lines to more complex systems with automated pumps and weather-responsive controllers.
+                        </p>
+                        <ul class="list-disc list-inside text-cool-slate-gray mb-4">
+                            <li>Optimized for Plant Health & Growth</li>
+                            <li>Automated Drip & Sprinkler Integration</li>
+                            <li>Water-Saving Smart Controllers</li>
+                            <li>Reduces Landscape Water Bills</li>
+                            <li>Promotes Healthy Soil & Ecosystems</li>
+                        </ul>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            Using rainwater for irrigation not only saves money but also benefits your plants, as it's free of chlorine and other chemicals found in treated tap water. Our systems ensure your garden thrives even during dry spells, providing a sustainable and beautiful outdoor space.
+                        </p>
+                    </div>
+
+                    <!-- Urban & Commercial Rainwater Projects -->
+                    <div class="bg-pure-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <img src="p5.webp" alt="Urban & Commercial Rainwater Project" class="w-full h-48 object-cover rounded-xl mb-6 shadow-md">
+                        <h3 class="text-2xl font-semibold text-cool-slate-gray mb-4">Urban & Commercial Rainwater Projects</h3>
+                        <p class="text-cool-slate-gray leading-relaxed mb-4">
+                            AquaSkyDrop scales up its expertise for large-scale urban developments, industrial facilities, and municipal projects. Our commercial solutions involve custom-engineered systems for massive rainwater capture, storage, and distribution, designed to meet the high demands of public spaces, office buildings, factories, and entire city blocks.
+                        </p>
+                        <ul class="list-disc list-inside text-cool-slate-gray mb-4">
+                            <li>Custom-Engineered for Large-Scale Demands</li>
+                            <li>Advanced Filtration & Treatment for Potable Use (where applicable)</li>
+                            <li>Integrated with Building Management Systems</li>
+                            <li>Significant Operational Cost Reductions</li>
+                            <li>Demonstrates Corporate & Urban Sustainability</li>
+                        </ul>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            These projects not only provide substantial water savings but also serve as powerful statements of environmental commitment. We work closely with architects, city planners, and developers to design and implement robust, efficient, and visually integrated systems that contribute to green building certifications and smart city initiatives. Our experience spans diverse applications, from stadium irrigation to industrial process water, ensuring a bespoke solution for every complex challenge.
+                        </p>
+                    </div>
+
+                    <!-- Industrial Process Water Solutions -->
+                    <div class="bg-pure-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <img src="p6.webp" alt="Industrial Process Water Solutions" class="w-full h-48 object-cover rounded-xl mb-6 shadow-md">
+                        <h3 class="text-2xl font-semibold text-cool-slate-gray mb-4">Industrial Process Water Solutions</h3>
+                        <p class="text-cool-slate-gray leading-relaxed mb-4">
+                            Industries often require vast quantities of water for various processes, from cooling to manufacturing. AquaSkyDrop provides specialized rainwater harvesting systems tailored to industrial needs, offering a sustainable and cost-effective alternative to municipal or groundwater sources. These systems are designed for high-volume collection, advanced purification, and seamless integration with existing industrial water loops.
+                        </p>
+                        <ul class="list-disc list-inside text-cool-slate-gray mb-4">
+                            <li>High-Volume Capture & Storage</li>
+                            <li>Customizable Filtration for Specific Industrial Processes</li>
+                            <li>Reduces Operational Costs & Water Bills</li>
+                            <li>Enhances Corporate Environmental Responsibility (CER)</li>
+                            <li>Ensures Water Security for Critical Operations</li>
+                        </ul>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            By utilizing rainwater, businesses can significantly reduce their environmental footprint, comply with stricter environmental regulations, and achieve substantial savings on water utility costs. Our expert team assesses your industrial water demands and designs a robust system that ensures consistent supply and superior water quality for your specific applications.
+                        </p>
+                    </div>
+
+                    <!-- Public Space & Landscaping Systems -->
+                    <div class="bg-pure-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <img src="p7.avif" alt="Public Space & Landscaping Systems" class="w-full h-48 object-cover rounded-xl mb-6 shadow-md">
+                        <h3 class="text-2xl font-semibold text-cool-slate-gray mb-4">Public Space & Landscaping Systems</h3>
+                        <p class="text-cool-slate-gray leading-relaxed mb-4">
+                            Green spaces in urban environments are vital but often require significant water for maintenance. AquaSkyDrop offers solutions for parks, public gardens, sports fields, and urban landscaping, enabling efficient and sustainable irrigation using harvested rainwater. These systems can be integrated with smart city infrastructure for optimized water distribution.
+                        </p>
+                        <ul class="list-disc list-inside text-cool-slate-gray mb-4">
+                            <li>Sustainable Irrigation for Public Green Spaces</li>
+                            <li>Reduces Municipal Water Consumption in Parks</li>
+                            <li>Enhances Urban Biodiversity & Aesthetics</li>
+                            <li>Long-Term Cost Savings for Municipalities</li>
+                            <li>Showcases Public Commitment to Sustainability</li>
+                        </ul>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            Implementing rainwater harvesting in public spaces not only conserves water and reduces operational expenses but also educates the public on sustainable practices. AquaSkyDrop provides robust, low-maintenance systems that ensure the vitality of public landscapes while demonstrating a commitment to environmental responsibility.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Savings & Impact Calculator Section -->
+        <section id="calculator" class="py-16 md:py-24 bg-pure-white px-6 md:px-12">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl md:text-5xl font-bold mb-12 text-cool-slate-gray">Calculate Your Water Savings & Impact</h2>
+                <p class="text-lg text-cool-slate-gray mb-10 max-w-4xl mx-auto">
+                    Curious about how much water you could save and the positive impact you could make? Our interactive tools help you visualize the potential of rainwater harvesting for your specific location and needs. Input a few details and let AquaSkyDrop show you the numbers!
+                </p>
+
+                <div class="bg-silver-mist p-8 rounded-2xl shadow-lg max-w-3xl mx-auto">
+                    <h3 class="text-2xl font-semibold text-cool-slate-gray mb-6">Your Personalized Savings Estimator</h3>
+                    <p class="text-cool-slate-gray mb-6">
+                        Enter your location, roof size, and average annual rainfall to get an estimate of your yearly rainwater collection potential and the corresponding financial savings.
+                    </p>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="location" class="block text-left text-cool-slate-gray text-lg font-medium mb-2">Your Location (City, State/Region):</label>
+                            <input type="text" id="location" class="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-skydrop-blue focus:border-transparent text-cool-slate-gray" placeholder="e.g., London, UK">
+                        </div>
+                        <div>
+                            <label for="roof-size" class="block text-left text-cool-slate-gray text-lg font-medium mb-2">Usable Roof Area (in sq ft/m²):</label>
+                            <input type="number" id="roof-size" class="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-skydrop-blue focus:border-transparent text-cool-slate-gray" placeholder="e.g., 1500 sq ft">
+                        </div>
+                        <div>
+                            <label for="avg-rainfall" class="block text-left text-cool-slate-gray text-lg font-medium mb-2">Average Annual Rainfall (in inches/mm):</label>
+                            <input type="number" id="avg-rainfall" class="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-skydrop-blue focus:border-transparent text-cool-slate-gray" placeholder="e.g., 30 inches">
+                        </div>
+                        <button type="submit" class="btn-primary w-full sm:w-auto">Calculate My Savings</button>
+                    </form>
+                    <div class="mt-8 p-6 bg-pure-white rounded-xl shadow-inner text-left">
+                        <h4 class="text-xl font-semibold text-cool-slate-gray mb-4">Your Estimated Impact:</h4>
+                        <p class="text-cool-slate-gray mb-2"><strong>Annual Water Collection:</strong> <span class="font-bold text-skydrop-blue">~ [Calculated Liters/Gallons]</span></p>
+                        <p class="text-cool-slate-gray mb-2"><strong>Estimated Annual Savings:</strong> <span class="font-bold text-ecoleaf-green">~ [Calculated Currency]</span></p>
+                        <p class="text-cool-slate-gray"><strong>Environmental Benefit:</strong> Equivalent to reducing [X] kg of CO2 emissions annually.</p>
+                        <p class="text-sm text-gray-600 mt-4"><em>*Calculations are estimates based on average data and may vary based on specific conditions and system efficiency.</em></p>
+                    </div>
+                </div>
+
+                <div class="mt-16">
+                    <h3 class="text-3xl font-bold text-cool-slate-gray mb-6">Understanding Your Water Footprint</h3>
+                    <p class="text-lg text-cool-slate-gray leading-relaxed max-w-4xl mx-auto mb-8">
+                        Beyond the financial benefits, understanding your water footprint is crucial for sustainable living. Every product we consume, every service we use, has a hidden water cost. By actively harvesting rainwater, you directly reduce your household or business's reliance on centralized water systems, which often draw from distant, stressed ecosystems. This act of self-sufficiency contributes to local water resilience and reduces the energy associated with water treatment and transportation. Our calculator provides a tangible representation of this positive impact, empowering you to make informed decisions about your water consumption.
+                    </p>
+                    <p class="text-lg text-cool-slate-gray leading-relaxed max-w-4xl mx-auto">
+                        Moreover, consider the ripple effect. When one household or business adopts rainwater harvesting, it sets an example, encouraging neighbors and communities to follow suit. This collective action can lead to significant reductions in overall water demand, especially during peak seasons or droughts. The data from our calculator isn't just about your savings; it's about your contribution to a larger movement towards water security and environmental health. AquaSkyDrop is committed to providing the tools and technology that make this transition seamless and rewarding.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technology & Design Section -->
+        <section id="technology" class="py-16 md:py-24 bg-pure-white px-6 md:px-12">
+            <div class="container mx-auto">
+                <h2 class="text-3xl md:text-5xl font-bold text-center mb-12 text-cool-slate-gray">Technology & Design: The AquaSkyDrop Advantage</h2>
+                <p class="text-lg text-center text-cool-slate-gray mb-16 max-w-4xl mx-auto">
+                    At AquaSkyDrop, we believe that sustainable solutions should not compromise on aesthetics or functionality. Our systems blend cutting-edge technology with sleek, modern design, ensuring they are both highly efficient and visually appealing. Discover the innovations that set AquaSkyDrop apart.
+                </p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <!-- Modern, Discreet System Designs -->
+                    <div class="order-2 lg:order-1">
+                        <h3 class="text-2xl md:text-3xl font-semibold text-cool-slate-gray mb-6">Modern, Discreet System Designs</h3>
+                        <p class="text-cool-slate-gray leading-relaxed mb-6">
+                            Gone are the days of bulky, unsightly water tanks. AquaSkyDrop systems are engineered with a focus on minimalist design, allowing them to integrate seamlessly into any architectural style. Our tanks, whether above-ground or underground, are crafted from high-quality, UV-stabilized materials that are not only durable but also blend harmoniously with your property's aesthetics. We offer a range of colors and finishes to complement your home or commercial building, ensuring that sustainability enhances, rather than detracts from, your property's curb appeal.
+                        </p>
+                        <p class="text-cool-slate-gray leading-relaxed mb-6">
+                            Our gutter and downspout components are designed for optimal flow and discreet placement, minimizing visual impact while maximizing collection efficiency. The modular nature of our systems allows for flexible installation, adapting to various rooflines and landscape configurations. This commitment to design excellence means you don't have to choose between environmental responsibility and a beautiful property – with AquaSkyDrop, you get both.
+                        </p>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            Beyond visual integration, our designs prioritize ease of use and maintenance. Access points are strategically placed for simple cleaning, and components are designed for quick assembly and disassembly. This thoughtful approach extends the lifespan of the system and ensures a hassle-free experience for the user, making rainwater harvesting a truly convenient and appealing option.
+                        </p>
+                    </div>
+                    
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-16">
+                    <!-- Smart Monitoring Apps and Real-time Usage Data -->
+                   
+                    <div>
+                        <h3 class="text-2xl md:text-3xl font-semibold text-cool-slate-gray mb-6">Smart Monitoring Apps & Real-time Data</h3>
+                        <p class="text-cool-slate-gray leading-relaxed mb-6">
+                            Take control of your water supply with AquaSkyDrop's intuitive smart monitoring applications. Our systems are equipped with advanced sensors that provide real-time data on water levels, collection rates, and even water quality (for certain models). Access this information conveniently from your smartphone or tablet, allowing you to monitor your water reserves, predict future availability based on weather forecasts, and optimize your usage.
+                        </p>
+                        <p class="text-cool-slate-gray leading-relaxed mb-6">
+                            The app also provides alerts for maintenance needs, such as filter cleaning or low water levels, ensuring your system operates at peak efficiency. With historical data at your fingertips, you can track your water savings over time, quantify your environmental impact, and make informed decisions about your consumption habits. This level of transparency and control transforms rainwater harvesting from a passive collection system into an active, intelligent water management solution.
+                        </p>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            Our smart features extend to automated system management, including intelligent pump controls that can prioritize rainwater usage over municipal supply, or even integrate with smart irrigation systems to water your garden only when needed, based on soil moisture and weather conditions. This seamless integration of technology ensures you get the most out of every drop.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-16">
+                    <!-- Sustainable Materials and Minimal Maintenance -->
+                    <div class="order-2 lg:order-1">
+                        <h3 class="text-2xl md:text-3xl font-semibold text-cool-slate-gray mb-6">Sustainable Materials & Minimal Maintenance</h3>
+                        <p class="text-cool-slate-gray leading-relaxed mb-6">
+                            AquaSkyDrop is committed to sustainability not just in water conservation, but also in the materials we use. Our systems are constructed from high-quality, recycled, and recyclable materials wherever possible, minimizing our environmental footprint from production to installation. We prioritize robust, non-corrosive components that withstand harsh weather conditions and require minimal upkeep.
+                        </p>
+                        <p class="text-cool-slate-gray leading-relaxed mb-6">
+                            The design emphasizes passive filtration and self-cleaning mechanisms to reduce the frequency of manual maintenance. For example, our first-flush diverters automatically discard the initial, dirtiest runoff, ensuring cleaner water enters your storage tank. Leaf screens and sediment traps are easily accessible for quick cleaning. This focus on durability and low maintenance translates to less time and money spent on upkeep, allowing you to enjoy the benefits of rainwater harvesting with peace of mind.
+                        </p>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            Our commitment to quality materials also ensures a longer lifespan for your system, reducing the need for replacements and further contributing to sustainability. AquaSkyDrop systems are an investment in both your property and the planet, designed to deliver reliable performance with minimal intervention for decades to come.
+                        </p>
+                    </div>
+                    
+                </div>
+
+                <div class="mt-16 text-center">
+                    <h3 class="text-3xl font-bold text-cool-slate-gray mb-6">The Future of Water Management is Here</h3>
+                    <p class="text-lg text-cool-slate-gray leading-relaxed max-w-4xl mx-auto mb-8">
+                        AquaSkyDrop isn't just selling products; we're offering a vision for a more resilient and resource-efficient future. Our dedication to integrating advanced technology with thoughtful design ensures that our rainwater harvesting systems are not only effective but also enhance the living and working environments they serve. We are constantly innovating, exploring new materials, refining our smart features, and optimizing system performance to stay at the forefront of sustainable water solutions.
+                    </p>
+                    <p class="text-lg text-cool-slate-gray leading-relaxed max-w-4xl mx-auto">
+                        From the smallest residential setup to the largest urban infrastructure project, every AquaSkyDrop installation represents a step towards greater water independence and a reduced ecological footprint. We empower our customers with the tools and knowledge to manage their water resources intelligently, contributing to a global shift towards responsible consumption. Join us in building a future where every drop counts and is utilized to its fullest potential.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community & Projects Section -->
+        <section id="community" class="py-16 md:py-24 bg-silver-mist px-6 md:px-12">
+            <div class="container mx-auto">
+                <h2 class="text-3xl md:text-5xl font-bold text-center mb-12 text-cool-slate-gray">Community & Projects: Making a Real Impact</h2>
+                <p class="text-lg text-center text-cool-slate-gray mb-16 max-w-4xl mx-auto">
+                    At AquaSkyDrop, we're proud of the tangible difference our systems are making across homes, schools, and cities. Every installation contributes to a larger story of sustainability, community resilience, and environmental stewardship. Explore some of our impactful projects and see the collective power of harvesting the sky.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <!-- Case Study 1: Residential Oasis -->
+                    <div class="bg-pure-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <h3 class="text-2xl font-semibold text-cool-slate-gray mb-4">Case Study: The Green Home Project, Suburbia</h3>
+                        <p class="text-cool-slate-gray leading-relaxed mb-4">
+                            The Johnson family in a drought-prone suburb faced escalating water bills and wanted to reduce their environmental impact. They installed an AquaSkyDrop Home Rooftop Harvesting Kit with a 5,000-gallon underground storage tank. The collected rainwater is used for their extensive garden, toilet flushing, and laundry.
+                        </p>
+                        <ul class="list-disc list-inside text-cool-slate-gray mb-4">
+                            <li><strong>System Type:</strong> Home Rooftop Kit with Underground Storage</li>
+                            <li><strong>Water Saved Annually:</strong> ~80,000 gallons (300,000 liters)</li>
+                            <li><strong>Water Bill Reduction:</strong> 60%</li>
+                            <li><strong>Impact:</strong> Thriving garden, reduced municipal water demand, increased property value.</li>
+                        </ul>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            "Our garden has never looked better, and our water bills are shockingly low," says Mrs. Johnson. "It's incredible how much water we were letting go to waste. AquaSkyDrop made the whole process easy and now we feel truly self-sufficient."
+                        </p>
+                    </div>
+
+                    <!-- Case Study 2: Urban School Initiative -->
+                    <div class="bg-pure-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <h3 class="text-2xl font-semibold text-cool-slate-gray mb-4">Case Study: Eco-Campus at Northwood Academy</h3>
+                        <p class="text-cool-slate-gray leading-relaxed mb-4">
+                            Northwood Academy, a large urban school, sought to reduce its operational costs and educate students on sustainability. They implemented an AquaSkyDrop commercial system to capture rainwater from their gymnasium roof, storing it in a large underground reservoir. This water is now used for irrigating sports fields, flushing school toilets, and even for non-potable cleaning.
+                        </p>
+                        <ul class="list-disc list-inside text-cool-slate-gray mb-4">
+                            <li><strong>System Type:</strong> Commercial Rainwater Harvesting System</li>
+                            <li><strong>Water Saved Annually:</strong> ~500,000 gallons (1.9 million liters)</li>
+                            <li><strong>Operational Savings:</strong> Significant reduction in water utility expenses.</li>
+                            <li><strong>Impact:</strong> Reduced ecological footprint, hands-on learning for students, improved campus green spaces.</li>
+                        </ul>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            "AquaSkyDrop helped us turn our school into a living laboratory for sustainability," states Principal Davies. "The system not only saves us money but also serves as a powerful educational tool for our students, showing them the direct impact of conservation."
+                        </p>
+                    </div>
+
+                    <!-- Case Study 3: City Park Revitalization -->
+                    <div class="bg-pure-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <h3 class="text-2xl font-semibold text-cool-slate-gray mb-4">Case Study: Harmony City Park Irrigation</h3>
+                        <p class="text-cool-slate-gray leading-relaxed mb-4">
+                            Harmony City Council aimed to make their central park more sustainable and reduce the burden on the municipal water supply for irrigation. AquaSkyDrop designed and installed a large-scale system capturing runoff from nearby municipal buildings and paved areas, directing it to underground storage for park irrigation.
+                        </p>
+                        <ul class="list-disc list-inside text-cool-slate-gray mb-4">
+                            <li><strong>System Type:</strong> Public Space & Landscaping System</li>
+                            <li><strong>Water Saved Annually:</strong> ~1.2 million gallons (4.5 million liters)</li>
+                            <li><strong>Public Benefit:</strong> Greener park, reduced water restrictions during droughts, lower city operational costs.</li>
+                            <li><strong>Impact:</strong> Enhanced urban biodiversity, improved public perception of city's environmental efforts.</li>
+                        </ul>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            "Our partnership with AquaSkyDrop has transformed Harmony Park into a model of urban sustainability," commented Mayor Chen. "The system ensures our green spaces thrive, even in challenging conditions, and demonstrates our commitment to responsible resource management."
+                        </p>
+                    </div>
+
+                    <!-- Case Study 4: Industrial Facility Water Recycling -->
+                    <div class="bg-pure-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <h3 class="text-2xl font-semibold text-cool-slate-gray mb-4">Case Study: EcoTech Manufacturing Plant</h3>
+                        <p class="text-cool-slate-gray leading-relaxed mb-4">
+                            EcoTech, a leading electronics manufacturer, sought to improve its water efficiency and reduce its environmental footprint. AquaSkyDrop implemented an advanced industrial rainwater harvesting system that captures rain from their extensive factory rooftops. The collected water undergoes a multi-stage filtration process and is then used for non-potable industrial processes, including cooling towers and equipment washing.
+                        </p>
+                        <ul class="list-disc list-inside text-cool-slate-gray mb-4">
+                            <li><strong>System Type:</strong> Industrial Process Water Solution</li>
+                            <li><strong>Water Saved Annually:</strong> ~3 million gallons (11.3 million liters)</li>
+                            <li><strong>Cost Savings:</strong> Substantial reduction in water procurement and discharge costs.</li>
+                            <li><strong>Impact:</strong> Enhanced corporate sustainability profile, reduced operational risks from water scarcity, compliance with environmental regulations.</li>
+                        </ul>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            "Integrating AquaSkyDrop's system was a strategic decision that aligns with our core values of innovation and sustainability," stated EcoTech's Operations Director. "It has not only yielded significant cost savings but also reinforced our commitment to responsible manufacturing practices."
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-16 text-center">
+                    <h3 class="text-3xl font-bold text-cool-slate-gray mb-6">Join the Movement: Your Impact Matters</h3>
+                    <p class="text-lg text-cool-slate-gray leading-relaxed max-w-4xl mx-auto mb-8">
+                        These case studies are just a glimpse of the transformative power of rainwater harvesting. Every AquaSkyDrop system installed contributes to a growing global network of individuals, businesses, and communities committed to water resilience. Your decision to harvest the sky directly impacts local ecosystems, reduces strain on public infrastructure, and fosters a more sustainable future for everyone.
+                    </p>
+                    <p class="text-lg text-cool-slate-gray leading-relaxed max-w-4xl mx-auto">
+                        We invite you to become part of this vital movement. Whether you're a homeowner looking to green your footprint, an architect designing a sustainable building, or a city planner envisioning a water-smart urban landscape, AquaSkyDrop has the expertise and solutions to help you achieve your goals. Together, we can turn every drop of rain into a valuable resource, ensuring water security for generations to come.
+                    </p>
+                    <div class="mt-8">
+                        <h4 class="text-2xl font-semibold text-cool-slate-gray mb-4">AquaSkyDrop Global Impact Tracker:</h4>
+                        <p class="text-4xl font-bold text-skydrop-blue mb-2">
+                            <span class="text-ecoleaf-green">150+</span> Projects Completed
+                        </p>
+                        <p class="text-4xl font-bold text-skydrop-blue mb-2">
+                            <span class="text-ecoleaf-green">25 Million+</span> Liters Saved Annually
+                        </p>
+                        <p class="text-4xl font-bold text-skydrop-blue">
+                            <span class="text-ecoleaf-green">10,000+</span> Satisfied Customers
+                        </p>
+                        <p class="text-sm text-gray-600 mt-4"><em>*Data updated monthly. Join us in growing these numbers!</em></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Customer Satisfaction Section -->
+        <section class="py-16 md:py-24 bg-pure-white px-6 md:px-12">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl md:text-5xl font-bold mb-12 text-cool-slate-gray">What Our Customers Say</h2>
+                <p class="text-lg text-cool-slate-gray mb-10 max-w-4xl mx-auto">
+                    Our commitment to excellence is reflected in the positive experiences of our diverse clientele. From homeowners to large corporations, AquaSkyDrop delivers reliable, efficient, and aesthetically pleasing rainwater harvesting solutions that truly make a difference. Read their stories below.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-silver-mist p-8 rounded-2xl shadow-lg">
+                        <p class="text-cool-slate-gray italic mb-4">"Installing the AquaSkyDrop system was one of the best decisions we've made for our home. Our garden is flourishing, and we've seen a dramatic decrease in our water bills. The installation was smooth, and the team was incredibly professional. Highly recommend for any eco-conscious homeowner!"</p>
+                        <p class="font-semibold text-cool-slate-gray">- Sarah L., Homeowner, California</p>
+                    </div>
+                    <div class="bg-silver-mist p-8 rounded-2xl shadow-lg">
+                        <p class="text-cool-slate-gray italic mb-4">"As an architect, I'm always looking for sustainable building solutions. AquaSkyDrop's discreet designs and smart technology are a perfect fit for modern urban projects. Their team provided excellent support from design to implementation, and the clients are thrilled with the results."</p>
+                        <p class="font-semibold text-cool-slate-gray">- David M., Architect, New York</p>
+                    </div>
+                    <div class="bg-silver-mist p-8 rounded-2xl shadow-lg">
+                        <p class="text-cool-slate-gray italic mb-4">"Our manufacturing plant requires a significant amount of water for various processes. AquaSkyDrop's industrial solution has not only reduced our operational costs substantially but also significantly improved our corporate sustainability metrics. It's a win-win for our bottom line and the environment."</p>
+                        <p class="font-semibold text-cool-slate-gray">- Emily R., Operations Director, Texas</p>
+                    </div>
+                    <div class="bg-silver-mist p-8 rounded-2xl shadow-lg">
+                        <p class="text-cool-slate-gray italic mb-4">"We implemented AquaSkyDrop systems across several of our community parks. The reduction in municipal water usage has been incredible, freeing up resources for other critical city services. Plus, the public loves seeing our commitment to green infrastructure."</p>
+                        <p class="font-semibold text-cool-slate-gray">- Mayor John P., City Planner, Oregon</p>
+                    </div>
+                    <div class="bg-silver-mist p-8 rounded-2xl shadow-lg">
+                        <p class="text-cool-slate-gray italic mb-4">"The smart monitoring app is a game-changer! I can see exactly how much water I'm collecting and using, which helps me manage my consumption better. It's empowering to know I'm contributing to water conservation directly from my own property."</p>
+                        <p class="font-semibold text-cool-slate-gray">- Mark T., Tech Enthusiast & Homeowner, Florida</p>
+                    </div>
+                    <div class="bg-silver-mist p-8 rounded-2xl shadow-lg">
+                        <p class="text-cool-slate-gray italic mb-4">"Our school's new eco-friendly initiative wouldn't have been possible without AquaSkyDrop. The system provides a real-world example of sustainable practices for our students, and the cost savings on water have allowed us to invest more in educational programs."</p>
+                        <p class="font-semibold text-cool-slate-gray">- Principal Anya S., Educator, Washington</p>
+                    </div>
+                </div>
+
+                <div class="mt-16">
+                    <h3 class="text-3xl font-bold text-cool-slate-gray mb-6">Our Promise: Quality, Innovation, and Support</h3>
+                    <p class="text-lg text-cool-slate-gray leading-relaxed max-w-4xl mx-auto mb-8">
+                        These testimonials are a testament to AquaSkyDrop's unwavering dedication to delivering high-quality, innovative rainwater harvesting solutions backed by exceptional customer support. We understand that investing in a sustainable system is a significant decision, and we are committed to ensuring a seamless experience from initial consultation to installation and beyond. Our team of experts is always ready to assist you with system selection, design, and any questions you may have, ensuring your complete satisfaction.
+                    </p>
+                    <p class="text-lg text-cool-slate-gray leading-relaxed max-w-4xl mx-auto">
+                        We continuously strive to exceed expectations, not just in the performance of our products but also in the service we provide. Your success in harvesting the sky and sustaining the future is our ultimate goal. Join the growing family of AquaSkyDrop customers who are making a positive impact on their lives and the planet.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Disclaimer Section -->
+        <section class="py-16 md:py-24 bg-silver-mist px-6 md:px-12">
+            <div class="container mx-auto">
+                <h2 class="text-3xl md:text-5xl font-bold text-center mb-12 text-cool-slate-gray">Disclaimer</h2>
+                <div class="bg-pure-white p-8 rounded-2xl shadow-lg text-cool-slate-gray leading-relaxed text-justify">
+                    <p class="mb-4">
+                        The information provided on this AquaSkyDrop website (hereinafter referred to as "the Website") is intended for general informational purposes only. While we strive to ensure the accuracy, completeness, and reliability of the content, AquaSkyDrop makes no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability with respect to the Website or the information, products, services, or related graphics contained on the Website for any purpose. Any reliance you place on such information is therefore strictly at your own risk.
+                    </p>
+                    <p class="mb-4">
+                        <strong>No Professional Advice:</strong> The content on this Website, including but not limited to text, graphics, images, and information, is not intended to be a substitute for professional advice. Before making any decisions or taking any actions based on the information presented here, particularly concerning the installation, maintenance, or specific application of rainwater harvesting systems, we strongly advise you to consult with qualified professionals, including but not limited to licensed plumbers, engineers, contractors, or local authorities. Laws and regulations regarding rainwater harvesting vary by jurisdiction and are subject to change. It is your responsibility to ensure compliance with all applicable local, state, and federal laws, codes, and regulations. AquaSkyDrop shall not be liable for any loss or damage arising from your failure to seek professional advice or adhere to local regulations.
+                    </p>
+                    <p class="mb-4">
+                        <strong>Estimates and Projections:</strong> Any calculations, savings estimates, impact projections, or performance data presented on the Website, including those from our "Savings & Impact Calculator" or case studies, are provided for illustrative purposes only. These figures are based on generalized assumptions, average rainfall data, typical system efficiencies, and hypothetical scenarios. Actual results may vary significantly depending on numerous factors, including but not limited to your specific geographical location, actual rainfall patterns, roof size and type, water usage habits, system configuration, maintenance practices, local water rates, and unforeseen environmental conditions. AquaSkyDrop does not guarantee any specific level of water savings, financial benefit, or environmental impact.
+                    </p>
+                    <p class="mb-4">
+                        <strong>Product Information:</strong> While we endeavor to provide accurate descriptions of our products and services, product specifications, features, designs, and availability are subject to change without prior notice. Images of products are for illustrative purposes only and may not precisely represent the final product. AquaSkyDrop reserves the right to modify, discontinue, or update any product or service at any time.
+                    </p>
+                    <p class="mb-4">
+                        <strong>External Links:</strong> The Website may contain links to external websites that are not provided or maintained by or in any way affiliated with AquaSkyDrop. Please note that AquaSkyDrop does not guarantee the accuracy, relevance, timeliness, or completeness of any information on these external websites. The inclusion of any links does not necessarily imply a recommendation or endorse the views expressed within them. We have no control over the nature, content, and availability of those sites. You access and use such external websites at your own risk.
+                    </p>
+                    <p class="mb-4">
+                        <strong>Limitation of Liability:</strong> In no event will AquaSkyDrop, its directors, employees, partners, agents, suppliers, or affiliates be liable for any direct, indirect, incidental, special, consequential, or punitive damages whatsoever, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from (i) your access to or use of or inability to access or use the Website; (ii) any conduct or content of any third party on the Website; (iii) any content obtained from the Website; and (iv) unauthorized access, use, or alteration of your transmissions or content, whether based on warranty, contract, tort (including negligence), or any other legal theory, whether or not we have been informed of the possibility of such damage, and even if a remedy set forth herein is found to have failed of its essential purpose.
+                    </p>
+                    <p class="mb-4">
+                        <strong>Intellectual Property:</strong> All content, trademarks, logos, and intellectual property displayed on the Website are the property of AquaSkyDrop or its licensors and are protected by applicable copyright, trademark, and other intellectual property laws. You may not reproduce, distribute, modify, create derivative works of, publicly display, publicly perform, republish, download, store, or transmit any of the material on our Website without the prior written consent of AquaSkyDrop.
+                    </p>
+                    <p class="mb-4">
+                        <strong>Changes to Disclaimer:</strong> AquaSkyDrop reserves the right to amend this disclaimer at any time without prior notice. By continuing to use the Website after any such changes, you agree to be bound by the revised terms. It is your responsibility to review this disclaimer periodically for updates.
+                    </p>
+                    <p class="mb-4">
+                        <strong>Governing Law:</strong> This disclaimer shall be governed by and construed in accordance with the laws of [Your Company's Jurisdiction], without regard to its conflict of law provisions. Any legal action or proceeding relating to your access to or use of the Website shall be instituted in a state or federal court in [Your Company's Jurisdiction].
+                    </p>
+                    <p class="mb-4">
+                        By using this Website, you hereby acknowledge and agree to the terms of this disclaimer. If you do not agree with any part of this disclaimer, you must not use the Website. Your continued use of the Website signifies your acceptance of these terms and conditions.
+                    </p>
+                    <p class="mb-4">
+                        This disclaimer is effective as of July 5, 2025. For any questions regarding this disclaimer, please contact us via the information provided in the footer of this Website.
+                    </p>
+                    <p class="mb-4">
+                        AquaSkyDrop encourages all users to conduct their own due diligence and seek independent professional advice before making any decisions related to rainwater harvesting systems or any information obtained from this Website. The decision to install and operate a rainwater harvesting system involves various considerations unique to each property and location, and AquaSkyDrop cannot account for all such variables.
+                    </p>
+                    <p class="mb-4">
+                        Furthermore, while we use secure practices, AquaSkyDrop cannot guarantee that the Website will be free from viruses or other harmful components. It is your responsibility to ensure that your device is adequately protected against such threats. We disclaim all liability for any damage to your computer system or loss of data that results from the download of any material from the Website.
+                    </p>
+                    <p class="mb-4">
+                        The content provided on this Website is for educational and promotional purposes. It is not an offer to sell or a solicitation of an offer to buy any product or service. All sales are subject to a separate agreement between AquaSkyDrop and the customer.
+                    </p>
+                    <p class="mb-4">
+                        Thank you for visiting AquaSkyDrop. We are dedicated to providing innovative solutions for a sustainable future.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer id="contact" class="bg-cool-slate-gray text-pure-white py-12 px-6 md:px-12 rounded-t-3xl shadow-inner">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- About AquaSkyDrop -->
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-skydrop-blue">AquaSkyDrop</h3>
+                <p class="text-silver-mist leading-relaxed">
+                    Harvesting the sky for a sustainable tomorrow. We provide cutting-edge rainwater harvesting solutions for homes, businesses, and communities, making water independence a reality.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-skydrop-blue">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="#why-rwh" class="text-silver-mist hover:text-pure-white transition duration-300">Why Rainwater Harvesting?</a></li>
+                    <li><a href="#solutions" class="text-silver-mist hover:text-pure-white transition duration-300">Our Solutions</a></li>
+                    <li><a href="#calculator" class="text-silver-mist hover:text-pure-white transition duration-300">Savings Calculator</a></li>
+                    <li><a href="#technology" class="text-silver-mist hover:text-pure-white transition duration-300">Technology & Design</a></li>
+                    <li><a href="#community" class="text-silver-mist hover:text-pure-white transition duration-300">Community & Projects</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Information -->
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-skydrop-blue">Contact Us</h3>
+                <p class="text-silver-mist mb-2">
+                    <strong>AquaSkyDrop Global Headquarters</strong><br>
+                    123 Eco-Lane, Green City,<br>
+                    Waterland, WL 98765<br>
+                    Country
+                </p>
+                <p class="text-silver-mist mb-2">
+                    Email: <a href="mailto:info@aquaskydrop.com" class="text-silver-mist hover:text-pure-white transition duration-300">info@aquaskydrop.com</a>
+                </p>
+                <p class="text-silver-mist mb-2">
+                    Phone: <a href="tel:+15551234567" class="text-silver-mist hover:text-pure-white transition duration-300">+1 (555) 123-4567</a>
+                </p>
+                <div class="flex space-x-4 mt-4">
+                    <a href="#" class="text-silver-mist hover:text-pure-white transition duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.779 1.624 4.931 4.85.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.85-.148 3.227-1.652 4.779-4.931 4.931-1.265.058-1.644.069-4.85.069-3.204 0-3.584-.012-4.85-.069-3.252-.148-4.779-1.624-4.931-4.85-.058-1.265-.069-1.645-.069-4.849 0-3.205.012-3.584.069-4.85.148-3.227 1.652-4.779 4.931-4.931 1.265-.058 1.644-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.073 4.948.073 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="#" class="text-silver-mist hover:text-pure-white transition duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 6c-.77.344-1.6.577-2.46.68.89-.536 1.57-1.387 1.89-2.396-.837.498-1.76.86-2.73.997-1.44-.96-3.48-1.12-4.9-.38-1.64.88-2.6 2.6-2.6 4.4v.5c-3.9-.2-7.3-2.1-9.6-5.1-.4 1.2-.2 2.5.6 3.6-.7-.02-1.4-.2-2.1-.6v.07c0 2.3 1.6 4.3 3.9 4.8-.6.16-1.2.2-1.8.07.6 1.9 2.3 3.3 4.4 3.4-1.6 1.3-3.6 2-5.7 2-.4 0-.8 0-1.2-.07 2.1 1.4 4.6 2.2 7.3 2.2 8.8 0 13.6-7.3 13.6-13.6v-.6c.9-.6 1.6-1.4 2.2-2.3z"/></svg>
+                    </a>
+                    <a href="#" class="text-silver-mist hover:text-pure-white transition duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14h-2V9h2v7zm-1-8c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm7 8h-2v-4c0-.55-.45-1-1-1s-1 .45-1 1v4h-2V9h2v1.5c.66-.9 1.8-1.5 3-1.5 2.2 0 4 1.8 4 4v4z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-silver-mist mt-8 pt-8 border-t border-gray-700">
+            &copy; 2025 AquaSkyDrop. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Mobile Menu JavaScript -->
+    <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            var mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(item => {
+            item.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
